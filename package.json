@@ -1,0 +1,38 @@
+{
+  "name": "i18n-countries-continents",
+  "version": "1.0.0",
+  "description": "Get country and continent names in different languages. Works in React, Angular, Vue, etc.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "i18n",
+    "countries",
+    "continents",
+    "multilanguage",
+    "react",
+    "angular",
+    "vue"
+  ],
+  "author": "Aissam EL Houref",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElhourefAissam/i18n-countries-continents.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElhourefAissam/i18n-countries-continents/issues"
+  },
+  "homepage": "https://github.com/ElhourefAissam/i18n-countries-continents#readme",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
