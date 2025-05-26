@@ -1,4 +1,12 @@
-export const countries = [
+import { SupportedLanguage } from "../types";
+
+type Country = {
+  code: string;
+  continent: string;
+  names: Partial<Record<SupportedLanguage, string>>;
+};
+
+export const countries: Country[] = [
   {
     code: "US",
     continent: "NA",

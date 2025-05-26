@@ -34,5 +34,31 @@
   "homepage": "https://github.com/ElhourefAissam/i18n-countries-continents#readme",
   "devDependencies": {
     "typescript": "^5.8.3"
+  },
+  "exports": {
+  ".": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.js"
+  },
+  "./getCountryName": {
+    "import": "./dist/getCountryName.js",
+    "require": "./dist/getCountryName.js"
+  },
+  "./getCountries": {
+    "import": "./dist/getCountries.js",
+    "require": "./dist/getCountries.js"
+  },
+  "./getContinents": {
+    "import": "./dist/getContinents.js",
+    "require": "./dist/getContinents.js"
+  },
+  "./getContinentByCountry": {
+    "import": "./dist/getContinentByCountry.js",
+    "require": "./dist/getContinentByCountry.js"
+  },
+  "./getContinentName": {
+    "import": "./dist/getContinentName.js",
+    "require": "./dist/getContinentName.js"
   }
+}
 }
