@@ -6,28 +6,44 @@
   "types": "dist/index.d.ts",
   "module": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "tsc",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
     "prepare": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [
     "i18n",
+    "internationalization",
     "countries",
     "continents",
     "multilanguage",
+    "localization",
+    "l10n",
     "react",
     "angular",
-    "vue"
+    "vue",
+    "svelte",
+    "nextjs",
+    "typescript",
+    "country-codes",
+    "country-names",
+    "continent-names"
   ],
   "author": "Aissam EL Houref",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ElhourefAissam/i18n-countries-continents.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ElhourefAissam/i18n-countries-continents/issues"
   },
@@ -36,29 +52,35 @@
     "typescript": "^5.8.3"
   },
   "exports": {
-  ".": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.js"
-  },
-  "./getCountryName": {
-    "import": "./dist/getCountryName.js",
-    "require": "./dist/getCountryName.js"
-  },
-  "./getCountries": {
-    "import": "./dist/getCountries.js",
-    "require": "./dist/getCountries.js"
-  },
-  "./getContinents": {
-    "import": "./dist/getContinents.js",
-    "require": "./dist/getContinents.js"
-  },
-  "./getContinentByCountry": {
-    "import": "./dist/getContinentByCountry.js",
-    "require": "./dist/getContinentByCountry.js"
-  },
-  "./getContinentName": {
-    "import": "./dist/getContinentName.js",
-    "require": "./dist/getContinentName.js"
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./get-country-name": {
+      "import": "./dist/get-country-name.js",
+      "require": "./dist/get-country-name.js",
+      "types": "./dist/get-country-name.d.ts"
+    },
+    "./get-countries": {
+      "import": "./dist/get-countries.js",
+      "require": "./dist/get-countries.js",
+      "types": "./dist/get-countries.d.ts"
+    },
+    "./get-continents": {
+      "import": "./dist/get-continents.js",
+      "require": "./dist/get-continents.js",
+      "types": "./dist/get-continents.d.ts"
+    },
+    "./get-continent-by-country": {
+      "import": "./dist/get-continent-by-country.js",
+      "require": "./dist/get-continent-by-country.js",
+      "types": "./dist/get-continent-by-country.d.ts"
+    },
+    "./get-continent-name": {
+      "import": "./dist/get-continent-name.js",
+      "require": "./dist/get-continent-name.js",
+      "types": "./dist/get-continent-name.d.ts"
+    }
   }
-}
 }

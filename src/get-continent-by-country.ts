@@ -1,16 +1,10 @@
-import { continents } from "./data/continents";
-import { SupportedLanguage } from "./types";
+import { countries } from "./data/countries";
 
-export default function getContinentName(
-  continentCode: string,
-  language: SupportedLanguage = "en"
+export default function getContinentByCountry(
+  countryCode: string
 ): string | undefined {
-  const continent = continents.find(
-    (c) => c.code === continentCode.toUpperCase()
+  const country = countries.find(
+    (c) => c.code.toUpperCase() === countryCode.toUpperCase()
   );
-  return continent
-    ? language in continent.names
-      ? continent.names[language as keyof typeof continent.names]
-      : continent.names["en"]
-    : undefined;
+  return country ? country.continent : undefined;
 }

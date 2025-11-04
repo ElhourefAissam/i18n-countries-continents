@@ -1,1 +1,1 @@
-const SUPPORTED_LANGUAGES = ["en", "es", "fr", "ar", "nl"] as const;
+export const SUPPORTED_LANGUAGES = ["en", "es", "fr", "ar", "nl"] as const;

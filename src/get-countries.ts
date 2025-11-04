@@ -4,15 +4,15 @@ import { SupportedLanguage } from "./types";
 export interface Country {
   code: string;
   continent: string;
-  names: { [lang: string]: string };
-  name?: string;
+  name: string;
 }
 
 export default function getCountries(
   language: SupportedLanguage = "en"
 ): Country[] {
   return countries.map((c) => ({
-    ...c,
-    name: c.names[language] || c.names["en"],
+    code: c.code,
+    continent: c.continent,
+    name: c.names[language] || c.names["en"] || c.code,
   }));
 }
