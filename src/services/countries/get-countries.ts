@@ -1,5 +1,5 @@
-import { countries } from "./data/countries";
-import { SupportedLanguage } from "./types";
+import countriesData from "../../data/countries.json" with { type: "json" };
+import { SupportedLanguage } from "../../utils/types.js";
 
 export interface Country {
   code: string;
@@ -10,7 +10,7 @@ export interface Country {
 export default function getCountries(
   language: SupportedLanguage = "en"
 ): Country[] {
-  return countries.map((c) => ({
+  return countriesData.map((c) => ({
     code: c.code,
     continent: c.continent,
     name: c.names[language] || c.names["en"] || c.code,
