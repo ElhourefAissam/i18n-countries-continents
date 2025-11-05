@@ -5,21 +5,23 @@ Thank you for considering contributing to this project! 🎉
 ## Ways to Contribute
 
 ### 1. 🌍 Add More Countries
-Edit `src/data/countries.ts` and add new countries following this format:
+Edit `src/data/countries.json` and add new countries following this format:
 
-```typescript
+```json
 {
-  code: "XX",  // ISO 3166-1 alpha-2 code
-  continent: "XX",  // Continent code
-  names: {
-    en: "Country Name",
-    fr: "Nom du Pays",
-    es: "Nombre del País",
-    ar: "اسم البلد",
-    nl: "Naam van het Land",
-  },
+  "code": "XX",
+  "continent": "XX",
+  "names": {
+    "en": "Country Name",
+    "fr": "Nom du Pays",
+    "es": "Nombre del País",
+    "ar": "اسم البلد",
+    "nl": "Naam van het Land"
+  }
 }
 ```
+
+**Note:** The data is now stored in JSON format for easier editing and maintenance!
 
 ### 2. 🗣️ Add More Languages
 1. Add the language code to `src/constants.ts`:
@@ -28,8 +30,8 @@ export const SUPPORTED_LANGUAGES = ["en", "es", "fr", "ar", "nl", "de"] as const
 ```
 
 2. Add translations to all countries and continents in:
-   - `src/data/countries.ts`
-   - `src/data/continents.ts`
+   - `src/data/countries.json`
+   - `src/data/continents.json`
 
 ### 3. 🐛 Report Bugs
 - Check if the bug already exists in [Issues](https://github.com/ElhourefAissam/i18n-countries-continents/issues)

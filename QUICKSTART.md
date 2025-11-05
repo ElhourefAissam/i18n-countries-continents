@@ -16,11 +16,18 @@ yarn add i18n-countries-continents
 
 ```typescript
 import {
+  // Country services
   getCountryName,
   getCountries,
   getContinentByCountry,
+  // Continent services
   getContinentName,
   getContinents,
+  // City services
+  getCityName,
+  getCities,
+  searchCities,
+  // Constants
   SUPPORTED_LANGUAGES,
 } from 'i18n-countries-continents';
 ```
@@ -71,6 +78,44 @@ const continents = getContinents('es');
 //   { code: 'AS', name: 'Asia' },
 //   ...
 // ]
+```
+
+### Get City Name
+
+```typescript
+getCityName('Paris', 'en'); // "Paris"
+getCityName('Paris', 'fr'); // "Paris"
+getCityName('Paris', 'ar'); // "باريس"
+getCityName('London', 'fr'); // "Londres"
+getCityName('New York', 'es'); // "Nuevo York"
+```
+
+### Get All Cities
+
+```typescript
+const cities = getCities('nl');
+// [
+//   { name: 'Amsterdam', translatedName: 'Amsterdam' },
+//   { name: 'Paris', translatedName: 'Parijs' },
+//   { name: 'London', translatedName: 'Londen' },
+//   ...
+// ]
+```
+
+### Search Cities
+
+```typescript
+// Search for cities containing "york"
+const results = searchCities('york', 'en', 5);
+// [
+//   { name: 'New York', translatedName: 'New York' },
+//   { name: 'York', translatedName: 'York' },
+//   { name: 'East York', translatedName: 'East York' },
+//   ...
+// ]
+
+// Search in different language
+const parisResults = searchCities('paris', 'fr', 3);
 ```
 
 ## Framework Examples
