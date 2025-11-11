@@ -18,6 +18,7 @@ yarn add i18n-countries-continents
 import {
   // Country services
   getCountryName,
+  getCountryFlag,
   getCountries,
   getContinentByCountry,
   // Continent services
@@ -41,13 +42,22 @@ getCountryName('FR', 'fr'); // "France"
 getCountryName('JP', 'ar'); // "اليابان"
 ```
 
+### Get Country Flag
+
+```typescript
+getCountryFlag('US'); // "🇺🇸"
+getCountryFlag('FR'); // "🇫🇷"
+getCountryFlag('JP'); // "🇯🇵"
+getCountryFlag('BR'); // "🇧🇷"
+```
+
 ### Get All Countries
 
 ```typescript
 const countries = getCountries('en');
 // [
-//   { code: 'US', name: 'United States', continent: 'NA' },
-//   { code: 'CA', name: 'Canada', continent: 'NA' },
+//   { code: 'US', name: 'United States', continent: 'NA', flag: '🇺🇸' },
+//   { code: 'CA', name: 'Canada', continent: 'NA', flag: '🇨🇦' },
 //   ...
 // ]
 ```
