@@ -8,7 +8,8 @@
       "es": "Andorra",
       "ar": "أندورا",
       "nl": "Andorra"
-    }
+    },
+    "flag": "🇦🇩"
   },
   {
     "code": "AE",
@@ -19,7 +20,8 @@
       "es": "Emiratos Árabes Unidos",
       "ar": "الإمارات العربية المتحدة",
       "nl": "Verenigde Arabische Emiraten"
-    }
+    },
+    "flag": "🇦🇪"
   },
   {
     "code": "AF",
@@ -30,7 +32,8 @@
       "es": "Afganistán",
       "ar": "أفغانستان",
       "nl": "Afghanistan"
-    }
+    },
+    "flag": "🇦🇫"
   },
   {
     "code": "AG",
@@ -41,7 +44,8 @@
       "es": "Antigua y Barbuda",
       "ar": "أنتيغوا وباربودا",
       "nl": "Antigua en Barbuda"
-    }
+    },
+    "flag": "🇦🇬"
   },
   {
     "code": "AI",
@@ -52,7 +56,8 @@
       "es": "Anguila",
       "ar": "أنغويلا",
       "nl": "Anguilla"
-    }
+    },
+    "flag": "🇦🇮"
   },
   {
     "code": "AL",
@@ -63,7 +68,8 @@
       "es": "Albania",
       "ar": "ألبانيا",
       "nl": "Albanië"
-    }
+    },
+    "flag": "🇦🇱"
   },
   {
     "code": "AM",
@@ -74,7 +80,8 @@
       "es": "Armenia",
       "ar": "أرمينيا",
       "nl": "Armenië"
-    }
+    },
+    "flag": "🇦🇲"
   },
   {
     "code": "AO",
@@ -85,7 +92,8 @@
       "es": "Angola",
       "ar": "جمهورية أنغولا",
       "nl": "Angola"
-    }
+    },
+    "flag": "🇦🇴"
   },
   {
     "code": "AQ",
@@ -96,7 +104,8 @@
       "es": "Antártida",
       "ar": "أنتارتيكا",
       "nl": "Antarctica"
-    }
+    },
+    "flag": "🇦🇶"
   },
   {
     "code": "AR",
@@ -107,7 +116,8 @@
       "es": "Argentina",
       "ar": "الأرجنتين",
       "nl": "Argentinië"
-    }
+    },
+    "flag": "🇦🇷"
   },
   {
     "code": "AS",
@@ -118,7 +128,8 @@
       "es": "Samoa Americana",
       "ar": "ساموا الأمريكية",
       "nl": "Amerikaans Samoa"
-    }
+    },
+    "flag": "🇦🇸"
   },
   {
     "code": "AT",
@@ -129,7 +140,8 @@
       "es": "Austria",
       "ar": "النمسا",
       "nl": "Oostenrijk"
-    }
+    },
+    "flag": "🇦🇹"
   },
   {
     "code": "AU",
@@ -140,7 +152,8 @@
       "es": "Australia",
       "ar": "أستراليا",
       "nl": "Australië"
-    }
+    },
+    "flag": "🇦🇺"
   },
   {
     "code": "AW",
@@ -151,7 +164,8 @@
       "es": "Aruba",
       "ar": "أروبا",
       "nl": "Aruba"
-    }
+    },
+    "flag": "🇦🇼"
   },
   {
     "code": "AX",
@@ -162,7 +176,8 @@
       "es": "Islas Åland",
       "ar": "جزر أولاند",
       "nl": "Ålandeilanden"
-    }
+    },
+    "flag": "🇦🇽"
   },
   {
     "code": "AZ",
@@ -173,7 +188,8 @@
       "es": "Azerbaiyán",
       "ar": "أذربيجان",
       "nl": "Azerbeidzjan"
-    }
+    },
+    "flag": "🇦🇿"
   },
   {
     "code": "BA",
@@ -184,7 +200,8 @@
       "es": "Bosnia y Herzegovina",
       "ar": "البوسنة والهرسك",
       "nl": "Bosnië en Herzegovina"
-    }
+    },
+    "flag": "🇧🇦"
   },
   {
     "code": "BB",
@@ -195,7 +212,8 @@
       "es": "Barbados",
       "ar": "باربادوس",
       "nl": "Barbados"
-    }
+    },
+    "flag": "🇧🇧"
   },
   {
     "code": "BD",
@@ -206,7 +224,8 @@
       "es": "Bangladés",
       "ar": "بنغلاديش",
       "nl": "Bangladesh"
-    }
+    },
+    "flag": "🇧🇩"
   },
   {
     "code": "BE",
@@ -217,7 +236,8 @@
       "es": "Bélgica",
       "ar": "بلجيكا",
       "nl": "België"
-    }
+    },
+    "flag": "🇧🇪"
   },
   {
     "code": "BF",
@@ -228,7 +248,8 @@
       "es": "Burkina Faso",
       "ar": "بوركينا فاسو",
       "nl": "Burkina Faso"
-    }
+    },
+    "flag": "🇧🇫"
   },
   {
     "code": "BG",
@@ -239,7 +260,8 @@
       "es": "Bulgaria",
       "ar": "بلغاريا",
       "nl": "Bulgarije"
-    }
+    },
+    "flag": "🇧🇬"
   },
   {
     "code": "BH",
@@ -250,7 +272,8 @@
       "es": "Baréin",
       "ar": "‏البحرين",
       "nl": "Bahrein"
-    }
+    },
+    "flag": "🇧🇭"
   },
   {
     "code": "BI",
@@ -261,7 +284,8 @@
       "es": "Burundi",
       "ar": "بوروندي",
       "nl": "Burundi"
-    }
+    },
+    "flag": "🇧🇮"
   },
   {
     "code": "BJ",
@@ -272,7 +296,8 @@
       "es": "Benín",
       "ar": "بنين",
       "nl": "Benin"
-    }
+    },
+    "flag": "🇧🇯"
   },
   {
     "code": "BL",
@@ -283,7 +308,8 @@
       "es": "San Bartolomé",
       "ar": "سان بارتليمي",
       "nl": "Saint Barthélemy"
-    }
+    },
+    "flag": "🇧🇱"
   },
   {
     "code": "BM",
@@ -294,7 +320,8 @@
       "es": "Bermudas",
       "ar": "برمودا",
       "nl": "Bermuda"
-    }
+    },
+    "flag": "🇧🇲"
   },
   {
     "code": "BN",
@@ -305,7 +332,8 @@
       "es": "Brunéi",
       "ar": "بروناي",
       "nl": "Brunei"
-    }
+    },
+    "flag": "🇧🇳"
   },
   {
     "code": "BO",
@@ -316,7 +344,8 @@
       "es": "Bolivia",
       "ar": "بوليفيا",
       "nl": "Bolivia"
-    }
+    },
+    "flag": "🇧🇴"
   },
   {
     "code": "BQ",
@@ -327,7 +356,8 @@
       "es": "Caribe Neerlandés",
       "ar": "الجزر الكاريبية الهولندية",
       "nl": "Caribisch Nederland"
-    }
+    },
+    "flag": "🇧🇶"
   },
   {
     "code": "BR",
@@ -338,7 +368,8 @@
       "es": "Brasil",
       "ar": "البرازيل",
       "nl": "Brazilië"
-    }
+    },
+    "flag": "🇧🇷"
   },
   {
     "code": "BS",
@@ -349,7 +380,8 @@
       "es": "Bahamas",
       "ar": "باهاماس",
       "nl": "Bahama’s"
-    }
+    },
+    "flag": "🇧🇸"
   },
   {
     "code": "BT",
@@ -360,7 +392,8 @@
       "es": "Bután",
       "ar": "بوتان",
       "nl": "Bhutan"
-    }
+    },
+    "flag": "🇧🇹"
   },
   {
     "code": "BV",
@@ -371,7 +404,8 @@
       "es": "Isla Bouvet",
       "ar": "جزر بوفيه",
       "nl": "Bouveteiland"
-    }
+    },
+    "flag": "🇧🇻"
   },
   {
     "code": "BW",
@@ -382,7 +416,8 @@
       "es": "Botsuana",
       "ar": "بوتسوانا",
       "nl": "Botswana"
-    }
+    },
+    "flag": "🇧🇼"
   },
   {
     "code": "BY",
@@ -393,7 +428,8 @@
       "es": "Bielorrusia",
       "ar": "بيلاروسيا",
       "nl": "Wit-Rusland"
-    }
+    },
+    "flag": "🇧🇾"
   },
   {
     "code": "BZ",
@@ -404,7 +440,8 @@
       "es": "Belice",
       "ar": "بليز",
       "nl": "Belize"
-    }
+    },
+    "flag": "🇧🇿"
   },
   {
     "code": "CA",
@@ -415,7 +452,8 @@
       "es": "Canadá",
       "ar": "كندا",
       "nl": "Canada"
-    }
+    },
+    "flag": "🇨🇦"
   },
   {
     "code": "CC",
@@ -426,7 +464,8 @@
       "es": "Islas Cocos",
       "ar": "جزر كوكوس",
       "nl": "Cocoseilanden"
-    }
+    },
+    "flag": "🇨🇨"
   },
   {
     "code": "CD",
@@ -437,7 +476,8 @@
       "es": "República Democrática del Congo",
       "ar": "الكونغو",
       "nl": "Congo (DRC)"
-    }
+    },
+    "flag": "🇨🇩"
   },
   {
     "code": "CF",
@@ -448,7 +488,8 @@
       "es": "República Centroafricana",
       "ar": "جمهورية أفريقيا الوسطى",
       "nl": "Centraal-Afrikaanse Republiek"
-    }
+    },
+    "flag": "🇨🇫"
   },
   {
     "code": "CG",
@@ -459,7 +500,8 @@
       "es": "República del Congo",
       "ar": "جمهورية الكونفو",
       "nl": "Congo"
-    }
+    },
+    "flag": "🇨🇬"
   },
   {
     "code": "CH",
@@ -470,7 +512,8 @@
       "es": "Suiza",
       "ar": "سويسرا",
       "nl": "Zwitserland"
-    }
+    },
+    "flag": "🇨🇭"
   },
   {
     "code": "CI",
@@ -481,7 +524,8 @@
       "es": "Costa de Marfil",
       "ar": "ساحل العاج",
       "nl": "Ivoorkust"
-    }
+    },
+    "flag": "🇨🇮"
   },
   {
     "code": "CK",
@@ -492,7 +536,8 @@
       "es": "Islas Cook",
       "ar": "جزر كوك",
       "nl": "Cookeilanden"
-    }
+    },
+    "flag": "🇨🇰"
   },
   {
     "code": "CL",
@@ -503,7 +548,8 @@
       "es": "Chile",
       "ar": "تشيلي",
       "nl": "Chili"
-    }
+    },
+    "flag": "🇨🇱"
   },
   {
     "code": "CM",
@@ -514,7 +560,8 @@
       "es": "Camerún",
       "ar": "الكاميرون",
       "nl": "Kameroen"
-    }
+    },
+    "flag": "🇨🇲"
   },
   {
     "code": "CN",
@@ -525,7 +572,8 @@
       "es": "China",
       "ar": "الصين",
       "nl": "China"
-    }
+    },
+    "flag": "🇨🇳"
   },
   {
     "code": "CO",
@@ -536,7 +584,8 @@
       "es": "Colombia",
       "ar": "كولومبيا",
       "nl": "Colombia"
-    }
+    },
+    "flag": "🇨🇴"
   },
   {
     "code": "CR",
@@ -547,7 +596,8 @@
       "es": "Costa Rica",
       "ar": "كوستاريكا",
       "nl": "Costa Rica"
-    }
+    },
+    "flag": "🇨🇷"
   },
   {
     "code": "CU",
@@ -558,7 +608,8 @@
       "es": "Cuba",
       "ar": "كوبا",
       "nl": "Cuba"
-    }
+    },
+    "flag": "🇨🇺"
   },
   {
     "code": "CV",
@@ -569,7 +620,8 @@
       "es": "Cabo Verde",
       "ar": "كابو فيردي",
       "nl": "Kaapverdië"
-    }
+    },
+    "flag": "🇨🇻"
   },
   {
     "code": "CW",
@@ -580,7 +632,8 @@
       "es": "Curazao",
       "ar": "كوراساو",
       "nl": "Curaçao"
-    }
+    },
+    "flag": "🇨🇼"
   },
   {
     "code": "CX",
@@ -591,7 +644,8 @@
       "es": "Isla de Navidad",
       "ar": "جزيرة كريسماس",
       "nl": "Christmaseiland"
-    }
+    },
+    "flag": "🇨🇽"
   },
   {
     "code": "CY",
@@ -602,7 +656,8 @@
       "es": "Chipre",
       "ar": "قبرص",
       "nl": "Cyprus"
-    }
+    },
+    "flag": "🇨🇾"
   },
   {
     "code": "CZ",
@@ -613,7 +668,8 @@
       "es": "Chequia",
       "ar": "التشيك",
       "nl": "Tsjechië"
-    }
+    },
+    "flag": "🇨🇿"
   },
   {
     "code": "DE",
@@ -624,7 +680,8 @@
       "es": "Alemania",
       "ar": "ألمانيا",
       "nl": "Duitsland"
-    }
+    },
+    "flag": "🇩🇪"
   },
   {
     "code": "DJ",
@@ -635,7 +692,8 @@
       "es": "Yibuti",
       "ar": "جيبوتي",
       "nl": "Djibouti"
-    }
+    },
+    "flag": "🇩🇯"
   },
   {
     "code": "DK",
@@ -646,7 +704,8 @@
       "es": "Dinamarca",
       "ar": "الدنمارك",
       "nl": "Denemarken"
-    }
+    },
+    "flag": "🇩🇰"
   },
   {
     "code": "DM",
@@ -657,7 +716,8 @@
       "es": "Dominica",
       "ar": "دومينيكا",
       "nl": "Dominica"
-    }
+    },
+    "flag": "🇩🇲"
   },
   {
     "code": "DO",
@@ -668,7 +728,8 @@
       "es": "República Dominicana",
       "ar": "جمهورية الدومينيكان",
       "nl": "Dominicaanse Republiek"
-    }
+    },
+    "flag": "🇩🇴"
   },
   {
     "code": "DZ",
@@ -679,7 +740,8 @@
       "es": "Argelia",
       "ar": "الجزائر",
       "nl": "Algerije"
-    }
+    },
+    "flag": "🇩🇿"
   },
   {
     "code": "EC",
@@ -690,7 +752,8 @@
       "es": "Ecuador",
       "ar": "الإكوادور",
       "nl": "Ecuador"
-    }
+    },
+    "flag": "🇪🇨"
   },
   {
     "code": "EE",
@@ -701,7 +764,8 @@
       "es": "Estonia",
       "ar": "إستونيا",
       "nl": "Estland"
-    }
+    },
+    "flag": "🇪🇪"
   },
   {
     "code": "EG",
@@ -712,7 +776,8 @@
       "es": "Egipto",
       "ar": "مصر",
       "nl": "Egypte"
-    }
+    },
+    "flag": "🇪🇬"
   },
   {
     "code": "EH",
@@ -723,7 +788,8 @@
       "es": "Sahara Occidental",
       "ar": "الصحراء الغربية",
       "nl": "Westelijke Sahara"
-    }
+    },
+    "flag": "🇪🇭"
   },
   {
     "code": "ER",
@@ -734,7 +800,8 @@
       "es": "Eritrea",
       "ar": "إريتريا",
       "nl": "Eritrea"
-    }
+    },
+    "flag": "🇪🇷"
   },
   {
     "code": "ES",
@@ -745,7 +812,8 @@
       "es": "España",
       "ar": "إسبانيا",
       "nl": "Spanje"
-    }
+    },
+    "flag": "🇪🇸"
   },
   {
     "code": "ET",
@@ -756,7 +824,8 @@
       "es": "Etiopía",
       "ar": "إثيوبيا",
       "nl": "Ethiopië"
-    }
+    },
+    "flag": "🇪🇹"
   },
   {
     "code": "FI",
@@ -767,7 +836,8 @@
       "es": "Finlandia",
       "ar": "فنلندا",
       "nl": "Finland"
-    }
+    },
+    "flag": "🇫🇮"
   },
   {
     "code": "FJ",
@@ -778,7 +848,8 @@
       "es": "Fiyi",
       "ar": "فيجي",
       "nl": "Fiji"
-    }
+    },
+    "flag": "🇫🇯"
   },
   {
     "code": "FK",
@@ -789,7 +860,8 @@
       "es": "Islas Malvinas",
       "ar": "جزر فوكلاند",
       "nl": "Falklandeilanden"
-    }
+    },
+    "flag": "🇫🇰"
   },
   {
     "code": "FM",
@@ -800,7 +872,8 @@
       "es": "Micronesia",
       "ar": "ميكرونيسيا",
       "nl": "Micronesië"
-    }
+    },
+    "flag": "🇫🇲"
   },
   {
     "code": "FO",
@@ -811,7 +884,8 @@
       "es": "Islas Feroe",
       "ar": "جزر فارو",
       "nl": "Faeröer"
-    }
+    },
+    "flag": "🇫🇴"
   },
   {
     "code": "FR",
@@ -822,7 +896,8 @@
       "es": "Francia",
       "ar": "فرنسا",
       "nl": "Frankrijk"
-    }
+    },
+    "flag": "🇫🇷"
   },
   {
     "code": "GA",
@@ -833,7 +908,8 @@
       "es": "Gabón",
       "ar": "الغابون",
       "nl": "Gabon"
-    }
+    },
+    "flag": "🇬🇦"
   },
   {
     "code": "GB",
@@ -844,7 +920,8 @@
       "es": "Reino Unido",
       "ar": "المملكة المتحدة",
       "nl": "Verenigd Koninkrijk"
-    }
+    },
+    "flag": "🇬🇧"
   },
   {
     "code": "GD",
@@ -855,7 +932,8 @@
       "es": "Granada",
       "ar": "غرينادا",
       "nl": "Grenada"
-    }
+    },
+    "flag": "🇬🇩"
   },
   {
     "code": "GE",
@@ -866,7 +944,8 @@
       "es": "Georgia",
       "ar": "جورجيا",
       "nl": "Georgië"
-    }
+    },
+    "flag": "🇬🇪"
   },
   {
     "code": "GF",
@@ -877,7 +956,8 @@
       "es": "Guayana Francesa",
       "ar": "غويانا",
       "nl": "Frans-Guyana"
-    }
+    },
+    "flag": "🇬🇫"
   },
   {
     "code": "GG",
@@ -888,7 +968,8 @@
       "es": "Guernsey",
       "ar": "غيرنزي",
       "nl": "Guernsey"
-    }
+    },
+    "flag": "🇬🇬"
   },
   {
     "code": "GH",
@@ -899,7 +980,8 @@
       "es": "Ghana",
       "ar": "غانا",
       "nl": "Ghana"
-    }
+    },
+    "flag": "🇬🇭"
   },
   {
     "code": "GI",
@@ -910,7 +992,8 @@
       "es": "Gibraltar",
       "ar": "جبل طارق",
       "nl": "Gibraltar"
-    }
+    },
+    "flag": "🇬🇮"
   },
   {
     "code": "GL",
@@ -921,7 +1004,8 @@
       "es": "Groenlandia",
       "ar": "جرينلاند",
       "nl": "Groenland"
-    }
+    },
+    "flag": "🇬🇱"
   },
   {
     "code": "GM",
@@ -932,7 +1016,8 @@
       "es": "Gambia",
       "ar": "غامبيا",
       "nl": "Gambia"
-    }
+    },
+    "flag": "🇬🇲"
   },
   {
     "code": "GN",
@@ -943,7 +1028,8 @@
       "es": "Guinea",
       "ar": "غينيا",
       "nl": "Guinee"
-    }
+    },
+    "flag": "🇬🇳"
   },
   {
     "code": "GP",
@@ -954,7 +1040,8 @@
       "es": "Guadalupe",
       "ar": "غوادلوب",
       "nl": "Guadeloupe"
-    }
+    },
+    "flag": "🇬🇵"
   },
   {
     "code": "GQ",
@@ -965,7 +1052,8 @@
       "es": "Guinea Ecuatorial",
       "ar": "غينيا الاستوائية",
       "nl": "Equatoriaal-Guinea"
-    }
+    },
+    "flag": "🇬🇶"
   },
   {
     "code": "GR",
@@ -976,7 +1064,8 @@
       "es": "Grecia",
       "ar": "اليونان",
       "nl": "Griekenland"
-    }
+    },
+    "flag": "🇬🇷"
   },
   {
     "code": "GS",
@@ -987,7 +1076,8 @@
       "es": "Georgia del Sur",
       "ar": "جورجيا الجنوبية",
       "nl": "Zuid-Georgia en Zuidelijke Sandwicheilanden"
-    }
+    },
+    "flag": "🇬🇸"
   },
   {
     "code": "GT",
@@ -998,7 +1088,8 @@
       "es": "Guatemala",
       "ar": "غواتيمالا",
       "nl": "Guatemala"
-    }
+    },
+    "flag": "🇬🇹"
   },
   {
     "code": "GU",
@@ -1009,7 +1100,8 @@
       "es": "Guam",
       "ar": "غوام",
       "nl": "Guam"
-    }
+    },
+    "flag": "🇬🇺"
   },
   {
     "code": "GW",
@@ -1020,7 +1112,8 @@
       "es": "Guinea-Bisáu",
       "ar": "غينيا بيساو",
       "nl": "Guinee-Bissau"
-    }
+    },
+    "flag": "🇬🇼"
   },
   {
     "code": "GY",
@@ -1031,7 +1124,8 @@
       "es": "Guyana",
       "ar": "غيانا",
       "nl": "Guyana"
-    }
+    },
+    "flag": "🇬🇾"
   },
   {
     "code": "HK",
@@ -1042,7 +1136,8 @@
       "es": "Hong Kong",
       "ar": "هونغ كونغ",
       "nl": "Hongkong"
-    }
+    },
+    "flag": "🇭🇰"
   },
   {
     "code": "HM",
@@ -1053,7 +1148,8 @@
       "es": "Islas Heard y McDonald",
       "ar": "جزيرة هيرد وجزر ماكدونالد",
       "nl": "Heard-en McDonaldeilanden"
-    }
+    },
+    "flag": "🇭🇲"
   },
   {
     "code": "HN",
@@ -1064,7 +1160,8 @@
       "es": "Honduras",
       "ar": "هندوراس",
       "nl": "Honduras"
-    }
+    },
+    "flag": "🇭🇳"
   },
   {
     "code": "HR",
@@ -1075,7 +1172,8 @@
       "es": "Croacia",
       "ar": "كرواتيا",
       "nl": "Kroatië"
-    }
+    },
+    "flag": "🇭🇷"
   },
   {
     "code": "HT",
@@ -1086,7 +1184,8 @@
       "es": "Haití",
       "ar": "هايتي",
       "nl": "Haïti"
-    }
+    },
+    "flag": "🇭🇹"
   },
   {
     "code": "HU",
@@ -1097,7 +1196,8 @@
       "es": "Hungría",
       "ar": "المجر",
       "nl": "Hongarije"
-    }
+    },
+    "flag": "🇭🇺"
   },
   {
     "code": "ID",
@@ -1108,7 +1208,8 @@
       "es": "Indonesia",
       "ar": "إندونيسيا",
       "nl": "Indonesië"
-    }
+    },
+    "flag": "🇮🇩"
   },
   {
     "code": "IE",
@@ -1119,7 +1220,8 @@
       "es": "Irlanda",
       "ar": "أيرلندا",
       "nl": "Ierland"
-    }
+    },
+    "flag": "🇮🇪"
   },
   {
     "code": "IL",
@@ -1130,7 +1232,8 @@
       "es": "Israel",
       "ar": "إسرائيل",
       "nl": "Israël"
-    }
+    },
+    "flag": "🇮🇱"
   },
   {
     "code": "IM",
@@ -1141,7 +1244,8 @@
       "es": "Isla de Man",
       "ar": "جزيرة مان",
       "nl": "Isle of Man"
-    }
+    },
+    "flag": "🇮🇲"
   },
   {
     "code": "IN",
@@ -1152,7 +1256,8 @@
       "es": "India",
       "ar": "الهند",
       "nl": "India"
-    }
+    },
+    "flag": "🇮🇳"
   },
   {
     "code": "IO",
@@ -1163,7 +1268,8 @@
       "es": "Territorio Británico del Océano Índico",
       "ar": "إقليم المحيط الهندي البريطاني",
       "nl": "Britse Gebieden in de Indische Oceaan"
-    }
+    },
+    "flag": "🇮🇴"
   },
   {
     "code": "IQ",
@@ -1174,7 +1280,8 @@
       "es": "Irak",
       "ar": "العراق",
       "nl": "Irak"
-    }
+    },
+    "flag": "🇮🇶"
   },
   {
     "code": "IR",
@@ -1185,7 +1292,8 @@
       "es": "Irán",
       "ar": "إيران",
       "nl": "Iran"
-    }
+    },
+    "flag": "🇮🇷"
   },
   {
     "code": "IS",
@@ -1196,7 +1304,8 @@
       "es": "Islandia",
       "ar": "آيسلندا",
       "nl": "IJsland"
-    }
+    },
+    "flag": "🇮🇸"
   },
   {
     "code": "IT",
@@ -1207,7 +1316,8 @@
       "es": "Italia",
       "ar": "إيطاليا",
       "nl": "Italië"
-    }
+    },
+    "flag": "🇮🇹"
   },
   {
     "code": "JE",
@@ -1218,7 +1328,8 @@
       "es": "Jersey",
       "ar": "جيرزي",
       "nl": "Jersey"
-    }
+    },
+    "flag": "🇯🇪"
   },
   {
     "code": "JM",
@@ -1229,7 +1340,8 @@
       "es": "Jamaica",
       "ar": "جامايكا",
       "nl": "Jamaica"
-    }
+    },
+    "flag": "🇯🇲"
   },
   {
     "code": "JO",
@@ -1240,7 +1352,8 @@
       "es": "Jordania",
       "ar": "الأردن",
       "nl": "Jordanië"
-    }
+    },
+    "flag": "🇯🇴"
   },
   {
     "code": "JP",
@@ -1251,7 +1364,8 @@
       "es": "Japón",
       "ar": "اليابان",
       "nl": "Japan"
-    }
+    },
+    "flag": "🇯🇵"
   },
   {
     "code": "KE",
@@ -1262,7 +1376,8 @@
       "es": "Kenia",
       "ar": "كينيا",
       "nl": "Kenia"
-    }
+    },
+    "flag": "🇰🇪"
   },
   {
     "code": "KG",
@@ -1273,7 +1388,8 @@
       "es": "Kirguistán",
       "ar": "قيرغيزستان",
       "nl": "Kirgizië"
-    }
+    },
+    "flag": "🇰🇬"
   },
   {
     "code": "KH",
@@ -1284,7 +1400,8 @@
       "es": "Camboya",
       "ar": "كمبوديا",
       "nl": "Cambodja"
-    }
+    },
+    "flag": "🇰🇭"
   },
   {
     "code": "KI",
@@ -1295,7 +1412,8 @@
       "es": "Kiribati",
       "ar": "كيريباتي",
       "nl": "Kiribati"
-    }
+    },
+    "flag": "🇰🇮"
   },
   {
     "code": "KM",
@@ -1306,7 +1424,8 @@
       "es": "Comoras",
       "ar": "جزر القمر",
       "nl": "Comoren"
-    }
+    },
+    "flag": "🇰🇲"
   },
   {
     "code": "KN",
@@ -1317,7 +1436,8 @@
       "es": "San Cristóbal y Nieves",
       "ar": "سانت كيتس ونيفيس",
       "nl": "Saint Kitts en Nevis"
-    }
+    },
+    "flag": "🇰🇳"
   },
   {
     "code": "KP",
@@ -1328,7 +1448,8 @@
       "es": "Corea del Norte",
       "ar": "كوريا الشمالية",
       "nl": "Noord-Korea"
-    }
+    },
+    "flag": "🇰🇵"
   },
   {
     "code": "KR",
@@ -1339,7 +1460,8 @@
       "es": "Corea del Sur",
       "ar": "كوريا الجنوبية",
       "nl": "Zuid-Korea"
-    }
+    },
+    "flag": "🇰🇷"
   },
   {
     "code": "KW",
@@ -1350,7 +1472,8 @@
       "es": "Kuwait",
       "ar": "الكويت",
       "nl": "Koeweit"
-    }
+    },
+    "flag": "🇰🇼"
   },
   {
     "code": "KY",
@@ -1361,7 +1484,8 @@
       "es": "Islas Caimán",
       "ar": "جزر كايمان",
       "nl": "Caymaneilanden"
-    }
+    },
+    "flag": "🇰🇾"
   },
   {
     "code": "KZ",
@@ -1372,7 +1496,8 @@
       "es": "Kazajistán",
       "ar": "كازاخستان",
       "nl": "Kazachstan"
-    }
+    },
+    "flag": "🇰🇿"
   },
   {
     "code": "LA",
@@ -1383,7 +1508,8 @@
       "es": "Laos",
       "ar": "لاوس",
       "nl": "Laos"
-    }
+    },
+    "flag": "🇱🇦"
   },
   {
     "code": "LB",
@@ -1394,7 +1520,8 @@
       "es": "Líbano",
       "ar": "لبنان",
       "nl": "Libanon"
-    }
+    },
+    "flag": "🇱🇧"
   },
   {
     "code": "LC",
@@ -1405,7 +1532,8 @@
       "es": "Santa Lucía",
       "ar": "سانت لوسيا",
       "nl": "Saint Lucia"
-    }
+    },
+    "flag": "🇱🇨"
   },
   {
     "code": "LI",
@@ -1416,7 +1544,8 @@
       "es": "Liechtenstein",
       "ar": "ليختنشتاين",
       "nl": "Liechtenstein"
-    }
+    },
+    "flag": "🇱🇮"
   },
   {
     "code": "LK",
@@ -1427,7 +1556,8 @@
       "es": "Sri Lanka",
       "ar": "سريلانكا",
       "nl": "Sri Lanka"
-    }
+    },
+    "flag": "🇱🇰"
   },
   {
     "code": "LR",
@@ -1438,7 +1568,8 @@
       "es": "Liberia",
       "ar": "ليبيريا",
       "nl": "Liberia"
-    }
+    },
+    "flag": "🇱🇷"
   },
   {
     "code": "LS",
@@ -1449,7 +1580,8 @@
       "es": "Lesoto",
       "ar": "ليسوتو",
       "nl": "Lesotho"
-    }
+    },
+    "flag": "🇱🇸"
   },
   {
     "code": "LT",
@@ -1460,7 +1592,8 @@
       "es": "Lituania",
       "ar": "ليتوانيا",
       "nl": "Litouwen"
-    }
+    },
+    "flag": "🇱🇹"
   },
   {
     "code": "LU",
@@ -1471,7 +1604,8 @@
       "es": "Luxemburgo",
       "ar": "لوكسمبورغ",
       "nl": "Luxemburg"
-    }
+    },
+    "flag": "🇱🇺"
   },
   {
     "code": "LV",
@@ -1482,7 +1616,8 @@
       "es": "Letonia",
       "ar": "لاتفيا",
       "nl": "Letland"
-    }
+    },
+    "flag": "🇱🇻"
   },
   {
     "code": "LY",
@@ -1493,7 +1628,8 @@
       "es": "Libia",
       "ar": "‏ليبيا",
       "nl": "Libië"
-    }
+    },
+    "flag": "🇱🇾"
   },
   {
     "code": "MA",
@@ -1504,7 +1640,8 @@
       "es": "Marruecos",
       "ar": "المغرب",
       "nl": "Marokko"
-    }
+    },
+    "flag": "🇲🇦"
   },
   {
     "code": "MC",
@@ -1515,7 +1652,8 @@
       "es": "Mónaco",
       "ar": "موناكو",
       "nl": "Monaco"
-    }
+    },
+    "flag": "🇲🇨"
   },
   {
     "code": "MD",
@@ -1526,7 +1664,8 @@
       "es": "Moldavia",
       "ar": "مولدوڤا",
       "nl": "Moldavië"
-    }
+    },
+    "flag": "🇲🇩"
   },
   {
     "code": "ME",
@@ -1537,7 +1676,8 @@
       "es": "Montenegro",
       "ar": "الجبل الاسود",
       "nl": "Montenegro"
-    }
+    },
+    "flag": "🇲🇪"
   },
   {
     "code": "MF",
@@ -1548,7 +1688,8 @@
       "es": "San Martín",
       "ar": "سانت مارتن",
       "nl": "Saint-Martin"
-    }
+    },
+    "flag": "🇲🇫"
   },
   {
     "code": "MG",
@@ -1559,7 +1700,8 @@
       "es": "Madagascar",
       "ar": "مدغشقر",
       "nl": "Madagaskar"
-    }
+    },
+    "flag": "🇲🇬"
   },
   {
     "code": "MH",
@@ -1570,7 +1712,8 @@
       "es": "Islas Marshall",
       "ar": "جزر مارشال",
       "nl": "Marshalleilanden"
-    }
+    },
+    "flag": "🇲🇭"
   },
   {
     "code": "MK",
@@ -1581,7 +1724,8 @@
       "es": "Macedonia del Norte",
       "ar": "شمال مقدونيا",
       "nl": "Noord-Macedonië"
-    }
+    },
+    "flag": "🇲🇰"
   },
   {
     "code": "ML",
@@ -1592,7 +1736,8 @@
       "es": "Malí",
       "ar": "مالي",
       "nl": "Mali"
-    }
+    },
+    "flag": "🇲🇱"
   },
   {
     "code": "MM",
@@ -1603,7 +1748,8 @@
       "es": "Birmania",
       "ar": "ميانمار",
       "nl": "Myanmar"
-    }
+    },
+    "flag": "🇲🇲"
   },
   {
     "code": "MN",
@@ -1614,7 +1760,8 @@
       "es": "Mongolia",
       "ar": "منغوليا",
       "nl": "Mongolië"
-    }
+    },
+    "flag": "🇲🇳"
   },
   {
     "code": "MO",
@@ -1625,7 +1772,8 @@
       "es": "Macao",
       "ar": "ماكاو",
       "nl": "Macao"
-    }
+    },
+    "flag": "🇲🇴"
   },
   {
     "code": "MP",
@@ -1636,7 +1784,8 @@
       "es": "Islas Marianas del Norte",
       "ar": "جزر ماريانا الشمالية",
       "nl": "Noordelijke Marianeneilanden"
-    }
+    },
+    "flag": "🇲🇵"
   },
   {
     "code": "MQ",
@@ -1647,7 +1796,8 @@
       "es": "Martinica",
       "ar": "مارتينيك",
       "nl": "Martinique"
-    }
+    },
+    "flag": "🇲🇶"
   },
   {
     "code": "MR",
@@ -1658,7 +1808,8 @@
       "es": "Mauritania",
       "ar": "موريتانيا",
       "nl": "Mauritanië"
-    }
+    },
+    "flag": "🇲🇷"
   },
   {
     "code": "MS",
@@ -1669,7 +1820,8 @@
       "es": "Montserrat",
       "ar": "مونتسرات",
       "nl": "Montserrat"
-    }
+    },
+    "flag": "🇲🇸"
   },
   {
     "code": "MT",
@@ -1680,7 +1832,8 @@
       "es": "Malta",
       "ar": "مالطا",
       "nl": "Malta"
-    }
+    },
+    "flag": "🇲🇹"
   },
   {
     "code": "MU",
@@ -1691,7 +1844,8 @@
       "es": "Mauricio",
       "ar": "موريشيوس",
       "nl": "Mauritius"
-    }
+    },
+    "flag": "🇲🇺"
   },
   {
     "code": "MV",
@@ -1702,7 +1856,8 @@
       "es": "Maldivas",
       "ar": "المالديف",
       "nl": "Maldiven"
-    }
+    },
+    "flag": "🇲🇻"
   },
   {
     "code": "MW",
@@ -1713,7 +1868,8 @@
       "es": "Malaui",
       "ar": "مالاوي",
       "nl": "Malawi"
-    }
+    },
+    "flag": "🇲🇼"
   },
   {
     "code": "MX",
@@ -1724,7 +1880,8 @@
       "es": "México",
       "ar": "المكسيك",
       "nl": "Mexico"
-    }
+    },
+    "flag": "🇲🇽"
   },
   {
     "code": "MY",
@@ -1735,7 +1892,8 @@
       "es": "Malasia",
       "ar": "ماليزيا",
       "nl": "Maleisië"
-    }
+    },
+    "flag": "🇲🇾"
   },
   {
     "code": "MZ",
@@ -1746,7 +1904,8 @@
       "es": "Mozambique",
       "ar": "موزمبيق",
       "nl": "Mozambique"
-    }
+    },
+    "flag": "🇲🇿"
   },
   {
     "code": "NA",
@@ -1757,7 +1916,8 @@
       "es": "Namibia",
       "ar": "ناميبيا",
       "nl": "Namibië"
-    }
+    },
+    "flag": "🇳🇦"
   },
   {
     "code": "NC",
@@ -1768,7 +1928,8 @@
       "es": "Nueva Caledonia",
       "ar": "كاليدونيا الجديدة",
       "nl": "Nieuw-Caledonië"
-    }
+    },
+    "flag": "🇳🇨"
   },
   {
     "code": "NE",
@@ -1779,7 +1940,8 @@
       "es": "Níger",
       "ar": "النيجر",
       "nl": "Niger"
-    }
+    },
+    "flag": "🇳🇪"
   },
   {
     "code": "NF",
@@ -1790,7 +1952,8 @@
       "es": "Isla Norfolk",
       "ar": "جزيرة نورفولك",
       "nl": "Norfolkeiland"
-    }
+    },
+    "flag": "🇳🇫"
   },
   {
     "code": "NG",
@@ -1801,7 +1964,8 @@
       "es": "Nigeria",
       "ar": "نيجيريا",
       "nl": "Nigeria"
-    }
+    },
+    "flag": "🇳🇬"
   },
   {
     "code": "NI",
@@ -1812,7 +1976,8 @@
       "es": "Nicaragua",
       "ar": "نيكاراغوا",
       "nl": "Nicaragua"
-    }
+    },
+    "flag": "🇳🇮"
   },
   {
     "code": "NL",
@@ -1823,7 +1988,8 @@
       "es": "Países Bajos",
       "ar": "هولندا",
       "nl": "Nederland"
-    }
+    },
+    "flag": "🇳🇱"
   },
   {
     "code": "NO",
@@ -1834,7 +2000,8 @@
       "es": "Noruega",
       "ar": "النرويج",
       "nl": "Noorwegen"
-    }
+    },
+    "flag": "🇳🇴"
   },
   {
     "code": "NP",
@@ -1845,7 +2012,8 @@
       "es": "Nepal",
       "ar": "نيبال",
       "nl": "Nepal"
-    }
+    },
+    "flag": "🇳🇵"
   },
   {
     "code": "NR",
@@ -1856,7 +2024,8 @@
       "es": "Nauru",
       "ar": "ناورو",
       "nl": "Nauru"
-    }
+    },
+    "flag": "🇳🇷"
   },
   {
     "code": "NU",
@@ -1867,7 +2036,8 @@
       "es": "Niue",
       "ar": "نييوي",
       "nl": "Niue"
-    }
+    },
+    "flag": "🇳🇺"
   },
   {
     "code": "NZ",
@@ -1878,7 +2048,8 @@
       "es": "Nueva Zelanda",
       "ar": "نيوزيلندا",
       "nl": "Nieuw-Zeeland"
-    }
+    },
+    "flag": "🇳🇿"
   },
   {
     "code": "OM",
@@ -1889,7 +2060,8 @@
       "es": "Omán",
       "ar": "عمان",
       "nl": "Oman"
-    }
+    },
+    "flag": "🇴🇲"
   },
   {
     "code": "PA",
@@ -1900,7 +2072,8 @@
       "es": "Panamá",
       "ar": "بنما",
       "nl": "Panama"
-    }
+    },
+    "flag": "🇵🇦"
   },
   {
     "code": "PE",
@@ -1911,7 +2084,8 @@
       "es": "Perú",
       "ar": "بيرو",
       "nl": "Peru"
-    }
+    },
+    "flag": "🇵🇪"
   },
   {
     "code": "PF",
@@ -1922,7 +2096,8 @@
       "es": "Polinesia Francesa",
       "ar": "بولينزيا الفرنسية",
       "nl": "Frans-Polynesië"
-    }
+    },
+    "flag": "🇵🇫"
   },
   {
     "code": "PG",
@@ -1933,7 +2108,8 @@
       "es": "Papúa Nueva Guinea",
       "ar": "بابوا غينيا الجديدة",
       "nl": "Papoea-Nieuw-Guinea"
-    }
+    },
+    "flag": "🇵🇬"
   },
   {
     "code": "PH",
@@ -1944,7 +2120,8 @@
       "es": "Filipinas",
       "ar": "الفلبين",
       "nl": "Filipijnen"
-    }
+    },
+    "flag": "🇵🇭"
   },
   {
     "code": "PK",
@@ -1955,7 +2132,8 @@
       "es": "Pakistán",
       "ar": "باكستان",
       "nl": "Pakistan"
-    }
+    },
+    "flag": "🇵🇰"
   },
   {
     "code": "PL",
@@ -1966,7 +2144,8 @@
       "es": "Polonia",
       "ar": "بولندا",
       "nl": "Polen"
-    }
+    },
+    "flag": "🇵🇱"
   },
   {
     "code": "PM",
@@ -1977,7 +2156,8 @@
       "es": "San Pedro y Miquelón",
       "ar": "سان بيير وميكلون",
       "nl": "Saint Pierre en Miquelon"
-    }
+    },
+    "flag": "🇵🇲"
   },
   {
     "code": "PN",
@@ -1988,7 +2168,8 @@
       "es": "Islas Pitcairn",
       "ar": "جزر بيتكيرن",
       "nl": "Pitcairneilanden"
-    }
+    },
+    "flag": "🇵🇳"
   },
   {
     "code": "PR",
@@ -1999,7 +2180,8 @@
       "es": "Puerto Rico",
       "ar": "بويرتوريكو",
       "nl": "Puerto Rico"
-    }
+    },
+    "flag": "🇵🇷"
   },
   {
     "code": "PS",
@@ -2010,7 +2192,8 @@
       "es": "Palestina",
       "ar": "فلسطين",
       "nl": "Palestijnse gebieden"
-    }
+    },
+    "flag": "🇵🇸"
   },
   {
     "code": "PT",
@@ -2021,7 +2204,8 @@
       "es": "Portugal",
       "ar": "البرتغال",
       "nl": "Portugal"
-    }
+    },
+    "flag": "🇵🇹"
   },
   {
     "code": "PW",
@@ -2032,7 +2216,8 @@
       "es": "Palaos",
       "ar": "بالاو",
       "nl": "Palau"
-    }
+    },
+    "flag": "🇵🇼"
   },
   {
     "code": "PY",
@@ -2043,7 +2228,8 @@
       "es": "Paraguay",
       "ar": "باراغواي",
       "nl": "Paraguay"
-    }
+    },
+    "flag": "🇵🇾"
   },
   {
     "code": "QA",
@@ -2054,7 +2240,8 @@
       "es": "Catar",
       "ar": "قطر",
       "nl": "Qatar"
-    }
+    },
+    "flag": "🇶🇦"
   },
   {
     "code": "RE",
@@ -2065,7 +2252,8 @@
       "es": "Reunión",
       "ar": "لا ريونيون",
       "nl": "Réunion"
-    }
+    },
+    "flag": "🇷🇪"
   },
   {
     "code": "RO",
@@ -2076,7 +2264,8 @@
       "es": "Rumanía",
       "ar": "رومانيا",
       "nl": "Roemenië"
-    }
+    },
+    "flag": "🇷🇴"
   },
   {
     "code": "RS",
@@ -2087,7 +2276,8 @@
       "es": "Serbia",
       "ar": "صيربيا",
       "nl": "Servië"
-    }
+    },
+    "flag": "🇷🇸"
   },
   {
     "code": "RU",
@@ -2098,7 +2288,8 @@
       "es": "Rusia",
       "ar": "روسيا",
       "nl": "Rusland"
-    }
+    },
+    "flag": "🇷🇺"
   },
   {
     "code": "RW",
@@ -2109,7 +2300,8 @@
       "es": "Ruanda",
       "ar": "رواندا",
       "nl": "Rwanda"
-    }
+    },
+    "flag": "🇷🇼"
   },
   {
     "code": "SA",
@@ -2120,7 +2312,8 @@
       "es": "Arabia Saudita",
       "ar": "المملكة العربية السعودية",
       "nl": "Saoedi-Arabië"
-    }
+    },
+    "flag": "🇸🇦"
   },
   {
     "code": "SB",
@@ -2131,7 +2324,8 @@
       "es": "Islas Salomón",
       "ar": "جزر سليمان",
       "nl": "Salomonseilanden"
-    }
+    },
+    "flag": "🇸🇧"
   },
   {
     "code": "SC",
@@ -2142,7 +2336,8 @@
       "es": "Seychelles",
       "ar": "سيشل",
       "nl": "Seychellen"
-    }
+    },
+    "flag": "🇸🇨"
   },
   {
     "code": "SD",
@@ -2153,7 +2348,8 @@
       "es": "Sudán",
       "ar": "السودان",
       "nl": "Soedan"
-    }
+    },
+    "flag": "🇸🇩"
   },
   {
     "code": "SE",
@@ -2164,7 +2360,8 @@
       "es": "Suecia",
       "ar": "السويد",
       "nl": "Zweden"
-    }
+    },
+    "flag": "🇸🇪"
   },
   {
     "code": "SG",
@@ -2175,7 +2372,8 @@
       "es": "Singapur",
       "ar": "سنغافورة",
       "nl": "Singapore"
-    }
+    },
+    "flag": "🇸🇬"
   },
   {
     "code": "SH",
@@ -2186,7 +2384,8 @@
       "es": "Santa Elena, Ascensión y Tristán de Acuña",
       "ar": "سانت هيلينا وأسينشين وتريستان دا كونا",
       "nl": "Sint-Helena, Ascension en Tristan da Cunha"
-    }
+    },
+    "flag": "🇸🇭"
   },
   {
     "code": "SI",
@@ -2197,7 +2396,8 @@
       "es": "Eslovenia",
       "ar": "سلوفينيا",
       "nl": "Slovenië"
-    }
+    },
+    "flag": "🇸🇮"
   },
   {
     "code": "SJ",
@@ -2208,7 +2408,8 @@
       "es": "Svalbard y Jan Mayen",
       "ar": "سفالبارد ويان ماين",
       "nl": "Svalbard en Jan Mayen"
-    }
+    },
+    "flag": "🇸🇯"
   },
   {
     "code": "SK",
@@ -2219,7 +2420,8 @@
       "es": "Eslovaquia",
       "ar": "سلوفاكيا",
       "nl": "Slowakije"
-    }
+    },
+    "flag": "🇸🇰"
   },
   {
     "code": "SL",
@@ -2230,7 +2432,8 @@
       "es": "Sierra Leona",
       "ar": "سيراليون",
       "nl": "Sierra Leone"
-    }
+    },
+    "flag": "🇸🇱"
   },
   {
     "code": "SM",
@@ -2241,7 +2444,8 @@
       "es": "San Marino",
       "ar": "سان مارينو",
       "nl": "San Marino"
-    }
+    },
+    "flag": "🇸🇲"
   },
   {
     "code": "SN",
@@ -2252,7 +2456,8 @@
       "es": "Senegal",
       "ar": "السنغال",
       "nl": "Senegal"
-    }
+    },
+    "flag": "🇸🇳"
   },
   {
     "code": "SO",
@@ -2263,7 +2468,8 @@
       "es": "Somalia",
       "ar": "الصومال",
       "nl": "Somalië"
-    }
+    },
+    "flag": "🇸🇴"
   },
   {
     "code": "SR",
@@ -2274,7 +2480,8 @@
       "es": "Surinam",
       "ar": "سورينام",
       "nl": "Suriname"
-    }
+    },
+    "flag": "🇸🇷"
   },
   {
     "code": "SS",
@@ -2285,7 +2492,8 @@
       "es": "Sudán del Sur",
       "ar": "جنوب السودان",
       "nl": "Zuid-Soedan"
-    }
+    },
+    "flag": "🇸🇸"
   },
   {
     "code": "ST",
@@ -2296,7 +2504,8 @@
       "es": "Santo Tomé y Príncipe",
       "ar": "ساو تومي وبرينسيب",
       "nl": "Sao Tomé en Principe"
-    }
+    },
+    "flag": "🇸🇹"
   },
   {
     "code": "SV",
@@ -2307,7 +2516,8 @@
       "es": "El Salvador",
       "ar": "السلفادور",
       "nl": "El Salvador"
-    }
+    },
+    "flag": "🇸🇻"
   },
   {
     "code": "SX",
@@ -2318,7 +2528,8 @@
       "es": "San Martín",
       "ar": "سينت مارتن",
       "nl": "Sint Maarten"
-    }
+    },
+    "flag": "🇸🇽"
   },
   {
     "code": "SY",
@@ -2329,7 +2540,8 @@
       "es": "Siria",
       "ar": "سوريا",
       "nl": "Syrië"
-    }
+    },
+    "flag": "🇸🇾"
   },
   {
     "code": "SZ",
@@ -2340,7 +2552,8 @@
       "es": "Esuatini",
       "ar": "إسواتيني",
       "nl": "Swaziland"
-    }
+    },
+    "flag": "🇸🇿"
   },
   {
     "code": "TC",
@@ -2351,7 +2564,8 @@
       "es": "Islas Turcas y Caicos",
       "ar": "جزر توركس وكايكوس",
       "nl": "Turks-en Caicoseilanden"
-    }
+    },
+    "flag": "🇹🇨"
   },
   {
     "code": "TD",
@@ -2362,7 +2576,8 @@
       "es": "Chad",
       "ar": "تشاد",
       "nl": "Tsjaad"
-    }
+    },
+    "flag": "🇹🇩"
   },
   {
     "code": "TF",
@@ -2373,7 +2588,8 @@
       "es": "Tierras Australes y Antárticas Francesas",
       "ar": "أراض فرنسية جنوبية وأنتارتيكية",
       "nl": "Franse Gebieden in de zuidelijke Indische Oceaan"
-    }
+    },
+    "flag": "🇹🇫"
   },
   {
     "code": "TG",
@@ -2384,7 +2600,8 @@
       "es": "Togo",
       "ar": "توغو",
       "nl": "Togo"
-    }
+    },
+    "flag": "🇹🇬"
   },
   {
     "code": "TH",
@@ -2395,7 +2612,8 @@
       "es": "Tailandia",
       "ar": "تايلاند",
       "nl": "Thailand"
-    }
+    },
+    "flag": "🇹🇭"
   },
   {
     "code": "TJ",
@@ -2406,7 +2624,8 @@
       "es": "Tayikistán",
       "ar": "طاجيكستان",
       "nl": "Tadzjikistan"
-    }
+    },
+    "flag": "🇹🇯"
   },
   {
     "code": "TK",
@@ -2417,7 +2636,8 @@
       "es": "Tokelau",
       "ar": "توكيلاو",
       "nl": "Tokelau"
-    }
+    },
+    "flag": "🇹🇰"
   },
   {
     "code": "TL",
@@ -2428,7 +2648,8 @@
       "es": "Timor Oriental",
       "ar": "تيمور الشرقية",
       "nl": "Oost-Timor"
-    }
+    },
+    "flag": "🇹🇱"
   },
   {
     "code": "TM",
@@ -2439,7 +2660,8 @@
       "es": "Turkmenistán",
       "ar": "تركمانستان",
       "nl": "Turkmenistan"
-    }
+    },
+    "flag": "🇹🇲"
   },
   {
     "code": "TN",
@@ -2450,7 +2672,8 @@
       "es": "Túnez",
       "ar": "تونس",
       "nl": "Tunesië"
-    }
+    },
+    "flag": "🇹🇳"
   },
   {
     "code": "TO",
@@ -2461,7 +2684,8 @@
       "es": "Tonga",
       "ar": "تونغا",
       "nl": "Tonga"
-    }
+    },
+    "flag": "🇹🇴"
   },
   {
     "code": "TR",
@@ -2472,7 +2696,8 @@
       "es": "Turquía",
       "ar": "تركيا",
       "nl": "Turkije"
-    }
+    },
+    "flag": "🇹🇷"
   },
   {
     "code": "TT",
@@ -2483,7 +2708,8 @@
       "es": "Trinidad y Tobago",
       "ar": "ترينيداد وتوباغو",
       "nl": "Trinidad en Tobago"
-    }
+    },
+    "flag": "🇹🇹"
   },
   {
     "code": "TV",
@@ -2494,7 +2720,8 @@
       "es": "Tuvalu",
       "ar": "توفالو",
       "nl": "Tuvalu"
-    }
+    },
+    "flag": "🇹🇻"
   },
   {
     "code": "TW",
@@ -2505,7 +2732,8 @@
       "es": "Taiwán",
       "ar": "تايوان",
       "nl": "Taiwan"
-    }
+    },
+    "flag": "🇹🇼"
   },
   {
     "code": "TZ",
@@ -2516,7 +2744,8 @@
       "es": "Tanzania",
       "ar": "تنزانيا",
       "nl": "Tanzania"
-    }
+    },
+    "flag": "🇹🇿"
   },
   {
     "code": "UA",
@@ -2527,7 +2756,8 @@
       "es": "Ucrania",
       "ar": "أوكرانيا",
       "nl": "Oekraïne"
-    }
+    },
+    "flag": "🇺🇦"
   },
   {
     "code": "UG",
@@ -2538,7 +2768,8 @@
       "es": "Uganda",
       "ar": "أوغندا",
       "nl": "Oeganda"
-    }
+    },
+    "flag": "🇺🇬"
   },
   {
     "code": "UM",
@@ -2549,7 +2780,8 @@
       "es": "Islas Ultramarinas Menores de Estados Unidos",
       "ar": "جزر الولايات المتحدة الصغيرة النائية",
       "nl": "Kleine afgelegen eilanden van de Verenigde Staten"
-    }
+    },
+    "flag": "🇺🇲"
   },
   {
     "code": "US",
@@ -2560,7 +2792,8 @@
       "es": "Estados Unidos",
       "ar": "الولايات المتحدة",
       "nl": "Verenigde Staten"
-    }
+    },
+    "flag": "🇺🇸"
   },
   {
     "code": "UY",
@@ -2571,7 +2804,8 @@
       "es": "Uruguay",
       "ar": "الأوروغواي",
       "nl": "Uruguay"
-    }
+    },
+    "flag": "🇺🇾"
   },
   {
     "code": "UZ",
@@ -2582,7 +2816,8 @@
       "es": "Uzbekistán",
       "ar": "أوزباكستان",
       "nl": "Oezbekistan"
-    }
+    },
+    "flag": "🇺🇿"
   },
   {
     "code": "VA",
@@ -2593,7 +2828,8 @@
       "es": "Ciudad del Vaticano",
       "ar": "مدينة الفاتيكان",
       "nl": "Vaticaanstad"
-    }
+    },
+    "flag": "🇻🇦"
   },
   {
     "code": "VC",
@@ -2604,7 +2840,8 @@
       "es": "San Vicente y las Granadinas",
       "ar": "سانت فينسنت والغرينادين",
       "nl": "Saint Vincent en de Grenadines"
-    }
+    },
+    "flag": "🇻🇨"
   },
   {
     "code": "VE",
@@ -2615,7 +2852,8 @@
       "es": "Venezuela",
       "ar": "فنزويلا",
       "nl": "Venezuela"
-    }
+    },
+    "flag": "🇻🇪"
   },
   {
     "code": "VG",
@@ -2626,7 +2864,8 @@
       "es": "Islas Vírgenes Británicas",
       "ar": "جزر العذراء",
       "nl": "Britse Maagdeneilanden"
-    }
+    },
+    "flag": "🇻🇬"
   },
   {
     "code": "VI",
@@ -2637,7 +2876,8 @@
       "es": "Islas Vírgenes de los Estados Unidos",
       "ar": "جزر العذراء الامريكية",
       "nl": "Amerikaanse Maagdeneilanden"
-    }
+    },
+    "flag": "🇻🇮"
   },
   {
     "code": "VN",
@@ -2648,7 +2888,8 @@
       "es": "Vietnam",
       "ar": "فيتنام",
       "nl": "Vietnam"
-    }
+    },
+    "flag": "🇻🇳"
   },
   {
     "code": "VU",
@@ -2659,7 +2900,8 @@
       "es": "Vanuatu",
       "ar": "فانواتو",
       "nl": "Vanuatu"
-    }
+    },
+    "flag": "🇻🇺"
   },
   {
     "code": "WF",
@@ -2670,7 +2912,8 @@
       "es": "Wallis y Futuna",
       "ar": "واليس وفوتونا",
       "nl": "Wallis en Futuna"
-    }
+    },
+    "flag": "🇼🇫"
   },
   {
     "code": "WS",
@@ -2681,7 +2924,8 @@
       "es": "Samoa",
       "ar": "ساموا",
       "nl": "Samoa"
-    }
+    },
+    "flag": "🇼🇸"
   },
   {
     "code": "XK",
@@ -2692,7 +2936,8 @@
       "es": "Kosovo",
       "ar": "كوسوفو",
       "nl": "Kosovo"
-    }
+    },
+    "flag": "🇽🇰"
   },
   {
     "code": "YE",
@@ -2703,7 +2948,8 @@
       "es": "Yemen",
       "ar": "اليمن",
       "nl": "Jemen"
-    }
+    },
+    "flag": "🇾🇪"
   },
   {
     "code": "YT",
@@ -2714,7 +2960,8 @@
       "es": "Mayotte",
       "ar": "مايوت",
       "nl": "Mayotte"
-    }
+    },
+    "flag": "🇾🇹"
   },
   {
     "code": "ZA",
@@ -2725,7 +2972,8 @@
       "es": "Sudáfrica",
       "ar": "جنوب أفريقيا",
       "nl": "Zuid-Afrika"
-    }
+    },
+    "flag": "🇿🇦"
   },
   {
     "code": "ZM",
@@ -2736,7 +2984,8 @@
       "es": "Zambia",
       "ar": "زامبيا",
       "nl": "Zambia"
-    }
+    },
+    "flag": "🇿🇲"
   },
   {
     "code": "ZW",
@@ -2747,6 +2996,7 @@
       "es": "Zimbabue",
       "ar": "زيمبابوي",
       "nl": "Zimbabwe"
-    }
+    },
+    "flag": "🇿🇼"
   }
 ]

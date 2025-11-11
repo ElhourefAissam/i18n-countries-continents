@@ -11,7 +11,8 @@ npm install i18n-countries-continents
 ## Features
 
 - 🌍 **250 countries** - Complete coverage of all world countries
-- 🗺️ **7 continents** - All continents included
+- � **Country flags** - Flag emoji for every country
+- �🗺️ **7 continents** - All continents included
 - 🏙️ **4,010 cities** - Major cities from around the world
 - 🌐 **5 languages** - English, Spanish, French, Arabic, Dutch (100% coverage)
 - 📦 **Zero dependencies** - Lightweight and fast
@@ -31,16 +32,29 @@ console.log(getCountryName('FR', 'fr')); // France
 console.log(getCountryName('FR', 'es')); // Francia
 ```
 
-### 2. List all countries in a language
+### 2. Get a country flag
+
+```js
+import { getCountryFlag } from 'i18n-countries-continents';
+
+console.log(getCountryFlag('US')); // 🇺🇸
+console.log(getCountryFlag('FR')); // 🇫🇷
+console.log(getCountryFlag('JP')); // 🇯🇵
+```
+
+### 3. List all countries in a language
 
 ```js
 import { getCountries } from 'i18n-countries-continents';
 
 const countries = getCountries('en');
-countries.forEach(c => console.log(c.code, c.name));
+countries.forEach(c => console.log(c.flag, c.code, c.name));
+// Output: 🇺🇸 US United States
+//         🇫🇷 FR France
+//         ...
 ```
 
-### 3. Get a continent code by country code
+### 4. Get a continent code by country code
 
 ```js
 import { getContinentByCountry } from 'i18n-countries-continents';
@@ -48,7 +62,7 @@ import { getContinentByCountry } from 'i18n-countries-continents';
 console.log(getContinentByCountry('US')); // "NA"
 ```
 
-### 4. Get a continent name in a specific language
+### 5. Get a continent name in a specific language
 
 ```js
 import { getContinentName } from 'i18n-countries-continents';
@@ -56,7 +70,7 @@ import { getContinentName } from 'i18n-countries-continents';
 console.log(getContinentName('EU', 'es')); // Europa
 ```
 
-### 5. List all continents in a language
+### 6. List all continents in a language
 
 ```js
 import { getContinents } from 'i18n-countries-continents';
@@ -65,7 +79,7 @@ const continents = getContinents('fr');
 continents.forEach(c => console.log(c.code, c.name));
 ```
 
-### 6. Get a city name in a specific language
+### 7. Get a city name in a specific language
 
 ```js
 import { getCityName } from 'i18n-countries-continents';
@@ -75,7 +89,7 @@ console.log(getCityName('Paris', 'ar')); // باريس
 console.log(getCityName('London', 'fr')); // Londres
 ```
 
-### 7. List all cities in a language
+### 8. List all cities in a language
 
 ```js
 import { getCities } from 'i18n-countries-continents';
@@ -84,7 +98,7 @@ const cities = getCities('es');
 cities.forEach(c => console.log(c.name, '→', c.translatedName));
 ```
 
-### 8. Search for cities
+### 9. Search for cities
 
 ```js
 import { searchCities } from 'i18n-countries-continents';
@@ -195,8 +209,11 @@ Major cities from around the world including:
 #### `getCountryName(code: string, language?: SupportedLanguage): string | undefined`
 Get the name of a country by its ISO 3166-1 alpha-2 code.
 
+#### `getCountryFlag(code: string): string | undefined`
+Get the flag emoji for a country by its ISO 3166-1 alpha-2 code.
+
 #### `getCountries(language?: SupportedLanguage): Country[]`
-Get all countries with their names in the specified language.
+Get all countries with their names and flags in the specified language.
 
 #### `getContinentByCountry(code: string): string | undefined`
 Get the continent code for a country.
@@ -229,6 +246,7 @@ interface Country {
   code: string;
   continent: string;
   name: string;
+  flag: string;
 }
 
 interface Continent {

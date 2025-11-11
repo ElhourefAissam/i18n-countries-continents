@@ -5,6 +5,7 @@ export interface Country {
   code: string;
   continent: string;
   name: string;
+  flag: string;
 }
 
 export default function getCountries(
@@ -14,5 +15,6 @@ export default function getCountries(
     code: c.code,
     continent: c.continent,
     name: c.names[language] || c.names["en"] || c.code,
+    flag: c.flag,
   }));
 }
