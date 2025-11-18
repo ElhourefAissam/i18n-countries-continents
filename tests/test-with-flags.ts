@@ -9,10 +9,7 @@ import {
   getCities,
   searchCities,
   SUPPORTED_LANGUAGES,
-  Country,
-  Continent,
-  City,
-} from "../src/index.js";
+} from "../dist/index.js";
 
 console.log("╔════════════════════════════════════════════════════════╗");
 console.log("║   i18n-countries-continents - Full API + Flags Demo  ║");
@@ -43,7 +40,7 @@ console.log(`   Dutch:   ${getCountryName(testCode, "nl")}`);
 
 console.log("\n3️⃣  Get all countries with flags (first 10 in English):");
 const countriesEN = getCountries("en").slice(0, 10);
-countriesEN.forEach((c: Country) => {
+countriesEN.forEach((c) => {
   console.log(`   ${c.flag}  ${c.code} - ${c.name} (${c.continent})`);
 });
 
@@ -74,7 +71,7 @@ console.log(`   EU (Dutch):   ${getContinentName("EU", "nl")}`);
 
 console.log("\n6️⃣  Get all continents (in French):");
 const continentsFR = getContinents("fr");
-continentsFR.forEach((c: Continent) => {
+continentsFR.forEach((c) => {
   console.log(`   ${c.code} - ${c.name}`);
 });
 
@@ -93,7 +90,7 @@ console.log(`   Paris (Dutch):   ${getCityName("Paris", "nl")}`);
 
 console.log("\n8️⃣  Search cities (searching for 'tokyo'):");
 const tokyoCities = searchCities("tokyo", "en", 3);
-tokyoCities.forEach((c: City) => {
+tokyoCities.forEach((c) => {
   console.log(`   ${c.name} → ${c.translatedName}`);
 });
 
@@ -106,7 +103,7 @@ console.log("\n\n📊 DATA VERIFICATION");
 console.log("═".repeat(60));
 
 const allCountries = getCountries('en');
-const countriesWithFlags = allCountries.filter((c: Country) => c.flag);
+const countriesWithFlags = allCountries.filter((c) => c.flag);
 const allContinents = getContinents('en');
 const allCities = getCities('en');
 
@@ -134,7 +131,7 @@ const continents = [
 continents.forEach(cont => {
   console.log(`\n${cont.name}:`);
   cont.samples.forEach(code => {
-    const country = allCountries.find((c: Country) => c.code === code);
+    const country = allCountries.find((c) => c.code === code);
     if (country) {
       console.log(`   ${country.flag}  ${country.code} - ${country.name}`);
     }
