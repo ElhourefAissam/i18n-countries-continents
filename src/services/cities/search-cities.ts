@@ -1,10 +1,6 @@
 import citiesData from "../../data/cities.json" with { type: "json" };
 import { SupportedLanguage } from "../../utils/types.js";
-
-export interface City {
-  name: string;
-  translatedName: string;
-}
+import { City } from "./get-cities.js";
 
 export default function searchCities(
   query: string,

@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2025-03-10
+
+### Fixed
+- Fixed `exports` field in `package.json` to correctly point to sub-directory service files (e.g. `./dist/services/countries/get-country-name.js` instead of old flat paths)
+- Added missing sub-path exports: `./get-country-flag`, `./get-city-name`, `./get-cities`, `./search-cities`, `./get-continents`, `./get-continent-name`
+- Removed duplicate `City` interface definition in `search-cities.ts` (now imports from `get-cities.ts`)
+- Fixed `CHANGELOG.md` incorrectly excluded by `.npmignore` despite being listed in `files`
+- Fixed `moduleResolution` in `tsconfig.json` from `"node"` to `"bundler"` for correct ESM resolution
+
+### Added
+- `"sideEffects": false` in `package.json` for optimal tree-shaking support
+- `"engines": { "node": ">=16.0.0" }` to document minimum Node.js version
+- Added `cities`, `flags`, `iso-3166` keywords for better npm discoverability
+- Updated package description to include cities
+
 ## [1.0.1] - 2025-11-18
 
 ### Added

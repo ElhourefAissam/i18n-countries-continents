@@ -1,11 +1,15 @@
 {
   "name": "i18n-countries-continents",
-  "version": "1.0.1",
-  "description": "Get country and continent names in different languages. Works in React, Angular, Vue, etc.",
+  "version": "1.0.2",
+  "description": "Get country, continent, and city names in different languages. 250 countries, 7 continents, and 4,010 cities with 5 languages. Works in React, Angular, Vue, Node.js, and any JavaScript environment.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/index.js",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "files": [
     "dist",
     "README.md",
@@ -26,6 +30,7 @@
     "internationalization",
     "countries",
     "continents",
+    "cities",
     "multilanguage",
     "localization",
     "l10n",
@@ -37,7 +42,10 @@
     "typescript",
     "country-codes",
     "country-names",
-    "continent-names"
+    "continent-names",
+    "city-names",
+    "flags",
+    "iso-3166"
   ],
   "author": "Aissam EL Houref",
   "repository": {
@@ -59,29 +67,49 @@
       "types": "./dist/index.d.ts"
     },
     "./get-country-name": {
-      "import": "./dist/get-country-name.js",
-      "require": "./dist/get-country-name.js",
-      "types": "./dist/get-country-name.d.ts"
+      "import": "./dist/services/countries/get-country-name.js",
+      "require": "./dist/services/countries/get-country-name.js",
+      "types": "./dist/services/countries/get-country-name.d.ts"
+    },
+    "./get-country-flag": {
+      "import": "./dist/services/countries/get-country-flag.js",
+      "require": "./dist/services/countries/get-country-flag.js",
+      "types": "./dist/services/countries/get-country-flag.d.ts"
     },
     "./get-countries": {
-      "import": "./dist/get-countries.js",
-      "require": "./dist/get-countries.js",
-      "types": "./dist/get-countries.d.ts"
-    },
-    "./get-continents": {
-      "import": "./dist/get-continents.js",
-      "require": "./dist/get-continents.js",
-      "types": "./dist/get-continents.d.ts"
+      "import": "./dist/services/countries/get-countries.js",
+      "require": "./dist/services/countries/get-countries.js",
+      "types": "./dist/services/countries/get-countries.d.ts"
     },
     "./get-continent-by-country": {
-      "import": "./dist/get-continent-by-country.js",
-      "require": "./dist/get-continent-by-country.js",
-      "types": "./dist/get-continent-by-country.d.ts"
+      "import": "./dist/services/countries/get-continent-by-country.js",
+      "require": "./dist/services/countries/get-continent-by-country.js",
+      "types": "./dist/services/countries/get-continent-by-country.d.ts"
     },
     "./get-continent-name": {
-      "import": "./dist/get-continent-name.js",
-      "require": "./dist/get-continent-name.js",
-      "types": "./dist/get-continent-name.d.ts"
+      "import": "./dist/services/continents/get-continent-name.js",
+      "require": "./dist/services/continents/get-continent-name.js",
+      "types": "./dist/services/continents/get-continent-name.d.ts"
+    },
+    "./get-continents": {
+      "import": "./dist/services/continents/get-continents.js",
+      "require": "./dist/services/continents/get-continents.js",
+      "types": "./dist/services/continents/get-continents.d.ts"
+    },
+    "./get-city-name": {
+      "import": "./dist/services/cities/get-city-name.js",
+      "require": "./dist/services/cities/get-city-name.js",
+      "types": "./dist/services/cities/get-city-name.d.ts"
+    },
+    "./get-cities": {
+      "import": "./dist/services/cities/get-cities.js",
+      "require": "./dist/services/cities/get-cities.js",
+      "types": "./dist/services/cities/get-cities.d.ts"
+    },
+    "./search-cities": {
+      "import": "./dist/services/cities/search-cities.js",
+      "require": "./dist/services/cities/search-cities.js",
+      "types": "./dist/services/cities/search-cities.d.ts"
     }
   }
 }
