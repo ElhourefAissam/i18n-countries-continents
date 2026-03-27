@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2026-03-27
+
+### Changed
+- Rewrote README with fixed emoji rendering (broken flag/map emojis on npm)
+- Added badges (npm version, downloads, license, TypeScript)
+- Added yarn and pnpm installation commands
+- Added sub-path imports section showing all tree-shakeable entry points
+- Added separate Node.js ESM and CommonJS usage examples
+- Added `SUPPORTED_LANGUAGES` constant to API reference
+- Improved TypeScript types section with inline comments
+- Replaced plain lists with tables for Data Coverage (Countries, Languages)
+- Fixed duplicate `---` dividers in document
+- Fixed `Data Format` section that incorrectly referenced `src/data/` (internal source path)
+- Improved React, Vue, and Angular examples with more realistic code
+- Cleaned up API reference descriptions with parameter documentation
+
 ## [1.0.2] - 2025-03-10
 
 ### Fixed
