@@ -1,10 +1,10 @@
-import countriesData from "../../data/countries.json" with { type: "json" };
+import { getLangCountries } from "../../data/loader.js";
 
+// Continent mapping is the same in every language — use "en" bundle
 export default function getContinentByCountry(
   countryCode: string
 ): string | undefined {
-  const country = countriesData.find(
-    (c) => c.code.toUpperCase() === countryCode.toUpperCase()
-  );
-  return country ? country.continent : undefined;
+  const upper = countryCode.toUpperCase();
+  const entry = getLangCountries("en").find(([c]) => c === upper);
+  return entry ? entry[1] : undefined;
 }

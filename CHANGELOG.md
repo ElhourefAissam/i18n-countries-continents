@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.4] - 2026-03-27
+
+### Performance (Breaking-free optimization)
+- **85% bundle size reduction** — split monolithic JSON data files into per-language bundles
+  - Before: one `cities.json` (924 KB), `countries.json` (72 KB), `continents.json` (4 KB) = **1 MB** all inlined
+  - After: one file per language (`en.json`, `es.json`, `fr.json`, `ar.json`, `nl.json`) = **~106 KB each**
+  - Bundlephobia was reporting 542 KB minified / 115 KB gzip — now drastically reduced
+- Data format changed internally to compact arrays (`[code, continent, flag, name]`) for smaller JSON footprint
+- All services rewritten to use the new per-language loader (`src/data/loader.ts`)
+- No API changes — all existing code continues to work unchanged
+
 ## [1.0.3] - 2026-03-27
 
 ### Changed

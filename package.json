@@ -1,6 +1,6 @@
 {
   "name": "i18n-countries-continents",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Get country, continent, and city names in different languages. 250 countries, 7 continents, and 4,010 cities with 5 languages. Works in React, Angular, Vue, Node.js, and any JavaScript environment.",
   "type": "module",
   "main": "dist/index.js",

@@ -1,4 +1,4 @@
-import citiesData from "../../data/cities.json" with { type: "json" };
+import { getLangCities } from "../../data/loader.js";
 import { SupportedLanguage } from "../../utils/types.js";
 
 export interface City {
@@ -7,8 +7,8 @@ export interface City {
 }
 
 export default function getCities(language: SupportedLanguage = "en"): City[] {
-  return citiesData.map((c) => ({
-    name: c.name,
-    translatedName: c.translations[language] || c.translations["en"] || c.name,
+  return getLangCities(language).map(([name, translatedName]) => ({
+    name,
+    translatedName,
   }));
 }

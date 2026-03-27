@@ -1,4 +1,4 @@
-import citiesData from "../../data/cities.json" with { type: "json" };
+import { getLangCities } from "../../data/loader.js";
 import { SupportedLanguage } from "../../utils/types.js";
 import { City } from "./get-cities.js";
 
@@ -13,24 +13,13 @@ export default function searchCities(
     return [];
   }
 
-  const results = citiesData
-    .filter((city) => {
-      const englishName = city.name.toLowerCase();
-      const translatedName = (
-        city.translations[language] || city.name
-      ).toLowerCase();
-
+  return getLangCities(language)
+    .filter(([name, translatedName]) => {
       return (
-        englishName.includes(normalizedQuery) ||
-        translatedName.includes(normalizedQuery)
+        name.toLowerCase().includes(normalizedQuery) ||
+        translatedName.toLowerCase().includes(normalizedQuery)
       );
     })
-    .map((c) => ({
-      name: c.name,
-      translatedName:
-        c.translations[language] || c.translations["en"] || c.name,
-    }))
-    .slice(0, limit);
-
-  return results;
+    .slice(0, limit)
+    .map(([name, translatedName]) => ({ name, translatedName }));
 }
