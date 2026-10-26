@@ -1,6 +1,6 @@
 # i18n-countries-continents
 
-Get country, continent, and city names in different languages. **250 countries**, **7 continents**, and **4,010 cities** with full translations in **5 languages**. Works in React, Angular, Vue, Svelte, Node.js, and any JavaScript environment.
+Get country, continent, and city names in different languages. **250 countries**, **7 continents**, and **4,010 cities** with full translations in **8 languages**. Works in React, Angular, Vue, Svelte, Node.js, and any JavaScript environment.
 
 [![npm version](https://img.shields.io/npm/v/i18n-countries-continents.svg)](https://www.npmjs.com/package/i18n-countries-continents)
 [![npm downloads](https://img.shields.io/npm/dm/i18n-countries-continents.svg)](https://www.npmjs.com/package/i18n-countries-continents)
@@ -29,7 +29,7 @@ pnpm add i18n-countries-continents
 - 🏳️ **Country flags** — Flag emoji for every country
 - 🗺️ **7 continents** — All continents included
 - 🏙️ **4,010 cities** — Major cities from around the world
-- 🌐 **5 languages** — English, Spanish, French, Arabic, Dutch (100% coverage)
+- 🌐 **8 languages** — English, Spanish, French, Arabic, Dutch, German, Portuguese, Italian (100% coverage)
 - 📦 **Zero dependencies** — Lightweight and fast
 - 🔤 **ISO 3166-1 codes** — Standard alpha-2 country codes
 - 💪 **TypeScript** — Full type definitions included
@@ -331,12 +331,12 @@ import toSelectOptions         from 'i18n-countries-continents/to-select-options
 | South America | 14 countries |
 
 ### Continents: 7
-All continents fully covered with translations in all 5 languages.
+All continents fully covered with translations in all 8 languages.
 
 ### Cities: 4,010
 Major cities from around the world — capital cities, major metropolitan areas, important economic centers, and cultural landmarks.
 
-### Languages: 5
+### Languages: 8
 | Code | Language | Coverage |
 |------|----------|----------|
 | `en` | English  | 100% |
@@ -344,6 +344,9 @@ Major cities from around the world — capital cities, major metropolitan areas,
 | `fr` | French   | 100% |
 | `ar` | Arabic   | 100% |
 | `nl` | Dutch    | 100% |
+| `de` | German   | 100% |
+| `pt` | Portuguese | 100% |
+| `it` | Italian  | 100% |
 
 ---
 
@@ -357,7 +360,7 @@ Get the complete country object (`code`, `name`, `continent`, `flag`) for a coun
 #### `getCountryName(code, language?): string | undefined`
 Get the name of a country by its ISO 3166-1 alpha-2 code.
 - `code` — country code, e.g. `'US'`, `'FR'` (case-insensitive)
-- `language` — one of `'en' | 'es' | 'fr' | 'ar' | 'nl'` (default: `'en'`)
+- `language` — one of `'en' | 'es' | 'fr' | 'ar' | 'nl' | 'de' | 'pt' | 'it'` (default: `'en'`)
 
 #### `getCountryByName(name, language?): Country | undefined`
 Reverse lookup: find a country object by its translated or English name.
@@ -412,7 +415,7 @@ Check if a string is a valid ISO 3166-1 alpha-2 country code.
 Check if a string is a valid 2-letter continent code.
 
 #### `isValidLanguage(language): boolean`
-TypeScript type-guard checking if a language string is supported (`'en'`, `'es'`, `'fr'`, `'ar'`, `'nl'`).
+TypeScript type-guard checking if a language string is supported (`'en'`, `'es'`, `'fr'`, `'ar'`, `'nl'`, `'de'`, `'pt'`, `'it'`).
 
 ---
 
@@ -429,9 +432,9 @@ Transform countries, continents, or cities into `{ value, label }` options for H
 
 ```typescript
 import { SUPPORTED_LANGUAGES } from 'i18n-countries-continents';
-// ['en', 'es', 'fr', 'ar', 'nl']
+// ['en', 'es', 'fr', 'ar', 'nl', 'de', 'pt', 'it']
 
-type SupportedLanguage = 'en' | 'es' | 'fr' | 'ar' | 'nl';
+type SupportedLanguage = 'en' | 'es' | 'fr' | 'ar' | 'nl' | 'de' | 'pt' | 'it';
 
 interface Country {
   code: string;      // ISO 3166-1 alpha-2, e.g. "US"

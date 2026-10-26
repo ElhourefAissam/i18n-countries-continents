@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.6] - 2026-10-26
+
+### Added
+- **3 New Languages**: Added full translations for German (`de`), Portuguese (`pt`), and Italian (`it`)
+  - 250 countries, 7 continents, and 4,010 cities now available in 8 languages (`en`, `es`, `fr`, `ar`, `nl`, `de`, `pt`, `it`)
+  - Official Unicode CLDR translations for all 250 countries
+  - Added compact per-language bundles: `de.json`, `pt.json`, and `it.json`
+  - Updated `SUPPORTED_LANGUAGES` and `SupportedLanguage` types to include `"de"`, `"pt"`, and `"it"`
+
 ## [1.0.5] - 2026-10-26
 
 ### Fixed

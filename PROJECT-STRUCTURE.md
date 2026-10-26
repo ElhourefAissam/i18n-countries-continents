@@ -13,7 +13,10 @@ i18n-countries-continents/
 │   │   │   ├── es.json           # Spanish bundle (~120 KB)
 │   │   │   ├── fr.json           # French bundle (~121 KB)
 │   │   │   ├── ar.json           # Arabic bundle (~141 KB)
-│   │   │   └── nl.json           # Dutch bundle (~120 KB)
+│   │   │   ├── nl.json           # Dutch bundle (~120 KB)
+│   │   │   ├── de.json           # German bundle (~120 KB)
+│   │   │   ├── pt.json           # Portuguese bundle (~120 KB)
+│   │   │   └── it.json           # Italian bundle (~120 KB)
 │   │   └── loader.ts             # Language bundle loader
 │   │
 │   ├── services/                 # Service modules
@@ -143,5 +146,5 @@ import searchCities from 'i18n-countries-continents/search-cities';
 - **Total Countries**: 250 (100% with flags and translations)
 - **Total Continents**: 7
 - **Total Cities**: 4,010
-- **Supported Languages**: 5 (`en`, `es`, `fr`, `ar`, `nl`)
+- **Supported Languages**: 8 (`en`, `es`, `fr`, `ar`, `nl`, `de`, `pt`, `it`)
 - **Zero Dependencies**: Lightweight and fast

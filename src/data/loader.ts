@@ -1,8 +1,6 @@
 /**
  * Per-language data loader.
- * Each lang file contains ONLY the data for that language,
- * so bundlers (Webpack, Rollup, Vite, esbuild) tree-shake away
- * all languages the user doesn't import.
+ * Each lang file contains ONLY the data for that language.
  *
  * Data format per lang file:
  *   countries:  [code, continent, flag, name][]
@@ -13,13 +11,14 @@
 import { SupportedLanguage } from "../utils/types.js";
 
 // ── Static per-language imports ───────────────────────────────────────────────
-// These are separate chunk-able modules. Bundlers will only include the ones
-// actually referenced at build time when using sub-path imports.
 import enData from "./lang/en.json" with { type: "json" };
 import esData from "./lang/es.json" with { type: "json" };
 import frData from "./lang/fr.json" with { type: "json" };
 import arData from "./lang/ar.json" with { type: "json" };
 import nlData from "./lang/nl.json" with { type: "json" };
+import deData from "./lang/de.json" with { type: "json" };
+import ptData from "./lang/pt.json" with { type: "json" };
+import itData from "./lang/it.json" with { type: "json" };
 
 // ── Types for the compact array format ───────────────────────────────────────
 type LangCountry = [
@@ -48,6 +47,12 @@ function getBundle(language: SupportedLanguage): LangBundle {
       return arData as LangBundle;
     case "nl":
       return nlData as LangBundle;
+    case "de":
+      return deData as LangBundle;
+    case "pt":
+      return ptData as LangBundle;
+    case "it":
+      return itData as LangBundle;
     default:
       return enData as LangBundle;
   }

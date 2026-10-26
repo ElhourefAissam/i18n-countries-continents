@@ -118,7 +118,10 @@ assert("isValidContinentCode('USA') returns false", isValidContinentCode("USA") 
 
 assert("isValidLanguage('en') returns true", isValidLanguage("en") === true);
 assert("isValidLanguage('ES') returns true", isValidLanguage("ES") === true);
-assert("isValidLanguage('de') returns false", isValidLanguage("de") === false);
+assert("isValidLanguage('de') returns true", isValidLanguage("de") === true);
+assert("isValidLanguage('pt') returns true", isValidLanguage("pt") === true);
+assert("isValidLanguage('it') returns true", isValidLanguage("it") === true);
+assert("isValidLanguage('ja') returns false", isValidLanguage("ja") === false);
 assert("isValidLanguage('') returns false", isValidLanguage("") === false);
 
 // ========================================
