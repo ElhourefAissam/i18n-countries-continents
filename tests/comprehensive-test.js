@@ -17,9 +17,9 @@ console.log("╚═════════════════════�
 
 let testsPassed = 0;
 let testsFailed = 0;
-const errors: string[] = [];
+const errors = [];
 
-function test(name: string, condition: boolean, errorMsg?: string) {
+function test(name, condition, errorMsg) {
   if (condition) {
     testsPassed++;
     console.log(`✅ ${name}`);

@@ -5,12 +5,12 @@ import { dirname, join } from "node:path";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const testSuites = [
-  "comprehensive-test.ts",
-  "real-world-test.ts",
-  "npm-usage-test.ts",
-  "test-with-flags.ts",
-  "test-all-services.ts",
-  "test-example.ts",
+  "comprehensive-test.js",
+  "real-world-test.js",
+  "npm-usage-test.js",
+  "test-with-flags.js",
+  "test-all-services.js",
+  "test-example.js",
 ];
 
 console.log("========================================");

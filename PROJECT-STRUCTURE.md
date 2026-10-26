@@ -46,12 +46,12 @@ i18n-countries-continents/
 │
 ├── tests/                        # Test suites
 │   ├── run-all.js                # Test runner script (runs all suites)
-│   ├── comprehensive-test.ts     # 125 full API unit & edge-case tests
-│   ├── real-world-test.ts        # 10 integration use cases
-│   ├── npm-usage-test.ts         # Package simulation across environments
-│   ├── test-with-flags.ts        # Flag emoji tests & verification
-│   ├── test-all-services.ts      # Comprehensive service verification
-│   └── test-example.ts           # Basic usage examples
+│   ├── comprehensive-test.js     # 125 full API unit & edge-case tests
+│   ├── real-world-test.js        # 10 integration use cases
+│   ├── npm-usage-test.js         # Package simulation across environments
+│   ├── test-with-flags.js        # Flag emoji tests & verification
+│   ├── test-all-services.js      # Comprehensive service verification
+│   └── test-example.js           # Basic usage examples
 │
 ├── dist/                         # Compiled ESM output (generated)
 │   └── [mirrors src structure with .js, .d.ts, and source maps]

@@ -29,12 +29,12 @@ i18n-countries-continents/
 │   └── index.ts                  # Main entry point
 ├── tests/                        # Automated test suites
 │   ├── run-all.js                # Test runner
-│   ├── comprehensive-test.ts     # Complete API verification (125 tests)
-│   ├── real-world-test.ts        # 10 integration use cases
-│   ├── npm-usage-test.ts         # Package simulation across environments
-│   ├── test-with-flags.ts        # Flag emoji tests
-│   ├── test-all-services.ts      # API verification
-│   └── test-example.ts           # Usage example test
+│   ├── comprehensive-test.js     # Complete API verification (125 tests)
+│   ├── real-world-test.js        # 10 integration use cases
+│   ├── npm-usage-test.js         # Package simulation across environments
+│   ├── test-with-flags.js        # Flag emoji tests
+│   ├── test-all-services.js      # API verification
+│   └── test-example.js           # Usage example test
 ├── .github/workflows/ci.yml      # CI workflow for Node 18, 20, 22
 ├── package.json                  # Package configuration
 ├── tsconfig.json                 # TypeScript configuration
