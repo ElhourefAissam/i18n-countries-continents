@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.5] - 2026-10-26
+
+### Fixed
+- Fixed 8 test assertions in `tests/comprehensive-test.ts` for invalid and empty inputs to properly expect `undefined` according to API contract (`string | undefined`)
+- Fixed ESM relative import extensions in test files (`tests/test-all-services.ts`, `tests/test-example.ts`)
+- Added `inlineSources: true` in `tsconfig.json` so source maps embed original TypeScript sources for seamless debugging in client projects
+- Removed redundant `CHANGELOG.md` rule from `.npmignore`
+
+### Added
+- Automated unified test runner (`tests/run-all.js`) covering all 6 test suites with 100% pass rate
+- Configured `"pretest"` and `"test"` scripts in `package.json`
+- Added GitHub Actions CI workflow (`.github/workflows/ci.yml`) testing on Node.js 18, 20, and 22
+
+### Cleaned
+- Removed 800 KB of legacy unused JSON data files (`cities.json`, `countries.json`, `continents.json`) from `src/data/`
+- Removed 10 empty placeholder (0-byte) files from root and test folders
+- Added valid JSON rules to `.prettierrc`
+- Updated `PROJECT-STRUCTURE.md` and `docs/PROJECT-STATUS.md` to reflect current v1.0.x architecture
+
 ## [1.0.4] - 2026-03-27
 
 ### Performance (Breaking-free optimization)

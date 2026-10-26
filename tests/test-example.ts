@@ -6,7 +6,7 @@ import {
   getContinentName,
   getContinents,
   SUPPORTED_LANGUAGES,
-} from "../src/index";
+} from "../dist/index.js";
 
 console.log("=== Testing i18n-countries-continents ===\n");
 

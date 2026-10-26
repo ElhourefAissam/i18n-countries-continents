@@ -59,13 +59,13 @@ test("getCountryName('FR', 'en') returns France", getCountryName('FR', 'en') ===
 test("getCountryName('FR', 'fr') returns France", getCountryName('FR', 'fr') === 'France');
 test("getCountryName('FR', 'es') returns Francia", getCountryName('FR', 'es') === 'Francia');
 test("getCountryName('ES', 'es') returns España", getCountryName('ES', 'es') === 'España');
-test("getCountryName with invalid code returns code", getCountryName('ZZZ', 'en') === 'ZZZ');
+test("getCountryName with invalid code returns undefined", getCountryName('ZZZ', 'en') === undefined);
 
 // Test getCountryFlag
 test("getCountryFlag('US') returns 🇺🇸", getCountryFlag('US') === '🇺🇸');
 test("getCountryFlag('FR') returns 🇫🇷", getCountryFlag('FR') === '🇫🇷');
 test("getCountryFlag('JP') returns 🇯🇵", getCountryFlag('JP') === '🇯🇵');
-test("getCountryFlag with invalid code returns empty", getCountryFlag('ZZZ') === '');
+test("getCountryFlag with invalid code returns undefined", getCountryFlag('ZZZ') === undefined);
 
 // Test getCountries
 const countriesEn = getCountries('en');
@@ -91,7 +91,7 @@ test("getContinentName('AS', 'en') returns Asia", getContinentName('AS', 'en') =
 test("getContinentName('AF', 'en') returns Africa", getContinentName('AF', 'en') === 'Africa');
 test("getContinentName('EU', 'es') returns Europa", getContinentName('EU', 'es') === 'Europa');
 test("getContinentName('EU', 'fr') returns Europe", getContinentName('EU', 'fr') === 'Europe');
-test("getContinentName with invalid code returns code", getContinentName('ZZ', 'en') === 'ZZ');
+test("getContinentName with invalid code returns undefined", getContinentName('ZZ', 'en') === undefined);
 
 // Test getContinents
 const continentsEn = getContinents('en');
@@ -123,7 +123,7 @@ const parisAr = getCityName('Paris', 'ar');
 test("getCityName('Paris', 'en') returns Paris", parisEn === 'Paris');
 test("getCityName('Paris', 'fr') returns Paris", parisFr === 'Paris');
 test("getCityName('Paris', 'ar') returns Arabic translation", parisAr === 'باريس');
-test("getCityName with invalid city returns city name", getCityName('NonExistentCity123', 'en') === 'NonExistentCity123');
+test("getCityName with invalid city returns undefined", getCityName('NonExistentCity123', 'en') === undefined);
 
 // Test getCities
 const citiesEn = getCities('en');
@@ -180,10 +180,10 @@ SUPPORTED_LANGUAGES.forEach(lang => {
 console.log("\n\n⚠️  TEST 6: EDGE CASES & ERROR HANDLING");
 console.log("═".repeat(70));
 
-test("getCountryName with empty string returns empty", getCountryName('', 'en') === '');
-test("getCountryFlag with empty string returns empty", getCountryFlag('') === '');
-test("getContinentName with empty string returns empty", getContinentName('', 'en') === '');
-test("getCityName with empty string returns empty", getCityName('', 'en') === '');
+test("getCountryName with empty string returns undefined", getCountryName('', 'en') === undefined);
+test("getCountryFlag with empty string returns undefined", getCountryFlag('') === undefined);
+test("getContinentName with empty string returns undefined", getContinentName('', 'en') === undefined);
+test("getCityName with empty string returns undefined", getCityName('', 'en') === undefined);
 test("searchCities with empty string returns empty array", searchCities('', 'en').length === 0);
 test("searchCities with limit 0 returns empty array", searchCities('paris', 'en', 0).length === 0);
 

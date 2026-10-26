@@ -15,7 +15,7 @@ import {
 
   // Constants
   SUPPORTED_LANGUAGES,
-} from "../src/index";
+} from "../dist/index.js";
 
 console.log("╔════════════════════════════════════════════════════════╗");
 console.log("║   i18n-countries-continents - Full API Demo          ║");

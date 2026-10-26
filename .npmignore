@@ -15,9 +15,6 @@ node_modules/
 *.spec.js
 coverage/
 
-# Documentation (keep README.md)
-CHANGELOG.md
-
 # IDE
 .vscode/
 .idea/
