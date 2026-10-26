@@ -111,6 +111,46 @@
       "import": "./dist/services/cities/search-cities.js",
       "require": "./dist/services/cities/search-cities.js",
       "types": "./dist/services/cities/search-cities.d.ts"
+    },
+    "./get-country": {
+      "import": "./dist/services/countries/get-country.js",
+      "require": "./dist/services/countries/get-country.js",
+      "types": "./dist/services/countries/get-country.d.ts"
+    },
+    "./get-country-by-name": {
+      "import": "./dist/services/countries/get-country-by-name.js",
+      "require": "./dist/services/countries/get-country-by-name.js",
+      "types": "./dist/services/countries/get-country-by-name.d.ts"
+    },
+    "./search-countries": {
+      "import": "./dist/services/countries/search-countries.js",
+      "require": "./dist/services/countries/search-countries.js",
+      "types": "./dist/services/countries/search-countries.d.ts"
+    },
+    "./get-countries-by-continent": {
+      "import": "./dist/services/countries/get-countries-by-continent.js",
+      "require": "./dist/services/countries/get-countries-by-continent.js",
+      "types": "./dist/services/countries/get-countries-by-continent.d.ts"
+    },
+    "./is-valid-country-code": {
+      "import": "./dist/services/validation/is-valid-country-code.js",
+      "require": "./dist/services/validation/is-valid-country-code.js",
+      "types": "./dist/services/validation/is-valid-country-code.d.ts"
+    },
+    "./is-valid-continent-code": {
+      "import": "./dist/services/validation/is-valid-continent-code.js",
+      "require": "./dist/services/validation/is-valid-continent-code.js",
+      "types": "./dist/services/validation/is-valid-continent-code.d.ts"
+    },
+    "./is-valid-language": {
+      "import": "./dist/services/validation/is-valid-language.js",
+      "require": "./dist/services/validation/is-valid-language.js",
+      "types": "./dist/services/validation/is-valid-language.d.ts"
+    },
+    "./to-select-options": {
+      "import": "./dist/utils/to-select-options.js",
+      "require": "./dist/utils/to-select-options.js",
+      "types": "./dist/utils/to-select-options.d.ts"
     }
   }
 }

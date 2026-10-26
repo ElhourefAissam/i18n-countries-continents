@@ -142,6 +142,82 @@ results.forEach(c => console.log(c.name, '→', c.translatedName));
 // York → York
 ```
 
+### 10. Get full country object
+
+```js
+import { getCountry } from 'i18n-countries-continents';
+
+console.log(getCountry('FR', 'es'));
+// { code: "FR", continent: "EU", flag: "🇫🇷", name: "Francia" }
+```
+
+### 11. Search for countries
+
+```js
+import { searchCountries } from 'i18n-countries-continents';
+
+const results = searchCountries('uni', 'en', 3);
+// [
+//   { code: 'AE', continent: 'AS', flag: '🇦🇪', name: 'United Arab Emirates' },
+//   { code: 'GB', continent: 'EU', flag: '🇬🇧', name: 'United Kingdom' },
+//   { code: 'US', continent: 'NA', flag: '🇺🇸', name: 'United States' }
+// ]
+```
+
+### 12. Find country by name (reverse lookup)
+
+```js
+import { getCountryByName } from 'i18n-countries-continents';
+
+console.log(getCountryByName('España', 'es'));
+// { code: "ES", continent: "EU", flag: "🇪🇸", name: "España" }
+```
+
+### 13. Filter countries by continent
+
+```js
+import { getCountriesByContinent } from 'i18n-countries-continents';
+
+const europeanCountries = getCountriesByContinent('EU', 'fr');
+// [{ code: 'FR', name: 'France', ... }, { code: 'DE', name: 'Allemagne', ... }]
+```
+
+### 14. Validation helpers
+
+```js
+import { 
+  isValidCountryCode, 
+  isValidContinentCode, 
+  isValidLanguage 
+} from 'i18n-countries-continents';
+
+isValidCountryCode('US');     // true
+isValidCountryCode('XYZ');    // false
+
+isValidContinentCode('EU');   // true
+isValidContinentCode('ZZ');   // false
+
+isValidLanguage('fr');        // true
+isValidLanguage('de');        // false
+```
+
+### 15. Format as Select options (React, Vue, Angular)
+
+```js
+import { getCountries, toSelectOptions } from 'i18n-countries-continents';
+
+const countries = getCountries('en');
+
+// Default ({ value: 'US', label: 'United States' })
+const simpleOptions = toSelectOptions(countries);
+
+// Custom label with flag emoji
+const flagOptions = toSelectOptions(countries, {
+  label: (c) => `${c.flag} ${c.name}`
+});
+// [{ value: "AD", label: "🇦🇩 Andorra" }, ...]
+```
+
 ---
 
 ## Framework Usage
@@ -220,15 +296,23 @@ console.log(getContinentByCountry('JP'));   // "AS"
 Import individual functions for the smallest possible bundle:
 
 ```js
-import getCountryName from 'i18n-countries-continents/get-country-name';
-import getCountryFlag from 'i18n-countries-continents/get-country-flag';
-import getCountries   from 'i18n-countries-continents/get-countries';
-import getContinents  from 'i18n-countries-continents/get-continents';
-import getContinentByCountry from 'i18n-countries-continents/get-continent-by-country';
-import getContinentName      from 'i18n-countries-continents/get-continent-name';
-import getCityName    from 'i18n-countries-continents/get-city-name';
-import getCities      from 'i18n-countries-continents/get-cities';
-import searchCities   from 'i18n-countries-continents/search-cities';
+import getCountryName          from 'i18n-countries-continents/get-country-name';
+import getCountryFlag          from 'i18n-countries-continents/get-country-flag';
+import getCountry              from 'i18n-countries-continents/get-country';
+import getCountryByName        from 'i18n-countries-continents/get-country-by-name';
+import getCountries            from 'i18n-countries-continents/get-countries';
+import getCountriesByContinent from 'i18n-countries-continents/get-countries-by-continent';
+import searchCountries         from 'i18n-countries-continents/search-countries';
+import getContinentByCountry   from 'i18n-countries-continents/get-continent-by-country';
+import getContinentName        from 'i18n-countries-continents/get-continent-name';
+import getContinents           from 'i18n-countries-continents/get-continents';
+import getCityName             from 'i18n-countries-continents/get-city-name';
+import getCities               from 'i18n-countries-continents/get-cities';
+import searchCities            from 'i18n-countries-continents/search-cities';
+import isValidCountryCode      from 'i18n-countries-continents/is-valid-country-code';
+import isValidContinentCode    from 'i18n-countries-continents/is-valid-continent-code';
+import isValidLanguage         from 'i18n-countries-continents/is-valid-language';
+import toSelectOptions         from 'i18n-countries-continents/to-select-options';
 ```
 
 ---
@@ -267,16 +351,28 @@ Major cities from around the world — capital cities, major metropolitan areas,
 
 ### Country Functions
 
+#### `getCountry(code, language?): Country | undefined`
+Get the complete country object (`code`, `name`, `continent`, `flag`) for a country code.
+
 #### `getCountryName(code, language?): string | undefined`
 Get the name of a country by its ISO 3166-1 alpha-2 code.
 - `code` — country code, e.g. `'US'`, `'FR'` (case-insensitive)
 - `language` — one of `'en' | 'es' | 'fr' | 'ar' | 'nl'` (default: `'en'`)
+
+#### `getCountryByName(name, language?): Country | undefined`
+Reverse lookup: find a country object by its translated or English name.
 
 #### `getCountryFlag(code): string | undefined`
 Get the flag emoji for a country by its ISO 3166-1 alpha-2 code.
 
 #### `getCountries(language?): Country[]`
 Get all 250 countries with their names, flags, and continent codes in the specified language.
+
+#### `getCountriesByContinent(continentCode, language?): Country[]`
+Get all countries belonging to a specific continent (`'AF' | 'AN' | 'AS' | 'EU' | 'NA' | 'OC' | 'SA'`).
+
+#### `searchCountries(query, language?, limit?): Country[]`
+Search for countries by name or code. (default `limit`: 10)
 
 #### `getContinentByCountry(code): string | undefined`
 Get the continent code for a country (e.g. `'EU'`, `'AS'`, `'NA'`).
@@ -307,6 +403,28 @@ Search for cities by name (searches both English and translated names).
 
 ---
 
+### Validation Helpers
+
+#### `isValidCountryCode(code): boolean`
+Check if a string is a valid ISO 3166-1 alpha-2 country code.
+
+#### `isValidContinentCode(code): boolean`
+Check if a string is a valid 2-letter continent code.
+
+#### `isValidLanguage(language): boolean`
+TypeScript type-guard checking if a language string is supported (`'en'`, `'es'`, `'fr'`, `'ar'`, `'nl'`).
+
+---
+
+### UI Helpers
+
+#### `toSelectOptions(items, config?): SelectOption[]`
+Transform countries, continents, or cities into `{ value, label }` options for HTML `<select>`, React Select, Vuetify, Angular Material, etc.
+- `config.value` — key name or resolver function (default: `'code'`)
+- `config.label` — key name or resolver function (default: `'name'`)
+
+---
+
 ### Constants & Types
 
 ```typescript
@@ -330,6 +448,11 @@ interface Continent {
 interface City {
   name: string;           // English name
   translatedName: string; // translated name
+}
+
+interface SelectOption {
+  value: string;
+  label: string;
 }
 ```
 

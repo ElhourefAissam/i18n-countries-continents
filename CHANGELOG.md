@@ -14,7 +14,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed redundant `CHANGELOG.md` rule from `.npmignore`
 
 ### Added
-- Automated unified test runner (`tests/run-all.js`) covering all 6 test suites with 100% pass rate
+- **New Country Features**:
+  - `getCountry(code, language?)` — retrieve complete country object (`code`, `name`, `continent`, `flag`)
+  - `getCountryByName(name, language?)` — reverse lookup country by English or translated name
+  - `searchCountries(query, language?, limit?)` — search/autocomplete countries by name or code
+  - `getCountriesByContinent(continentCode, language?)` — filter countries by continent
+- **Validation Utilities**:
+  - `isValidCountryCode(code)` — validate 2-letter ISO country code
+  - `isValidContinentCode(code)` — validate 2-letter continent code
+  - `isValidLanguage(language)` — TypeScript type-guard for supported languages
+- **UI & Form Helper**:
+  - `toSelectOptions(items, config?)` — format countries, continents, or cities into `{ value, label }` options for HTML `<select>`, React Select, Vuetify, Angular Material, etc.
+- **Tree-shakeable Sub-path Exports**:
+  - Added individual subpaths for all new functions in `package.json`
+- Automated unified test runner (`tests/run-all.js`) covering all 7 test suites with 100% pass rate
 - Configured `"pretest"` and `"test"` scripts in `package.json`
 - Added GitHub Actions CI workflow (`.github/workflows/ci.yml`) testing on Node.js 18, 20, and 22
 

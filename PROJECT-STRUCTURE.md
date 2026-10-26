@@ -19,9 +19,13 @@ i18n-countries-continents/
 │   ├── services/                 # Service modules
 │   │   ├── countries/            # Country-related services
 │   │   │   ├── get-country-name.ts
+│   │   │   ├── get-country.ts
+│   │   │   ├── get-country-by-name.ts
 │   │   │   ├── get-country-flag.ts
 │   │   │   ├── get-countries.ts
+│   │   │   ├── get-countries-by-continent.ts
 │   │   │   ├── get-continent-by-country.ts
+│   │   │   ├── search-countries.ts
 │   │   │   └── index.ts
 │   │   │
 │   │   ├── continents/           # Continent-related services
@@ -35,11 +39,18 @@ i18n-countries-continents/
 │   │   │   ├── search-cities.ts
 │   │   │   └── index.ts
 │   │   │
+│   │   ├── validation/           # Validation utilities
+│   │   │   ├── is-valid-country-code.ts
+│   │   │   ├── is-valid-continent-code.ts
+│   │   │   ├── is-valid-language.ts
+│   │   │   └── index.ts
+│   │   │
 │   │   └── index.ts              # Service re-exports
 │   │
 │   ├── utils/                    # Utility modules
 │   │   ├── types.ts              # TypeScript type definitions
 │   │   ├── constants.ts          # Constants (SUPPORTED_LANGUAGES)
+│   │   ├── to-select-options.ts  # Form Select options helper
 │   │   └── index.ts              # Utility exports
 │   │
 │   └── index.ts                  # Main package entry point
