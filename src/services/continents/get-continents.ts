@@ -6,6 +6,18 @@ export interface Continent {
   name: string;
 }
 
+/**
+ * Get all 7 world continents with their localized names in the specified language.
+ *
+ * @param language - Target language (default: 'en')
+ * @returns Array of 7 Continent objects
+ *
+ * @example
+ * ```ts
+ * const continents = getContinents('fr');
+ * continents.forEach(c => console.log(c.code, c.name));
+ * ```
+ */
 export default function getContinents(
   language: SupportedLanguage = "en"
 ): Continent[] {

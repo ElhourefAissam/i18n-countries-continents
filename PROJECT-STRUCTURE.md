@@ -33,11 +33,13 @@ i18n-countries-continents/
 │   │   │
 │   │   ├── continents/           # Continent-related services
 │   │   │   ├── get-continent-name.ts
+│   │   │   ├── get-continent.ts
 │   │   │   ├── get-continents.ts
 │   │   │   └── index.ts
 │   │   │
 │   │   ├── cities/               # City-related services
 │   │   │   ├── get-city-name.ts
+│   │   │   ├── get-city.ts
 │   │   │   ├── get-cities.ts
 │   │   │   ├── search-cities.ts
 │   │   │   └── index.ts
@@ -53,6 +55,7 @@ i18n-countries-continents/
 │   ├── utils/                    # Utility modules
 │   │   ├── types.ts              # TypeScript type definitions
 │   │   ├── constants.ts          # Constants (SUPPORTED_LANGUAGES)
+│   │   ├── sorting.ts            # Locale-aware alphabetical sorting
 │   │   ├── to-select-options.ts  # Form Select options helper
 │   │   └── index.ts              # Utility exports
 │   │

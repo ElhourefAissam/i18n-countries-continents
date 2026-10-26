@@ -3,6 +3,11 @@ import {
   getCountryByName,
   searchCountries,
   getCountriesByContinent,
+  getContinent,
+  getCity,
+  sortCountries,
+  sortContinents,
+  sortCities,
   isValidCountryCode,
   isValidContinentCode,
   isValidLanguage,
@@ -161,6 +166,52 @@ assert("toSelectOptions works with cities using custom value/label keys",
 );
 
 assert("toSelectOptions with non-array returns empty array", toSelectOptions(null).length === 0);
+
+// ========================================
+// 7. getContinent & getCity (API Symmetry)
+// ========================================
+console.log("\n🏛️  7. getContinent & getCity");
+console.log("═".repeat(60));
+
+const euEs = getContinent("EU", "es");
+assert("getContinent('EU', 'es') returns Europa object", euEs && euEs.code === "EU" && euEs.name === "Europa");
+assert("getContinent('ZZ') returns undefined", getContinent("ZZ") === undefined);
+
+const parisAr = getCity("Paris", "ar");
+assert("getCity('Paris', 'ar') returns Arabic translation object", parisAr && parisAr.name === "Paris" && parisAr.translatedName === "باريس");
+assert("getCity with non-existent city returns undefined", getCity("NonExistent123") === undefined);
+
+// ========================================
+// 8. Sorting Utilities (Locale-Aware)
+// ========================================
+console.log("\n🔤 8. Sorting Utilities (Locale-Aware)");
+console.log("═".repeat(60));
+
+const esCountries = getCountries("es");
+const sortedEs = sortCountries(esCountries, "es");
+assert("sortCountries returns 250 countries", sortedEs.length === 250);
+assert("sortCountries orders alphabetically in target locale", 
+  sortedEs[0].name.localeCompare(sortedEs[1].name, "es") <= 0 &&
+  sortedEs[1].name.localeCompare(sortedEs[2].name, "es") <= 0
+);
+
+const esContinents = getContinents("es");
+const sortedContinents = sortContinents(esContinents, "es");
+assert("sortContinents orders alphabetically", 
+  sortedContinents[0].name.localeCompare(sortedContinents[1].name, "es") <= 0
+);
+
+const frCities = getCities("fr").slice(0, 20);
+const sortedFrCities = sortCities(frCities, "fr");
+assert("sortCities orders cities alphabetically", sortedFrCities.length === 20);
+
+const sortedSelect = toSelectOptions(sampleCountries, {
+  sort: true,
+  language: "en"
+});
+assert("toSelectOptions supports sort: true", 
+  sortedSelect[0].label.localeCompare(sortedSelect[1].label, "en") <= 0
+);
 
 // ========================================
 // FINAL SUMMARY

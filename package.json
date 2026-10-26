@@ -46,7 +46,18 @@
     "continent-names",
     "city-names",
     "flags",
-    "iso-3166"
+    "iso-3166",
+    "german",
+    "portuguese",
+    "italian",
+    "arabic",
+    "french",
+    "spanish",
+    "dutch",
+    "english",
+    "dropdown",
+    "select-options",
+    "autocomplete"
   ],
   "author": "Aissam EL Houref",
   "repository": {
@@ -151,6 +162,21 @@
       "import": "./dist/utils/to-select-options.js",
       "require": "./dist/utils/to-select-options.js",
       "types": "./dist/utils/to-select-options.d.ts"
+    },
+    "./get-continent": {
+      "import": "./dist/services/continents/get-continent.js",
+      "require": "./dist/services/continents/get-continent.js",
+      "types": "./dist/services/continents/get-continent.d.ts"
+    },
+    "./get-city": {
+      "import": "./dist/services/cities/get-city.js",
+      "require": "./dist/services/cities/get-city.js",
+      "types": "./dist/services/cities/get-city.d.ts"
+    },
+    "./sorting": {
+      "import": "./dist/utils/sorting.js",
+      "require": "./dist/utils/sorting.js",
+      "types": "./dist/utils/sorting.d.ts"
     }
   }
 }

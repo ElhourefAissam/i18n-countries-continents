@@ -303,9 +303,11 @@ import getCountryByName        from 'i18n-countries-continents/get-country-by-na
 import getCountries            from 'i18n-countries-continents/get-countries';
 import getCountriesByContinent from 'i18n-countries-continents/get-countries-by-continent';
 import searchCountries         from 'i18n-countries-continents/search-countries';
+import getContinent            from 'i18n-countries-continents/get-continent';
 import getContinentByCountry   from 'i18n-countries-continents/get-continent-by-country';
 import getContinentName        from 'i18n-countries-continents/get-continent-name';
 import getContinents           from 'i18n-countries-continents/get-continents';
+import getCity                 from 'i18n-countries-continents/get-city';
 import getCityName             from 'i18n-countries-continents/get-city-name';
 import getCities               from 'i18n-countries-continents/get-cities';
 import searchCities            from 'i18n-countries-continents/search-cities';
@@ -313,6 +315,7 @@ import isValidCountryCode      from 'i18n-countries-continents/is-valid-country-
 import isValidContinentCode    from 'i18n-countries-continents/is-valid-continent-code';
 import isValidLanguage         from 'i18n-countries-continents/is-valid-language';
 import toSelectOptions         from 'i18n-countries-continents/to-select-options';
+import { sortCountries, sortContinents, sortCities } from 'i18n-countries-continents/sorting';
 ```
 
 ---
@@ -384,6 +387,9 @@ Get the continent code for a country (e.g. `'EU'`, `'AS'`, `'NA'`).
 
 ### Continent Functions
 
+#### `getContinent(code, language?): Continent | undefined`
+Get the complete continent object (`code`, `name`) for a continent code.
+
 #### `getContinentName(code, language?): string | undefined`
 Get the name of a continent by its code (`'AF' | 'AN' | 'AS' | 'EU' | 'NA' | 'OC' | 'SA'`).
 
@@ -394,6 +400,9 @@ Get all 7 continents with their names in the specified language.
 
 ### City Functions
 
+#### `getCity(cityName, language?): City | undefined`
+Get the complete city object (`name`, `translatedName`) by its English name.
+
 #### `getCityName(cityName, language?): string | undefined`
 Get the translated name of a city by its English name.
 
@@ -403,6 +412,19 @@ Get all 4,010 cities with their translated names in the specified language.
 #### `searchCities(query, language?, limit?): City[]`
 Search for cities by name (searches both English and translated names).
 - `limit` — max results to return (default: `10`)
+
+---
+
+### Sorting Helpers (Locale-Aware)
+
+#### `sortCountries(countries, language?): Country[]`
+Sort a list of Country objects alphabetically by localized name using locale-aware collation (`Intl.Collator`).
+
+#### `sortContinents(continents, language?): Continent[]`
+Sort a list of Continent objects alphabetically by localized name.
+
+#### `sortCities(cities, language?): City[]`
+Sort a list of City objects alphabetically by localized name.
 
 ---
 
@@ -425,6 +447,8 @@ TypeScript type-guard checking if a language string is supported (`'en'`, `'es'`
 Transform countries, continents, or cities into `{ value, label }` options for HTML `<select>`, React Select, Vuetify, Angular Material, etc.
 - `config.value` — key name or resolver function (default: `'code'`)
 - `config.label` — key name or resolver function (default: `'name'`)
+- `config.sort` — whether to sort options alphabetically by label (default: `false`)
+- `config.language` — locale used for sorting (default: `'en'`)
 
 ---
 

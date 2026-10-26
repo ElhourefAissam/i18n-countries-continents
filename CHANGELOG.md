@@ -13,6 +13,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Official Unicode CLDR translations for all 250 countries
   - Added compact per-language bundles: `de.json`, `pt.json`, and `it.json`
   - Updated `SUPPORTED_LANGUAGES` and `SupportedLanguage` types to include `"de"`, `"pt"`, and `"it"`
+- **API Symmetry**:
+  - `getContinent(code, language?)` — retrieve complete continent object (`code`, `name`)
+  - `getCity(cityName, language?)` — retrieve complete city object (`name`, `translatedName`)
+- **Locale-Aware Sorting**:
+  - `sortCountries(countries, language?)` — sort countries alphabetically using `Intl.Collator`
+  - `sortContinents(continents, language?)` — sort continents alphabetically
+  - `sortCities(cities, language?)` — sort cities alphabetically
+  - `toSelectOptions(items, { sort: true, language? })` — option to sort dropdown options alphabetically
+- **Developer Experience**:
+  - Comprehensive TSDoc / JSDoc annotations across all service and utility functions for rich IDE IntelliSense
+  - Subpath exports for `./get-continent`, `./get-city`, and `./sorting`
+  - Expanded npm package keywords for search discovery
 
 ## [1.0.5] - 2026-10-26
 
