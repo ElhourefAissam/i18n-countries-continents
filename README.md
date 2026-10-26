@@ -198,7 +198,7 @@ isValidContinentCode('EU');   // true
 isValidContinentCode('ZZ');   // false
 
 isValidLanguage('fr');        // true
-isValidLanguage('de');        // false
+isValidLanguage('ja');        // false
 ```
 
 ### 15. Format as Select options (React, Vue, Angular)
@@ -211,11 +211,31 @@ const countries = getCountries('en');
 // Default ({ value: 'US', label: 'United States' })
 const simpleOptions = toSelectOptions(countries);
 
-// Custom label with flag emoji
+// Custom label with flag emoji and alphabetical sorting
 const flagOptions = toSelectOptions(countries, {
-  label: (c) => `${c.flag} ${c.name}`
+  label: (c) => `${c.flag} ${c.name}`,
+  sort: true,
+  language: 'en'
 });
-// [{ value: "AD", label: "🇦🇩 Andorra" }, ...]
+// [{ value: "AF", label: "🇦🇫 Afghanistan" }, ...]
+```
+
+### 16. Get supported languages (for language pickers)
+
+```js
+import { getSupportedLanguages, toSelectOptions } from 'i18n-countries-continents';
+
+const languages = getSupportedLanguages();
+// [
+//   { code: 'en', name: 'English', nativeName: 'English' },
+//   { code: 'es', name: 'Spanish', nativeName: 'Español' },
+//   { code: 'fr', name: 'French', nativeName: 'Français' },
+//   { code: 'ar', name: 'Arabic', nativeName: 'العربية' },
+//   ...
+// ]
+
+// Generate dropdown options directly for your UI:
+const langOptions = toSelectOptions(languages, { value: 'code', label: 'nativeName' });
 ```
 
 ---
@@ -225,15 +245,20 @@ const flagOptions = toSelectOptions(countries, {
 ### React
 
 ```jsx
-import { getCountries, getCountryFlag } from 'i18n-countries-continents';
+import { getCountries, toSelectOptions } from 'i18n-countries-continents';
 
 function CountrySelector() {
-  const countries = getCountries('fr');
+  const options = toSelectOptions(getCountries('fr'), {
+    label: (c) => `${c.flag} ${c.name}`,
+    sort: true,
+    language: 'fr',
+  });
+
   return (
-    <select>
-      {countries.map(c => (
-        <option key={c.code} value={c.code}>
-          {c.flag} {c.name}
+    <select defaultValue="FR">
+      {options.map((opt) => (
+        <option key={opt.value} value={opt.value}>
+          {opt.label}
         </option>
       ))}
     </select>
@@ -304,18 +329,22 @@ import getCountries            from 'i18n-countries-continents/get-countries';
 import getCountriesByContinent from 'i18n-countries-continents/get-countries-by-continent';
 import searchCountries         from 'i18n-countries-continents/search-countries';
 import getContinent            from 'i18n-countries-continents/get-continent';
+import getContinentByName      from 'i18n-countries-continents/get-continent-by-name';
 import getContinentByCountry   from 'i18n-countries-continents/get-continent-by-country';
 import getContinentName        from 'i18n-countries-continents/get-continent-name';
 import getContinents           from 'i18n-countries-continents/get-continents';
+import searchContinents        from 'i18n-countries-continents/search-continents';
 import getCity                 from 'i18n-countries-continents/get-city';
 import getCityName             from 'i18n-countries-continents/get-city-name';
 import getCities               from 'i18n-countries-continents/get-cities';
 import searchCities            from 'i18n-countries-continents/search-cities';
+import getSupportedLanguages   from 'i18n-countries-continents/get-supported-languages';
 import isValidCountryCode      from 'i18n-countries-continents/is-valid-country-code';
 import isValidContinentCode    from 'i18n-countries-continents/is-valid-continent-code';
 import isValidLanguage         from 'i18n-countries-continents/is-valid-language';
 import toSelectOptions         from 'i18n-countries-continents/to-select-options';
 import { sortCountries, sortContinents, sortCities } from 'i18n-countries-continents/sorting';
+import { SUPPORTED_LANGUAGES, LANGUAGES } from 'i18n-countries-continents/constants';
 ```
 
 ---
@@ -393,8 +422,21 @@ Get the complete continent object (`code`, `name`) for a continent code.
 #### `getContinentName(code, language?): string | undefined`
 Get the name of a continent by its code (`'AF' | 'AN' | 'AS' | 'EU' | 'NA' | 'OC' | 'SA'`).
 
+#### `getContinentByName(name, language?): Continent | undefined`
+Reverse lookup: find a continent by its translated or English name.
+
 #### `getContinents(language?): Continent[]`
 Get all 7 continents with their names in the specified language.
+
+#### `searchContinents(query, language?, limit?): Continent[]`
+Search for continents by name or 2-letter code (default `limit`: 7).
+
+---
+
+### Language Functions
+
+#### `getSupportedLanguages(): Language[]`
+Get all supported languages with their code, English name, and native localized name. Ideal for language pickers and dropdowns.
 
 ---
 
@@ -455,10 +497,16 @@ Transform countries, continents, or cities into `{ value, label }` options for H
 ### Constants & Types
 
 ```typescript
-import { SUPPORTED_LANGUAGES } from 'i18n-countries-continents';
+import { SUPPORTED_LANGUAGES, LANGUAGES } from 'i18n-countries-continents';
 // ['en', 'es', 'fr', 'ar', 'nl', 'de', 'pt', 'it']
 
 type SupportedLanguage = 'en' | 'es' | 'fr' | 'ar' | 'nl' | 'de' | 'pt' | 'it';
+
+interface Language {
+  code: SupportedLanguage;
+  name: string;       // e.g. "Spanish"
+  nativeName: string; // e.g. "Español"
+}
 
 interface Country {
   code: string;      // ISO 3166-1 alpha-2, e.g. "US"

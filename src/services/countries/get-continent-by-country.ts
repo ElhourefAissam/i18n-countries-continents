@@ -16,7 +16,8 @@ import { getLangCountries } from "../../data/loader.js";
 export default function getContinentByCountry(
   countryCode: string
 ): string | undefined {
-  const upper = countryCode.toUpperCase();
+  if (!countryCode || typeof countryCode !== "string") return undefined;
+  const upper = countryCode.toUpperCase().trim();
   const entry = getLangCountries("en").find(([c]) => c === upper);
   return entry ? entry[1] : undefined;
 }

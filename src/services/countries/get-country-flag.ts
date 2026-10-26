@@ -13,7 +13,8 @@ import { getLangCountries } from "../../data/loader.js";
  * ```
  */
 export default function getCountryFlag(code: string): string | undefined {
-  const upper = code.toUpperCase();
+  if (!code || typeof code !== "string") return undefined;
+  const upper = code.toUpperCase().trim();
   const entry = getLangCountries("en").find(([c]) => c === upper);
   return entry ? entry[2] : undefined;
 }

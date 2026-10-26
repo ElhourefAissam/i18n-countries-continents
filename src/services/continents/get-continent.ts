@@ -19,6 +19,7 @@ export default function getContinent(
   continentCode: string,
   language: SupportedLanguage = "en"
 ): Continent | undefined {
+  if (!continentCode || typeof continentCode !== "string") return undefined;
   const upper = continentCode.toUpperCase().trim();
   const entry = getLangContinents(language).find(([c]) => c === upper);
   if (!entry) return undefined;

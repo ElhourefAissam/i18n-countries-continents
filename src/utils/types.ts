@@ -1,6 +1,5 @@
-import { SUPPORTED_LANGUAGES } from "./constants.js";
+export type { SupportedLanguage, Language } from "./constants.js";
 
-export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 export type CountryCode = string;
 export type ContinentCode = string;
 export type LanguageCode = string;

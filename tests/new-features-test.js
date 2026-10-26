@@ -4,7 +4,11 @@ import {
   searchCountries,
   getCountriesByContinent,
   getContinent,
+  getContinentByName,
+  searchContinents,
   getCity,
+  getSupportedLanguages,
+  LANGUAGES,
   sortCountries,
   sortContinents,
   sortCities,
@@ -49,6 +53,7 @@ assert("getCountry('fr', 'es') is case-insensitive & translated", frEs && frEs.c
 
 assert("getCountry with invalid code returns undefined", getCountry("ZZZ") === undefined);
 assert("getCountry with empty string returns undefined", getCountry("") === undefined);
+assert("getCountry with null returns undefined without throwing", getCountry(null) === undefined);
 
 // ========================================
 // 2. getCountryByName
@@ -70,6 +75,7 @@ assert("getCountryByName is case-insensitive", caseInsensitive && caseInsensitiv
 
 assert("getCountryByName with invalid name returns undefined", getCountryByName("NonExistentLand") === undefined);
 assert("getCountryByName with empty string returns undefined", getCountryByName("") === undefined);
+assert("getCountryByName with null returns undefined", getCountryByName(null) === undefined);
 
 // ========================================
 // 3. searchCountries
@@ -122,7 +128,7 @@ assert("isValidContinentCode('ZZ') returns false", isValidContinentCode("ZZ") ==
 assert("isValidContinentCode('USA') returns false", isValidContinentCode("USA") === false);
 
 assert("isValidLanguage('en') returns true", isValidLanguage("en") === true);
-assert("isValidLanguage('ES') returns true", isValidLanguage("ES") === true);
+assert("isValidLanguage('es') returns true", isValidLanguage("es") === true);
 assert("isValidLanguage('de') returns true", isValidLanguage("de") === true);
 assert("isValidLanguage('pt') returns true", isValidLanguage("pt") === true);
 assert("isValidLanguage('it') returns true", isValidLanguage("it") === true);
@@ -168,23 +174,81 @@ assert("toSelectOptions works with cities using custom value/label keys",
 assert("toSelectOptions with non-array returns empty array", toSelectOptions(null).length === 0);
 
 // ========================================
-// 7. getContinent & getCity (API Symmetry)
+// 7. getContinent, getContinentByName, searchContinents
 // ========================================
-console.log("\n🏛️  7. getContinent & getCity");
+console.log("\n🏛️  7. Continent APIs (Symmetry & Reverse Lookup)");
 console.log("═".repeat(60));
 
 const euEs = getContinent("EU", "es");
 assert("getContinent('EU', 'es') returns Europa object", euEs && euEs.code === "EU" && euEs.name === "Europa");
 assert("getContinent('ZZ') returns undefined", getContinent("ZZ") === undefined);
+assert("getContinent(null) returns undefined without throwing", getContinent(null) === undefined);
+
+const europaByName = getContinentByName("Europa", "es");
+assert("getContinentByName('Europa', 'es') returns Europa object", europaByName && europaByName.code === "EU" && europaByName.name === "Europa");
+
+const europeInEs = getContinentByName("Europe", "es");
+assert("getContinentByName('Europe', 'es') falls back to English query and returns translated", europeInEs && europeInEs.code === "EU" && europeInEs.name === "Europa");
+
+assert("getContinentByName invalid returns undefined", getContinentByName("Atlantis") === undefined);
+assert("getContinentByName null returns undefined", getContinentByName(null) === undefined);
+
+const searchContResults = searchContinents("amer", "en");
+assert("searchContinents('amer', 'en') finds North and South America", searchContResults.length === 2 && searchContResults.some(c => c.code === "NA"));
+
+const searchContByCode = searchContinents("AS", "en");
+assert("searchContinents('AS', 'en') finds Asia", searchContByCode.some(c => c.code === "AS"));
+
+// ========================================
+// 8. getCity & searchCities (Dual name lookup)
+// ========================================
+console.log("\n🏙️  8. City APIs");
+console.log("═".repeat(60));
 
 const parisAr = getCity("Paris", "ar");
 assert("getCity('Paris', 'ar') returns Arabic translation object", parisAr && parisAr.name === "Paris" && parisAr.translatedName === "باريس");
+
+const parisByArabic = getCity("باريس", "ar");
+assert("getCity('باريس', 'ar') finds city by translated name", parisByArabic && parisByArabic.name === "Paris" && parisByArabic.translatedName === "باريس");
+
 assert("getCity with non-existent city returns undefined", getCity("NonExistent123") === undefined);
+assert("getCity with null returns undefined", getCity(null) === undefined);
 
 // ========================================
-// 8. Sorting Utilities (Locale-Aware)
+// 9. Supported Languages API
 // ========================================
-console.log("\n🔤 8. Sorting Utilities (Locale-Aware)");
+console.log("\n🌐 9. getSupportedLanguages() & LANGUAGES");
+console.log("═".repeat(60));
+
+const allLangs = getSupportedLanguages();
+assert("getSupportedLanguages returns 8 languages", allLangs.length === 8);
+assert("Every language has code, name, and nativeName", allLangs.every(l => l.code && l.name && l.nativeName));
+
+const germanMeta = LANGUAGES["de"];
+assert("LANGUAGES record contains German metadata", germanMeta && germanMeta.code === "de" && germanMeta.name === "German" && germanMeta.nativeName === "Deutsch");
+
+const langSelectOptions = toSelectOptions(allLangs, { value: "code", label: "nativeName" });
+assert("toSelectOptions works with getSupportedLanguages", langSelectOptions.length === 8 && langSelectOptions.some(o => o.value === "ar" && o.label === "العربية"));
+
+// ========================================
+// 10. Language Code Normalization
+// ========================================
+console.log("\n🌍 10. Language Code Normalization (locales & uppercase)");
+console.log("═".repeat(60));
+
+const frLocale = getCountry("FR", "fr-FR");
+assert("getCountry with 'fr-FR' resolves to French", frLocale && frLocale.name === "France");
+
+const ptLocale = getCountry("BR", "pt-BR");
+assert("getCountry with 'pt-BR' resolves to Portuguese", ptLocale && ptLocale.name === "Brasil");
+
+const deUpper = getCountry("DE", "DE");
+assert("getCountry with uppercase 'DE' resolves to German", deUpper && deUpper.name === "Deutschland");
+
+// ========================================
+// 11. Sorting Utilities (Locale-Aware)
+// ========================================
+console.log("\n🔤 11. Sorting Utilities (Locale-Aware)");
 console.log("═".repeat(60));
 
 const esCountries = getCountries("es");

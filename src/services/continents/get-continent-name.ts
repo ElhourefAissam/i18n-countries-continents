@@ -18,7 +18,8 @@ export default function getContinentName(
   continentCode: string,
   language: SupportedLanguage = "en"
 ): string | undefined {
-  const upper = continentCode.toUpperCase();
+  if (!continentCode || typeof continentCode !== "string") return undefined;
+  const upper = continentCode.toUpperCase().trim();
   const entry = getLangContinents(language).find(([c]) => c === upper);
   return entry ? entry[1] : undefined;
 }

@@ -37,8 +37,14 @@ interface LangBundle {
 }
 
 // ── Language selector ─────────────────────────────────────────────────────────
-function getBundle(language: SupportedLanguage): LangBundle {
-  switch (language) {
+function getBundle(language?: string): LangBundle {
+  const normalized = (
+    typeof language === "string"
+      ? language.trim().split(/[-_]/)[0].toLowerCase()
+      : "en"
+  ) as SupportedLanguage;
+
+  switch (normalized) {
     case "es":
       return esData as LangBundle;
     case "fr":
@@ -58,16 +64,20 @@ function getBundle(language: SupportedLanguage): LangBundle {
   }
 }
 
-export function getLangCountries(language: SupportedLanguage): LangCountry[] {
+export function getLangCountries(
+  language: SupportedLanguage = "en"
+): LangCountry[] {
   return getBundle(language).countries;
 }
 
 export function getLangContinents(
-  language: SupportedLanguage
+  language: SupportedLanguage = "en"
 ): LangContinent[] {
   return getBundle(language).continents;
 }
 
-export function getLangCities(language: SupportedLanguage): LangCity[] {
+export function getLangCities(
+  language: SupportedLanguage = "en"
+): LangCity[] {
   return getBundle(language).cities;
 }

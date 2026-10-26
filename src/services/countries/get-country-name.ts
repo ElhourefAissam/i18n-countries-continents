@@ -18,7 +18,8 @@ export default function getCountryName(
   code: string,
   language: SupportedLanguage = "en"
 ): string | undefined {
-  const upper = code.toUpperCase();
+  if (!code || typeof code !== "string") return undefined;
+  const upper = code.toUpperCase().trim();
   const entry = getLangCountries(language).find(([c]) => c === upper);
   return entry ? entry[3] : undefined;
 }

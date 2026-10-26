@@ -20,9 +20,10 @@ export default function searchCities(
   language: SupportedLanguage = "en",
   limit: number = 10
 ): City[] {
-  const normalizedQuery = query.toLowerCase().trim();
+  if (!query || typeof query !== "string") return [];
 
-  if (!normalizedQuery) {
+  const normalizedQuery = query.toLowerCase().trim();
+  if (!normalizedQuery || limit <= 0) {
     return [];
   }
 

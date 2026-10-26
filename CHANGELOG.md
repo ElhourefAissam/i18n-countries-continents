@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.7] - 2026-10-26
+
+### Added
+- **API Symmetry & Reverse Lookups**:
+  - `getContinent(code, language?)` — retrieve complete continent object (`code`, `name`)
+  - `getContinentByName(name, language?)` — reverse lookup continent by English or localized name
+  - `searchContinents(query, language?, limit?)` — search continents by code or localized name
+  - `getCity(cityName, language?)` — retrieve complete city object (`name`, `translatedName`), now supporting both English and localized city names
+  - `getSupportedLanguages()` & `LANGUAGES` — language list with codes, English names, and native names for building UI language pickers
+- **Locale-Aware Sorting**:
+  - `sortCountries(countries, language?)` — sort countries alphabetically using `Intl.Collator`
+  - `sortContinents(continents, language?)` — sort continents alphabetically
+  - `sortCities(cities, language?)` — sort cities alphabetically
+  - `toSelectOptions(items, { sort: true, language? })` — option to sort dropdown options alphabetically
+- **Robustness & Edge-Case Hardening**:
+  - Defensive type checking and empty/null/undefined guarding on all getter and lookup methods
+  - Locale tag normalization (`'fr-FR'`, `'pt-BR'`, `'es-MX'`) and uppercase language code support (`'DE'`, `'ES'`)
+  - Subpath `exports` in `package.json` reorganized with `"types"` condition first for optimal TypeScript module resolution across all tools
+  - Added direct subpath exports for `./get-continent-by-name`, `./search-continents`, `./get-supported-languages`, `./constants`, and `./types`
+- **Developer Experience**:
+  - Comprehensive TSDoc / JSDoc annotations across all service and utility functions for rich IDE IntelliSense
+  - Expanded npm package keywords for search discovery
+
 ## [1.0.6] - 2026-10-26
 
 ### Added
@@ -13,18 +36,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Official Unicode CLDR translations for all 250 countries
   - Added compact per-language bundles: `de.json`, `pt.json`, and `it.json`
   - Updated `SUPPORTED_LANGUAGES` and `SupportedLanguage` types to include `"de"`, `"pt"`, and `"it"`
-- **API Symmetry**:
-  - `getContinent(code, language?)` — retrieve complete continent object (`code`, `name`)
-  - `getCity(cityName, language?)` — retrieve complete city object (`name`, `translatedName`)
-- **Locale-Aware Sorting**:
-  - `sortCountries(countries, language?)` — sort countries alphabetically using `Intl.Collator`
-  - `sortContinents(continents, language?)` — sort continents alphabetically
-  - `sortCities(cities, language?)` — sort cities alphabetically
-  - `toSelectOptions(items, { sort: true, language? })` — option to sort dropdown options alphabetically
-- **Developer Experience**:
-  - Comprehensive TSDoc / JSDoc annotations across all service and utility functions for rich IDE IntelliSense
-  - Subpath exports for `./get-continent`, `./get-city`, and `./sorting`
-  - Expanded npm package keywords for search discovery
 
 ## [1.0.5] - 2026-10-26
 
