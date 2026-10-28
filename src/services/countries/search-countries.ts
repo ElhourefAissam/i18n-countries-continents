@@ -5,22 +5,22 @@ import { normalizeText } from "../../utils/normalize.js";
 import { Country } from "./get-countries.js";
 
 /**
- * Search for countries by name, 2-letter ISO code, 3-letter alpha-3 code, numeric code, capital city, calling code, or currency code.
+ * Search for countries by name, 2-letter ISO code, 3-letter alpha-3 code, numeric code, capital city, timezone, calling code, or currency code.
  * Searches are accent- and diacritic-insensitive (e.g. searching 'peru' matches 'Perú', 'paris' matches France, 'cote' matches "Côte d'Ivoire").
  * Exact matches and prefix matches are prioritized at the top of results.
  *
- * @param query - Country name, code, capital, calling code, or currency to search for (case- and accent-insensitive)
+ * @param query - Country name, code, capital, timezone, calling code, or currency to search for (case- and accent-insensitive)
  * @param language - Target language (default: 'en')
  * @param limit - Maximum number of results to return (default: 10)
  * @returns Array of matching Country objects
  *
  * @example
  * ```ts
- * searchCountries('USA');         // Finds United States (ranked first)
- * searchCountries('peru');        // Finds Perú
- * searchCountries('paris');       // Finds France (by capital)
- * searchCountries('tokyo');       // Finds Japan (by capital)
- * searchCountries('+33');         // Finds France
+ * searchCountries('USA');             // Finds United States (ranked first)
+ * searchCountries('peru');            // Finds Perú
+ * searchCountries('paris');           // Finds France (by capital)
+ * searchCountries('Europe/Paris');    // Finds France (by timezone)
+ * searchCountries('+33');             // Finds France
  * ```
  */
 export default function searchCountries(
@@ -42,6 +42,7 @@ export default function searchCountries(
     const alpha3 = meta?.alpha3 || "";
     const numeric = meta?.numeric || "";
     const capital = meta?.capital || "";
+    const timezones = meta?.timezones || [];
     const callingCode = meta?.callingCode || "";
     const callingRaw = callingCode.replace(/[^0-9]/g, "");
     const queryDigits = rawTrimmed.replace(/[^0-9]/g, "");
@@ -74,6 +75,10 @@ export default function searchCountries(
       (capital.toLowerCase().includes(rawTrimmed) ||
         normCapital.includes(normalized));
 
+    const matchesTimezone =
+      rawTrimmed.length > 3 &&
+      timezones.some((tz) => tz.toLowerCase().includes(rawTrimmed));
+
     const matchesCallingCode =
       (rawTrimmed.startsWith("+") && callingCode.startsWith(rawTrimmed)) ||
       (queryDigits.length > 0 && callingRaw === queryDigits);
@@ -89,6 +94,7 @@ export default function searchCountries(
       matchesNameSub ||
       matchesExactCapital ||
       matchesCapitalSub ||
+      matchesTimezone ||
       matchesCallingCode ||
       matchesCurrency
     ) {
@@ -100,7 +106,7 @@ export default function searchCountries(
         rank = 1;
       } else if (matchesNamePrefix) {
         rank = 2;
-      } else if (matchesCallingCode || matchesCurrency) {
+      } else if (matchesCallingCode || matchesCurrency || matchesTimezone) {
         rank = 3;
       } else if (matchesNameSub) {
         rank = 4;
@@ -116,6 +122,7 @@ export default function searchCountries(
           flag,
           name,
           capital,
+          timezones,
           callingCode,
           currency,
         },

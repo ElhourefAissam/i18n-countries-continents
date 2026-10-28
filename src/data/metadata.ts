@@ -21,6 +21,8 @@ export interface CountryMetadata {
   numeric: string;
   /** Official capital city, e.g. "Paris", "Washington D.C." */
   capital: string;
+  /** Array of IANA timezone identifiers, e.g. ["Europe/Paris"] */
+  timezones: string[];
 }
 
 // Compact tuple format: [callingCode, currencyCode, symbol, name, alpha3?, numeric?, capital?, timezones?]
@@ -43,9 +45,10 @@ const numericToAlpha2Map = new Map<string, string>();
 const alpha2ToAlpha3Map = new Map<string, string>();
 const alpha2ToNumericMap = new Map<string, string>();
 const capitalToAlpha2Map = new Map<string, string>();
+const timezoneToAlpha2Map = new Map<string, string[]>();
 
 for (const [alpha2, entry] of Object.entries(rawData)) {
-  const [, , , , a3, num, cap] = entry;
+  const [, , , , a3, num, cap, tzs] = entry;
   if (a3) {
     alpha3ToAlpha2Map.set(a3.toUpperCase(), alpha2);
     alpha2ToAlpha3Map.set(alpha2, a3);
@@ -60,6 +63,15 @@ for (const [alpha2, entry] of Object.entries(rawData)) {
   }
   if (cap) {
     capitalToAlpha2Map.set(normalizeText(cap), alpha2);
+  }
+  if (Array.isArray(tzs)) {
+    for (const tz of tzs) {
+      const normTz = tz.trim().toLowerCase();
+      if (!timezoneToAlpha2Map.has(normTz)) {
+        timezoneToAlpha2Map.set(normTz, []);
+      }
+      timezoneToAlpha2Map.get(normTz)!.push(alpha2);
+    }
   }
 }
 
@@ -106,7 +118,16 @@ export function capitalToAlpha2(capital?: string): string | undefined {
 }
 
 /**
- * Get country calling code, currency, alpha-3, numeric, and capital metadata.
+ * Find country codes associated with an IANA timezone (case-insensitive, e.g. "Europe/Paris" -> ["FR"]).
+ */
+export function timezoneToAlpha2List(timezone?: string): string[] {
+  if (!timezone || typeof timezone !== "string") return [];
+  const norm = timezone.trim().toLowerCase();
+  return timezoneToAlpha2Map.get(norm) || [];
+}
+
+/**
+ * Get country calling code, currency, alpha-3, numeric, capital, and timezones metadata.
  */
 export function getMetadata(
   countryCode?: string
@@ -114,13 +135,14 @@ export function getMetadata(
   if (!countryCode || typeof countryCode !== "string") return undefined;
   const entry = rawData[countryCode.toUpperCase().trim()];
   if (!entry) return undefined;
-  const [callingCode, code, symbol, name, alpha3, numeric, capital] = entry;
+  const [callingCode, code, symbol, name, alpha3, numeric, capital, timezones] = entry;
   return {
     callingCode,
     currency: { code, symbol, name },
     alpha3: alpha3 || "",
     numeric: numeric || "",
     capital: capital || "",
+    timezones: Array.isArray(timezones) ? timezones : [],
   };
 }
 

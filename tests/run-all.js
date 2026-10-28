@@ -16,6 +16,7 @@ const testSuites = [
   "test-iso-codes.js",
   "test-accent-search.js",
   "test-capitals.js",
+  "test-timezones.js",
 ];
 
 console.log("========================================");

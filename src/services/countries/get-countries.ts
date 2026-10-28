@@ -19,6 +19,8 @@ export interface Country {
   flag: string;
   /** Official capital city, e.g. 'Washington D.C.', 'Paris' */
   capital: string;
+  /** Primary IANA timezones, e.g. ['America/New_York', ...] */
+  timezones: string[];
   /** International phone calling code, e.g. '+1', '+33' */
   callingCode: string;
   /** Currency info (code, symbol, name) */
@@ -26,7 +28,7 @@ export interface Country {
 }
 
 /**
- * Get all 250 countries with their names, continent codes, flag emojis, ISO alpha-3/numeric codes, capitals, calling codes, and currencies in the specified language.
+ * Get all 250 countries with their names, continent codes, flag emojis, ISO alpha-3/numeric codes, capitals, timezones, calling codes, and currencies in the specified language.
  *
  * @param language - Target language (default: 'en')
  * @returns Array of 250 Country objects
@@ -34,7 +36,7 @@ export interface Country {
  * @example
  * ```ts
  * const countries = getCountries('es');
- * countries.forEach(c => console.log(c.flag, c.code, c.name, c.capital));
+ * countries.forEach(c => console.log(c.flag, c.code, c.name, c.capital, c.timezones));
  * ```
  */
 export default function getCountries(
@@ -50,6 +52,7 @@ export default function getCountries(
       name,
       flag,
       capital: meta?.capital || "",
+      timezones: meta?.timezones || [],
       callingCode: meta?.callingCode || "",
       currency: meta?.currency || { code: "", symbol: "", name: "" },
     };

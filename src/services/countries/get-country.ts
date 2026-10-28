@@ -4,7 +4,7 @@ import { getMetadata, alpha3ToAlpha2 } from "../../data/metadata.js";
 import { Country } from "./get-countries.js";
 
 /**
- * Get the complete country object (`code`, `alpha3`, `numeric`, `name`, `continent`, `flag`, `capital`, `callingCode`, `currency`) for a country code.
+ * Get the complete country object (`code`, `alpha3`, `numeric`, `name`, `continent`, `flag`, `capital`, `timezones`, `callingCode`, `currency`) for a country code.
  * Accepts both 2-letter alpha-2 (e.g. 'US') and 3-letter alpha-3 (e.g. 'USA') codes.
  *
  * @param code - ISO 3166-1 alpha-2 or alpha-3 country code (case-insensitive)
@@ -14,7 +14,7 @@ import { Country } from "./get-countries.js";
  * @example
  * ```ts
  * getCountry('FR', 'es');
- * // { code: "FR", alpha3: "FRA", numeric: "250", continent: "EU", flag: "🇫🇷", name: "Francia", capital: "Paris", ... }
+ * // { code: "FR", alpha3: "FRA", numeric: "250", continent: "EU", flag: "🇫🇷", name: "Francia", capital: "Paris", timezones: ["Europe/Paris"], ... }
  * ```
  */
 export default function getCountry(
@@ -39,6 +39,7 @@ export default function getCountry(
     flag,
     name,
     capital: meta?.capital || "",
+    timezones: meta?.timezones || [],
     callingCode: meta?.callingCode || "",
     currency: meta?.currency || { code: "", symbol: "", name: "" },
   };

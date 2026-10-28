@@ -60,6 +60,7 @@ export default function getCountryByName(
     flag,
     name: countryName,
     capital: meta?.capital || "",
+    timezones: meta?.timezones || [],
     callingCode: meta?.callingCode || "",
     currency: meta?.currency || { code: "", symbol: "", name: "" },
   };
