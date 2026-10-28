@@ -19,6 +19,8 @@ import nlData from "./lang/nl.json" with { type: "json" };
 import deData from "./lang/de.json" with { type: "json" };
 import ptData from "./lang/pt.json" with { type: "json" };
 import itData from "./lang/it.json" with { type: "json" };
+import zhData from "./lang/zh.json" with { type: "json" };
+import jaData from "./lang/ja.json" with { type: "json" };
 
 // ── Types for the compact array format ───────────────────────────────────────
 type LangCountry = [
@@ -59,6 +61,10 @@ function getBundle(language?: string): LangBundle {
       return ptData as LangBundle;
     case "it":
       return itData as LangBundle;
+    case "zh":
+      return zhData as LangBundle;
+    case "ja":
+      return jaData as LangBundle;
     default:
       return enData as LangBundle;
   }

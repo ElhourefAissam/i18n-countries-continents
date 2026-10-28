@@ -132,7 +132,9 @@ assert("isValidLanguage('es') returns true", isValidLanguage("es") === true);
 assert("isValidLanguage('de') returns true", isValidLanguage("de") === true);
 assert("isValidLanguage('pt') returns true", isValidLanguage("pt") === true);
 assert("isValidLanguage('it') returns true", isValidLanguage("it") === true);
-assert("isValidLanguage('ja') returns false", isValidLanguage("ja") === false);
+assert("isValidLanguage('zh') returns true", isValidLanguage("zh") === true);
+assert("isValidLanguage('ja') returns true", isValidLanguage("ja") === true);
+assert("isValidLanguage('xx') returns false", isValidLanguage("xx") === false);
 assert("isValidLanguage('') returns false", isValidLanguage("") === false);
 
 // ========================================
@@ -221,14 +223,20 @@ console.log("\n🌐 9. getSupportedLanguages() & LANGUAGES");
 console.log("═".repeat(60));
 
 const allLangs = getSupportedLanguages();
-assert("getSupportedLanguages returns 8 languages", allLangs.length === 8);
+assert("getSupportedLanguages returns 10 languages", allLangs.length === 10);
 assert("Every language has code, name, and nativeName", allLangs.every(l => l.code && l.name && l.nativeName));
 
 const germanMeta = LANGUAGES["de"];
 assert("LANGUAGES record contains German metadata", germanMeta && germanMeta.code === "de" && germanMeta.name === "German" && germanMeta.nativeName === "Deutsch");
 
+const chineseMeta = LANGUAGES["zh"];
+assert("LANGUAGES record contains Chinese metadata", chineseMeta && chineseMeta.code === "zh" && chineseMeta.name === "Chinese" && chineseMeta.nativeName === "中文");
+
+const japaneseMeta = LANGUAGES["ja"];
+assert("LANGUAGES record contains Japanese metadata", japaneseMeta && japaneseMeta.code === "ja" && japaneseMeta.name === "Japanese" && japaneseMeta.nativeName === "日本語");
+
 const langSelectOptions = toSelectOptions(allLangs, { value: "code", label: "nativeName" });
-assert("toSelectOptions works with getSupportedLanguages", langSelectOptions.length === 8 && langSelectOptions.some(o => o.value === "ar" && o.label === "العربية"));
+assert("toSelectOptions works with getSupportedLanguages", langSelectOptions.length === 10 && langSelectOptions.some(o => o.value === "ar" && o.label === "العربية"));
 
 // ========================================
 // 10. Language Code Normalization

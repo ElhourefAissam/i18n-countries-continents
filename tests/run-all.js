@@ -17,6 +17,7 @@ const testSuites = [
   "test-accent-search.js",
   "test-capitals.js",
   "test-timezones.js",
+  "test-asian-locales.js",
 ];
 
 console.log("========================================");

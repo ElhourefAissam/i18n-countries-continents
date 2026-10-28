@@ -7,6 +7,8 @@ export const SUPPORTED_LANGUAGES = [
   "de",
   "pt",
   "it",
+  "zh",
+  "ja",
 ] as const;
 
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
@@ -26,4 +28,6 @@ export const LANGUAGES: Record<SupportedLanguage, Language> = {
   de: { code: "de", name: "German", nativeName: "Deutsch" },
   pt: { code: "pt", name: "Portuguese", nativeName: "Português" },
   it: { code: "it", name: "Italian", nativeName: "Italiano" },
+  zh: { code: "zh", name: "Chinese", nativeName: "中文" },
+  ja: { code: "ja", name: "Japanese", nativeName: "日本語" },
 };

@@ -149,7 +149,7 @@ test("searchCities returns objects with correct structure", tokyoResults.every(c
 console.log("\n\n🌐 TEST 5: MULTI-LANGUAGE SUPPORT");
 console.log("═".repeat(70));
 
-test("SUPPORTED_LANGUAGES contains 8 languages", SUPPORTED_LANGUAGES.length === 8);
+test("SUPPORTED_LANGUAGES contains 10 languages", SUPPORTED_LANGUAGES.length === 10);
 test("SUPPORTED_LANGUAGES contains 'en'", SUPPORTED_LANGUAGES.includes('en'));
 test("SUPPORTED_LANGUAGES contains 'es'", SUPPORTED_LANGUAGES.includes('es'));
 test("SUPPORTED_LANGUAGES contains 'fr'", SUPPORTED_LANGUAGES.includes('fr'));
@@ -158,6 +158,8 @@ test("SUPPORTED_LANGUAGES contains 'nl'", SUPPORTED_LANGUAGES.includes('nl'));
 test("SUPPORTED_LANGUAGES contains 'de'", SUPPORTED_LANGUAGES.includes('de'));
 test("SUPPORTED_LANGUAGES contains 'pt'", SUPPORTED_LANGUAGES.includes('pt'));
 test("SUPPORTED_LANGUAGES contains 'it'", SUPPORTED_LANGUAGES.includes('it'));
+test("SUPPORTED_LANGUAGES contains 'zh'", SUPPORTED_LANGUAGES.includes('zh'));
+test("SUPPORTED_LANGUAGES contains 'ja'", SUPPORTED_LANGUAGES.includes('ja'));
 
 // Test all languages work for countries
 SUPPORTED_LANGUAGES.forEach(lang => {
