@@ -194,6 +194,21 @@
       "import": "./dist/services/countries/get-countries-by-currency.js",
       "require": "./dist/services/countries/get-countries-by-currency.js"
     },
+    "./get-country-by-alpha3": {
+      "types": "./dist/services/countries/get-country-by-alpha3.d.ts",
+      "import": "./dist/services/countries/get-country-by-alpha3.js",
+      "require": "./dist/services/countries/get-country-by-alpha3.js"
+    },
+    "./get-country-by-numeric": {
+      "types": "./dist/services/countries/get-country-by-numeric.d.ts",
+      "import": "./dist/services/countries/get-country-by-numeric.js",
+      "require": "./dist/services/countries/get-country-by-numeric.js"
+    },
+    "./iso-converters": {
+      "types": "./dist/services/countries/iso-converters.d.ts",
+      "import": "./dist/services/countries/iso-converters.js",
+      "require": "./dist/services/countries/iso-converters.js"
+    },
     "./is-valid-country-code": {
       "types": "./dist/services/validation/is-valid-country-code.d.ts",
       "import": "./dist/services/validation/is-valid-country-code.js",

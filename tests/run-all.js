@@ -13,6 +13,7 @@ const testSuites = [
   "test-all-services.js",
   "test-example.js",
   "test-calling-codes-and-currencies.js",
+  "test-iso-codes.js",
 ];
 
 console.log("========================================");

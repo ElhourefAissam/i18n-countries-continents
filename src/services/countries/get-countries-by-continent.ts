@@ -30,6 +30,8 @@ export default function getCountriesByContinent(
       const meta = getMetadata(code);
       return {
         code,
+        alpha3: meta?.alpha3 || "",
+        numeric: meta?.numeric || "",
         continent,
         flag,
         name,

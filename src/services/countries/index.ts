@@ -10,6 +10,14 @@ export { default as getCallingCode } from "./get-calling-code.js";
 export { default as getCurrency } from "./get-currency.js";
 export { default as getCountriesByCallingCode } from "./get-countries-by-calling-code.js";
 export { default as getCountriesByCurrency } from "./get-countries-by-currency.js";
+export { default as getCountryByAlpha3 } from "./get-country-by-alpha3.js";
+export { default as getCountryByNumeric } from "./get-country-by-numeric.js";
+export {
+  alpha2ToAlpha3,
+  alpha3ToAlpha2,
+  alpha2ToNumeric,
+  numericToAlpha2,
+} from "./iso-converters.js";
 
 // Aliases for developer convenience
 export { default as getCountryCallingCode } from "./get-calling-code.js";

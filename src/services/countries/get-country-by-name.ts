@@ -13,7 +13,7 @@ import { Country } from "./get-countries.js";
  * @example
  * ```ts
  * getCountryByName('España', 'es');
- * // { code: "ES", continent: "EU", flag: "🇪🇸", name: "España", callingCode: "+34", ... }
+ * // { code: "ES", alpha3: "ESP", numeric: "724", continent: "EU", flag: "🇪🇸", name: "España", ... }
  * ```
  */
 export default function getCountryByName(
@@ -46,6 +46,8 @@ export default function getCountryByName(
   const meta = getMetadata(code);
   return {
     code,
+    alpha3: meta?.alpha3 || "",
+    numeric: meta?.numeric || "",
     continent,
     flag,
     name: countryName,

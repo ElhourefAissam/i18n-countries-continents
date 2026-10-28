@@ -7,6 +7,10 @@ export type { Currency };
 export interface Country {
   /** ISO 3166-1 alpha-2 country code, e.g. 'US', 'FR' */
   code: string;
+  /** ISO 3166-1 alpha-3 country code, e.g. 'USA', 'FRA' */
+  alpha3: string;
+  /** ISO 3166-1 numeric 3-digit code, e.g. '840', '250' */
+  numeric: string;
   /** Continent code, e.g. 'NA', 'EU' */
   continent: string;
   /** Translated country name in requested language */
@@ -20,7 +24,7 @@ export interface Country {
 }
 
 /**
- * Get all 250 countries with their names, continent codes, flag emojis, calling codes, and currencies in the specified language.
+ * Get all 250 countries with their names, continent codes, flag emojis, ISO alpha-3/numeric codes, calling codes, and currencies in the specified language.
  *
  * @param language - Target language (default: 'en')
  * @returns Array of 250 Country objects
@@ -28,7 +32,7 @@ export interface Country {
  * @example
  * ```ts
  * const countries = getCountries('es');
- * countries.forEach(c => console.log(c.flag, c.code, c.name, c.callingCode, c.currency.code));
+ * countries.forEach(c => console.log(c.flag, c.code, c.alpha3, c.numeric, c.name));
  * ```
  */
 export default function getCountries(
@@ -38,6 +42,8 @@ export default function getCountries(
     const meta = getMetadata(code);
     return {
       code,
+      alpha3: meta?.alpha3 || "",
+      numeric: meta?.numeric || "",
       continent,
       name,
       flag,
