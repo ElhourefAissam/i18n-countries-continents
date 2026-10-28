@@ -7,13 +7,13 @@ import {
   toSelectOptions,
   getCountry,
   type Country,
-  type Language,
+  type SupportedLanguage,
   type SelectOption,
 } from 'i18n-countries-continents';
 
 export interface CountrySelectProps {
   /** Selected language for country names (default: 'en') */
-  language?: Language;
+  language?: SupportedLanguage;
   /** Filter countries by continent code (e.g. 'EU', 'AF', 'NA') */
   continent?: string;
   /** Currently selected country ISO code */
@@ -93,7 +93,7 @@ export const CountrySelect: React.FC<CountrySelectProps> = ({
  * - Country detail card
  */
 export const CountrySelectorApp: React.FC = () => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<SupportedLanguage>('en');
   const [continent, setContinent] = useState<string>('');
   const [selectedCode, setSelectedCode] = useState<string>('US');
 
@@ -115,7 +115,7 @@ export const CountrySelectorApp: React.FC = () => {
         </label>
         <select
           value={language}
-          onChange={(e) => setLanguage(e.target.value as Language)}
+          onChange={(e) => setLanguage(e.target.value as SupportedLanguage)}
           style={{ padding: '8px 12px', borderRadius: 6, width: '100%' }}
         >
           {languages.map((l) => (
@@ -173,7 +173,10 @@ export const CountrySelectorApp: React.FC = () => {
           </div>
           <h3 style={{ margin: '0 0 8px 0' }}>{activeCountry.name}</h3>
           <p style={{ margin: 4 }}>
-            <strong>ISO Code:</strong> {activeCountry.code}
+            <strong>ISO Code:</strong> {activeCountry.code} (Alpha-3: {activeCountry.alpha3}, Numeric: {activeCountry.numeric})
+          </p>
+          <p style={{ margin: 4 }}>
+            <strong>Capital:</strong> {activeCountry.capital || 'N/A'}
           </p>
           <p style={{ margin: 4 }}>
             <strong>Continent:</strong> {activeCountry.continent}
@@ -183,6 +186,9 @@ export const CountrySelectorApp: React.FC = () => {
           </p>
           <p style={{ margin: 4 }}>
             <strong>Currency:</strong> {activeCountry.currency.code} ({activeCountry.currency.symbol}) — {activeCountry.currency.name}
+          </p>
+          <p style={{ margin: 4 }}>
+            <strong>Primary Timezones:</strong> {activeCountry.timezones.slice(0, 2).join(', ')}
           </p>
         </div>
       )}
