@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-10-28
+
+### Added
+- **International Phone Calling Codes (E.164)**:
+  - Added `callingCode` property to all 250 countries (e.g. `+1`, `+33`, `+212`, `+81`)
+  - `getCallingCode(countryCode)` — look up phone dial code for any country
+  - `getCountriesByCallingCode(callingCode, language?)` — reverse lookup countries sharing a dial code
+  - Added convenience alias `getCountryCallingCode`
+- **ISO 4217 Currency Information**:
+  - Added `currency` object (`{ code, symbol, name }`) to all 250 countries (e.g. `{ code: "USD", symbol: "$", name: "US Dollar" }`)
+  - `getCurrency(countryCode)` — look up currency info for any country
+  - `getCountriesByCurrency(currencyCode, language?)` — find all countries using a specific currency (e.g. all Eurozone countries)
+  - Added convenience alias `getCountryCurrency`
+- **Search Enhancements**:
+  - `searchCountries` now supports querying by phone dial code (e.g. `'+33'` finds France) and currency code/symbol (e.g. `'EUR'` or `'$'`)
+- **Interactive Live Demo & GitHub Pages**:
+  - Added modern interactive explorer in `examples/interactive-demo/index.html`
+  - Added automated GitHub Actions deployment workflow `.github/workflows/deploy-pages.yml` for GitHub Pages
+  - Added production-ready React component in `examples/react/CountrySelect.tsx`
+  - Added Node.js CLI demonstration script in `examples/node/demo.js`
+- **Testing**:
+  - Added comprehensive test suite `tests/test-calling-codes-and-currencies.js` verifying 100% data coverage across all 250 countries
+
 ## [1.0.7] - 2026-10-26
 
 ### Added

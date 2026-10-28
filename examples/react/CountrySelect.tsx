@@ -178,6 +178,12 @@ export const CountrySelectorApp: React.FC = () => {
           <p style={{ margin: 4 }}>
             <strong>Continent:</strong> {activeCountry.continent}
           </p>
+          <p style={{ margin: 4 }}>
+            <strong>Calling Code:</strong> {activeCountry.callingCode}
+          </p>
+          <p style={{ margin: 4 }}>
+            <strong>Currency:</strong> {activeCountry.currency.code} ({activeCountry.currency.symbol}) — {activeCountry.currency.name}
+          </p>
         </div>
       )}
     </div>

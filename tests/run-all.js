@@ -12,6 +12,7 @@ const testSuites = [
   "test-with-flags.js",
   "test-all-services.js",
   "test-example.js",
+  "test-calling-codes-and-currencies.js",
 ];
 
 console.log("========================================");

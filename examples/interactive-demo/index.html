@@ -220,6 +220,16 @@
       color: var(--accent);
     }
 
+    .badge.phone {
+      color: #34d399;
+      border-color: rgba(52, 211, 153, 0.3);
+    }
+
+    .badge.currency {
+      color: #fbbf24;
+      border-color: rgba(251, 191, 36, 0.3);
+    }
+
     .code-preview-box {
       margin-top: 2rem;
       background: #090d16;
@@ -321,17 +331,29 @@
   </div>
 
   <script type="module">
-    // Load package from ESM CDN
-    import {
+    // Load package: try local/hosted dist first, fallback to CDN
+    let pkg;
+    try {
+      pkg = await import('./dist/index.js');
+    } catch {
+      try {
+        pkg = await import('../../dist/index.js');
+      } catch {
+        pkg = await import('https://esm.sh/i18n-countries-continents');
+      }
+    }
+
+    const {
       getCountries,
       getContinents,
       getCountriesByContinent,
-      getContinentName,
       getCountryName,
       getCountryFlag,
+      getCallingCode,
+      getCurrency,
       searchCountries,
       getSupportedLanguages
-    } from 'https://esm.sh/i18n-countries-continents@1.0.7';
+    } = pkg;
 
     // State
     let currentLang = 'en';
@@ -382,7 +404,9 @@
         const q = searchQuery.toLowerCase().trim();
         list = list.filter(c =>
           c.name.toLowerCase().includes(q) ||
-          c.code.toLowerCase().includes(q)
+          c.code.toLowerCase().includes(q) ||
+          (c.callingCode && c.callingCode.toLowerCase().includes(q)) ||
+          (c.currency && c.currency.code.toLowerCase().includes(q))
         );
       }
 
@@ -393,12 +417,22 @@
       selectedCountryCode = countryCode || selectedCountryCode;
       const countryName = getCountryName(selectedCountryCode, currentLang);
       const flag = getCountryFlag(selectedCountryCode);
+      const phone = getCallingCode ? getCallingCode(selectedCountryCode) : '';
+      const cur = getCurrency ? getCurrency(selectedCountryCode) : null;
 
       codeSnippet.textContent =
-`import { getCountryName, getCountryFlag, getContinentByCountry } from 'i18n-countries-continents';
+`import {
+  getCountryName,
+  getCountryFlag,
+  getCallingCode,
+  getCurrency,
+  getContinentByCountry
+} from 'i18n-countries-continents';
 
-const countryName = getCountryName('${selectedCountryCode}', '${currentLang}'); // "${countryName}"
+const name = getCountryName('${selectedCountryCode}', '${currentLang}'); // "${countryName}"
 const flag = getCountryFlag('${selectedCountryCode}');                   // "${flag}"
+const phone = getCallingCode('${selectedCountryCode}');                  // "${phone}"
+const currency = getCurrency('${selectedCountryCode}');                  // ${JSON.stringify(cur)}
 const continent = getContinentByCountry('${selectedCountryCode}');        // "NA"`;
     }
 
@@ -419,6 +453,8 @@ const continent = getContinentByCountry('${selectedCountryCode}');        // "NA
             <div class="country-meta">
               <span class="badge">${c.code}</span>
               <span class="badge continent">${c.continent}</span>
+              ${c.callingCode ? `<span class="badge phone">${c.callingCode}</span>` : ''}
+              ${c.currency ? `<span class="badge currency">${c.currency.code} ${c.currency.symbol}</span>` : ''}
             </div>
           </div>
         </div>

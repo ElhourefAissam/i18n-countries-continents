@@ -1,5 +1,6 @@
 import { getLangCountries } from "../../data/loader.js";
 import { SupportedLanguage } from "../../utils/types.js";
+import { getMetadata } from "../../data/metadata.js";
 import { Country } from "./get-countries.js";
 
 /**
@@ -12,10 +13,7 @@ import { Country } from "./get-countries.js";
  * @example
  * ```ts
  * getCountryByName('España', 'es');
- * // { code: "ES", continent: "EU", flag: "🇪🇸", name: "España" }
- *
- * getCountryByName('Spain', 'es');
- * // { code: "ES", continent: "EU", flag: "🇪🇸", name: "España" }
+ * // { code: "ES", continent: "EU", flag: "🇪🇸", name: "España", callingCode: "+34", ... }
  * ```
  */
 export default function getCountryByName(
@@ -45,5 +43,13 @@ export default function getCountryByName(
 
   if (!entry) return undefined;
   const [code, continent, flag, countryName] = entry;
-  return { code, continent, flag, name: countryName };
+  const meta = getMetadata(code);
+  return {
+    code,
+    continent,
+    flag,
+    name: countryName,
+    callingCode: meta?.callingCode || "",
+    currency: meta?.currency || { code: "", symbol: "", name: "" },
+  };
 }

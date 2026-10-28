@@ -1,7 +1,7 @@
 {
   "name": "i18n-countries-continents",
-  "version": "1.0.7",
-  "description": "Get country, continent, and city names in different languages. 250 countries, 7 continents, and 4,010 cities with 8 languages. Works in React, Angular, Vue, Node.js, and any JavaScript environment.",
+  "version": "1.1.0",
+  "description": "Get country, continent, and city names in different languages. 250 countries, 7 continents, 4,010 cities, phone calling codes, and currencies in 8 languages. Works in React, Angular, Vue, Node.js, and any JavaScript environment.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -58,7 +58,12 @@
     "english",
     "dropdown",
     "select-options",
-    "autocomplete"
+    "autocomplete",
+    "calling-codes",
+    "phone-codes",
+    "dial-codes",
+    "currencies",
+    "currency-codes"
   ],
   "author": "Aissam EL Houref",
   "repository": {
@@ -168,6 +173,26 @@
       "types": "./dist/services/languages/get-supported-languages.d.ts",
       "import": "./dist/services/languages/get-supported-languages.js",
       "require": "./dist/services/languages/get-supported-languages.js"
+    },
+    "./get-calling-code": {
+      "types": "./dist/services/countries/get-calling-code.d.ts",
+      "import": "./dist/services/countries/get-calling-code.js",
+      "require": "./dist/services/countries/get-calling-code.js"
+    },
+    "./get-currency": {
+      "types": "./dist/services/countries/get-currency.d.ts",
+      "import": "./dist/services/countries/get-currency.js",
+      "require": "./dist/services/countries/get-currency.js"
+    },
+    "./get-countries-by-calling-code": {
+      "types": "./dist/services/countries/get-countries-by-calling-code.d.ts",
+      "import": "./dist/services/countries/get-countries-by-calling-code.js",
+      "require": "./dist/services/countries/get-countries-by-calling-code.js"
+    },
+    "./get-countries-by-currency": {
+      "types": "./dist/services/countries/get-countries-by-currency.d.ts",
+      "import": "./dist/services/countries/get-countries-by-currency.js",
+      "require": "./dist/services/countries/get-countries-by-currency.js"
     },
     "./is-valid-country-code": {
       "types": "./dist/services/validation/is-valid-country-code.d.ts",

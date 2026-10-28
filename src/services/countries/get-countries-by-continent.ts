@@ -1,5 +1,6 @@
 import { getLangCountries } from "../../data/loader.js";
 import { SupportedLanguage } from "../../utils/types.js";
+import { getMetadata } from "../../data/metadata.js";
 import { Country } from "./get-countries.js";
 
 /**
@@ -25,10 +26,15 @@ export default function getCountriesByContinent(
 
   return getLangCountries(language)
     .filter(([, continent]) => continent === upper)
-    .map(([code, continent, flag, name]) => ({
-      code,
-      continent,
-      flag,
-      name,
-    }));
+    .map(([code, continent, flag, name]) => {
+      const meta = getMetadata(code);
+      return {
+        code,
+        continent,
+        flag,
+        name,
+        callingCode: meta?.callingCode || "",
+        currency: meta?.currency || { code: "", symbol: "", name: "" },
+      };
+    });
 }

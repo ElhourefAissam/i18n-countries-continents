@@ -5,6 +5,7 @@ Get country, continent, and city names in different languages. **250 countries**
 [![npm version](https://img.shields.io/npm/v/i18n-countries-continents.svg)](https://www.npmjs.com/package/i18n-countries-continents)
 [![npm downloads](https://img.shields.io/npm/dm/i18n-countries-continents.svg)](https://www.npmjs.com/package/i18n-countries-continents)
 [![CI](https://github.com/ElhourefAissam/i18n-countries-continents/actions/workflows/ci.yml/badge.svg)](https://github.com/ElhourefAissam/i18n-countries-continents/actions/workflows/ci.yml)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-blue?logo=github)](https://elhourefaissam.github.io/i18n-countries-continents/)
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/i18n-countries-continents)](https://bundlephobia.com/package/i18n-countries-continents)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](https://www.npmjs.com/package/i18n-countries-continents)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -30,6 +31,8 @@ pnpm add i18n-countries-continents
 
 - 🌍 **250 countries** — Complete coverage of all world countries
 - 🏳️ **Country flags** — Flag emoji for every country
+- 📞 **Calling codes** — International dial codes for all 250 countries (e.g. `+1`, `+33`, `+212`)
+- 💰 **Currency info** — ISO 4217 code, symbol, and name for all 250 countries (e.g. `USD`, `$`, `EUR`, `€`)
 - 🗺️ **7 continents** — All continents included
 - 🏙️ **4,010 cities** — Major cities from around the world
 - 🌐 **8 languages** — English, Spanish, French, Arabic, Dutch, German, Portuguese, Italian (100% coverage)
@@ -43,7 +46,8 @@ pnpm add i18n-countries-continents
 
 ## Live Demo & Examples
 
-- 🎮 **[Interactive Browser Demo](examples/interactive-demo/index.html)** — Explore all 250 countries, filter by continent, test instant search, and switch languages in real-time.
+- 🚀 **[Online Live Demo](https://elhourefaissam.github.io/i18n-countries-continents/)** — Interactive browser playground hosted on GitHub Pages (instant search, flags, calling codes, currencies, code generator).
+- 🎮 **[Interactive Browser Demo Source](examples/interactive-demo/index.html)** — Run locally or embed into your projects.
 - ⚛️ **[React Country Select Component](examples/react/CountrySelect.tsx)** — Complete, accessible, typed `<CountrySelect />` component with flags and localized sorting.
 - 💻 **[Node.js Demo Script](examples/node/demo.js)** — Ready-to-run CLI demonstration.
 - 📖 **[Examples Guide](examples/README.md)** — Additional snippets for Vue 3, Next.js (App Router), and UI select option formatters.
@@ -160,7 +164,14 @@ results.forEach(c => console.log(c.name, '→', c.translatedName));
 import { getCountry } from 'i18n-countries-continents';
 
 console.log(getCountry('FR', 'es'));
-// { code: "FR", continent: "EU", flag: "🇫🇷", name: "Francia" }
+// {
+//   code: "FR",
+//   continent: "EU",
+//   flag: "🇫🇷",
+//   name: "Francia",
+//   callingCode: "+33",
+//   currency: { code: "EUR", symbol: "€", name: "Euro" }
+// }
 ```
 
 ### 11. Search for countries
@@ -248,6 +259,49 @@ const languages = getSupportedLanguages();
 
 // Generate dropdown options directly for your UI:
 const langOptions = toSelectOptions(languages, { value: 'code', label: 'nativeName' });
+```
+
+### 17. Get phone calling code
+
+```js
+import { getCallingCode } from 'i18n-countries-continents';
+
+console.log(getCallingCode('US')); // "+1"
+console.log(getCallingCode('FR')); // "+33"
+console.log(getCallingCode('MA')); // "+212"
+console.log(getCallingCode('JP')); // "+81"
+```
+
+### 18. Get currency information
+
+```js
+import { getCurrency } from 'i18n-countries-continents';
+
+console.log(getCurrency('US'));
+// { code: "USD", symbol: "$", name: "US Dollar" }
+
+console.log(getCurrency('FR'));
+// { code: "EUR", symbol: "€", name: "Euro" }
+
+console.log(getCurrency('MA'));
+// { code: "MAD", symbol: "د.م.", name: "Moroccan Dirham" }
+```
+
+### 19. Reverse lookup by calling code or currency
+
+```js
+import { 
+  getCountriesByCallingCode, 
+  getCountriesByCurrency 
+} from 'i18n-countries-continents';
+
+// Find countries sharing a phone dial code
+const northAmerica = getCountriesByCallingCode('+1');
+// [{ code: 'US', name: 'United States', ... }, { code: 'CA', name: 'Canada', ... }]
+
+// Find all countries using the Euro
+const eurozone = getCountriesByCurrency('EUR', 'fr');
+// [{ code: 'FR', name: 'France', ... }, { code: 'DE', name: 'Allemagne', ... }]
 ```
 
 ---
@@ -424,6 +478,18 @@ Search for countries by name or code. (default `limit`: 10)
 #### `getContinentByCountry(code): string | undefined`
 Get the continent code for a country (e.g. `'EU'`, `'AS'`, `'NA'`).
 
+#### `getCallingCode(code): string | undefined`
+Get the international calling dial code for a country (e.g. `'+1'`, `'+33'`, `'+212'`).
+
+#### `getCurrency(code): Currency | undefined`
+Get currency information (`{ code, symbol, name }`) for a country (e.g. `{ code: 'USD', symbol: '$', name: 'US Dollar' }`).
+
+#### `getCountriesByCallingCode(callingCode, language?): Country[]`
+Find all countries that share an international calling code (e.g. `'+1'` returns US, Canada, etc.).
+
+#### `getCountriesByCurrency(currencyCode, language?): Country[]`
+Find all countries that use a specific currency code (e.g. `'EUR'` returns Eurozone countries).
+
 ---
 
 ### Continent Functions
@@ -520,11 +586,19 @@ interface Language {
   nativeName: string; // e.g. "Español"
 }
 
+interface Currency {
+  code: string;   // ISO 4217 code, e.g. "USD", "EUR"
+  symbol: string; // e.g. "$", "€"
+  name: string;   // e.g. "US Dollar", "Euro"
+}
+
 interface Country {
-  code: string;      // ISO 3166-1 alpha-2, e.g. "US"
-  continent: string; // e.g. "NA"
-  name: string;      // translated name
-  flag: string;      // emoji, e.g. "🇺🇸"
+  code: string;        // ISO 3166-1 alpha-2, e.g. "US"
+  continent: string;   // e.g. "NA"
+  name: string;        // translated name
+  flag: string;        // emoji, e.g. "🇺🇸"
+  callingCode: string; // international dial code, e.g. "+1", "+33"
+  currency: Currency;  // currency info (code, symbol, name)
 }
 
 interface Continent {

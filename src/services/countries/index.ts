@@ -6,4 +6,13 @@ export { default as getCountries } from "./get-countries.js";
 export { default as getCountriesByContinent } from "./get-countries-by-continent.js";
 export { default as getContinentByCountry } from "./get-continent-by-country.js";
 export { default as searchCountries } from "./search-countries.js";
-export type { Country } from "./get-countries.js";
+export { default as getCallingCode } from "./get-calling-code.js";
+export { default as getCurrency } from "./get-currency.js";
+export { default as getCountriesByCallingCode } from "./get-countries-by-calling-code.js";
+export { default as getCountriesByCurrency } from "./get-countries-by-currency.js";
+
+// Aliases for developer convenience
+export { default as getCountryCallingCode } from "./get-calling-code.js";
+export { default as getCountryCurrency } from "./get-currency.js";
+
+export type { Country, Currency } from "./get-countries.js";
