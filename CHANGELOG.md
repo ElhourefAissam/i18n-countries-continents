@@ -5,6 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-10-28
+
+### Added
+- **ISO 3166-1 Alpha-3 & Numeric Codes**:
+  - Added `alpha3` (3-letter ISO code, e.g. `USA`, `FRA`, `DEU`) and `numeric` (3-digit code, e.g. `840`, `250`, `276`) to all 250 countries
+  - `getCountryByAlpha3(alpha3, language?)` — look up a country by its 3-letter code
+  - `getCountryByNumeric(numeric, language?)` — look up a country by its 3-digit numeric code (string or number)
+  - Fast O(1) conversion helpers: `alpha2ToAlpha3`, `alpha3ToAlpha2`, `alpha2ToNumeric`, `numericToAlpha2`
+  - `getCountry(code)` now accepts both 2-letter alpha-2 and 3-letter alpha-3 codes seamlessly
+- **Accent-Insensitive & Diacritic-Insensitive Search**:
+  - Added text normalization utility `normalizeText(str)` stripping Unicode diacritics via standard NFD decomposition
+  - `searchCountries`, `searchCities`, and `searchContinents` are now completely accent-insensitive (e.g. searching `'peru'` matches `'Perú'`, `'cordoba'` matches `'Córdoba'`, `'oceania'` matches `'Oceanía'`)
+  - Reverse name lookups `getCountryByName` and `getContinentByName` are also accent-insensitive
+- **Official Capital Cities**:
+  - Added `capital` field to all 250 countries (e.g. `Washington D.C.`, `Paris`, `Tokyo`, `Rabat`)
+  - `getCapital(countryCode)` — look up official capital city by alpha-2 or alpha-3 code
+  - `getCountryByCapital(capitalName, language?)` — reverse lookup country by its capital city name (case- and accent-insensitive)
+  - Added convenience alias `getCountryCapital`
+- **Primary IANA Timezones**:
+  - Added `timezones` string array property to all 250 countries with standard IANA tz database mapping (e.g. `["Europe/Paris"]`, `["America/New_York", ...]`)
+  - `getTimezones(countryCode)` — retrieve all IANA timezone identifiers for a country
+  - `getCountriesByTimezone(timezone, language?)` — find all countries associated with an IANA timezone
+  - Added convenience alias `getCountryTimezones`
+- **Asian Locales Support (Chinese & Japanese)**:
+  - Added full Simplified Chinese (`zh`) and Japanese (`ja`) translation bundles in `src/data/lang/zh.json` and `src/data/lang/ja.json`
+  - Expanded total supported languages to 10: `en`, `es`, `fr`, `ar`, `nl`, `de`, `pt`, `it`, `zh`, `ja`
+  - `LANGUAGES` metadata record and `getSupportedLanguages()` updated with Chinese (`中文`) and Japanese (`日本語`)
+- **Intelligent Search Ranking & Subpath Exports**:
+  - `searchCountries` now prioritizes exact code/alpha-3 matches, exact name matches, and prefix matches above substring matches
+  - Added subpath exports in `package.json`: `./get-country-by-alpha3`, `./get-country-by-numeric`, `./iso-converters`, `./get-capital`, `./get-country-by-capital`, `./get-timezones`, `./get-countries-by-timezone`, `./normalize`
+- **Testing**:
+  - Added dedicated test suites: `tests/test-iso-codes.js`, `tests/test-accent-search.js`, `tests/test-capitals.js`, `tests/test-timezones.js`, `tests/test-asian-locales.js`
+  - Total test suites expanded from 8 to 13 (all 100% passing)
+
 ## [1.1.0] - 2026-10-28
 
 ### Added

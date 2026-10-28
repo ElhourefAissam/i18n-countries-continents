@@ -1,6 +1,6 @@
 # i18n-countries-continents
 
-Get country, continent, and city names in different languages. **250 countries**, **7 continents**, and **4,010 cities** with full translations in **8 languages**. Works in React, Angular, Vue, Svelte, Node.js, and any JavaScript environment.
+Get country, continent, and city names in different languages. **250 countries**, **7 continents**, and **4,010 cities** with full translations in **10 languages** (including Chinese & Japanese), ISO 3166-1 Alpha-3 & Numeric codes, official capitals, primary IANA timezones, phone calling codes, and currencies. Works in React, Angular, Vue, Svelte, Node.js, and any JavaScript environment.
 
 [![npm version](https://img.shields.io/npm/v/i18n-countries-continents.svg)](https://www.npmjs.com/package/i18n-countries-continents)
 [![npm downloads](https://img.shields.io/npm/dm/i18n-countries-continents.svg)](https://www.npmjs.com/package/i18n-countries-continents)
@@ -31,13 +31,16 @@ pnpm add i18n-countries-continents
 
 - 🌍 **250 countries** — Complete coverage of all world countries
 - 🏳️ **Country flags** — Flag emoji for every country
+- 🔤 **ISO 3166-1 codes** — Alpha-2 (`US`), Alpha-3 (`USA`), and Numeric (`840`) codes with fast conversion helpers
+- 🏛️ **Official capitals** — Capital cities for all countries with reverse lookup (`getCapital`, `getCountryByCapital`)
+- 🕒 **Primary IANA timezones** — IANA timezone mapping with reverse lookup (`getTimezones`, `getCountriesByTimezone`)
+- 🔍 **Accent-insensitive search** — Diacritic-free search and smart ranking (`"peru"` matches `"Perú"`, `"paris"` matches France)
 - 📞 **Calling codes** — International dial codes for all 250 countries (e.g. `+1`, `+33`, `+212`)
 - 💰 **Currency info** — ISO 4217 code, symbol, and name for all 250 countries (e.g. `USD`, `$`, `EUR`, `€`)
 - 🗺️ **7 continents** — All continents included
 - 🏙️ **4,010 cities** — Major cities from around the world
-- 🌐 **8 languages** — English, Spanish, French, Arabic, Dutch, German, Portuguese, Italian (100% coverage)
+- 🌐 **10 languages** — English, Spanish, French, Arabic, Dutch, German, Portuguese, Italian, Chinese, Japanese (100% coverage)
 - 📦 **Zero dependencies** — Lightweight and fast
-- 🔤 **ISO 3166-1 codes** — Standard alpha-2 country codes
 - 💪 **TypeScript** — Full type definitions included
 - ⚡ **Tree-shakeable** — Import only what you need
 - 🎯 **Universal** — Works with ESM and CommonJS
@@ -166,9 +169,13 @@ import { getCountry } from 'i18n-countries-continents';
 console.log(getCountry('FR', 'es'));
 // {
 //   code: "FR",
+//   alpha3: "FRA",
+//   numeric: "250",
 //   continent: "EU",
 //   flag: "🇫🇷",
 //   name: "Francia",
+//   capital: "Paris",
+//   timezones: ["Europe/Paris"],
 //   callingCode: "+33",
 //   currency: { code: "EUR", symbol: "€", name: "Euro" }
 // }
@@ -304,6 +311,104 @@ const eurozone = getCountriesByCurrency('EUR', 'fr');
 // [{ code: 'FR', name: 'France', ... }, { code: 'DE', name: 'Allemagne', ... }]
 ```
 
+### 20. ISO 3166-1 Alpha-3 & Numeric codes
+
+```js
+import { 
+  getCountryByAlpha3, 
+  getCountryByNumeric,
+  alpha2ToAlpha3, 
+  alpha3ToAlpha2, 
+  alpha2ToNumeric, 
+  numericToAlpha2 
+} from 'i18n-countries-continents';
+
+// Lookup country by 3-letter code
+const usa = getCountryByAlpha3('USA'); // United States
+const fra = getCountryByAlpha3('FRA', 'es'); // Francia
+
+// Lookup country by 3-digit numeric code
+const usNum = getCountryByNumeric('840');
+const frNum = getCountryByNumeric(250);
+
+// Fast O(1) code conversions
+alpha2ToAlpha3('US');   // "USA"
+alpha3ToAlpha2('USA');  // "US"
+alpha2ToNumeric('US');  // "840"
+numericToAlpha2('840'); // "US"
+```
+
+### 21. Capital city lookup & reverse lookup
+
+```js
+import { getCapital, getCountryByCapital } from 'i18n-countries-continents';
+
+// Get official capital city
+console.log(getCapital('FR'));  // "Paris"
+console.log(getCapital('USA')); // "Washington D.C." (supports alpha-3)
+console.log(getCapital('JP'));  // "Tokyo"
+console.log(getCapital('MA'));  // "Rabat"
+
+// Reverse lookup: find country by capital city (case- & accent-insensitive)
+const france = getCountryByCapital('Paris');
+const brazil = getCountryByCapital('brasilia');    // Matches Brasília
+const japan = getCountryByCapital('tokyo', 'es');  // Localized to 'Japón'
+```
+
+### 22. Primary IANA Timezones
+
+```js
+import { getTimezones, getCountriesByTimezone } from 'i18n-countries-continents';
+
+// Get all IANA timezones for a country
+console.log(getTimezones('FR'));  // ["Europe/Paris"]
+console.log(getTimezones('JP'));  // ["Asia/Tokyo"]
+console.log(getTimezones('MA'));  // ["Africa/Casablanca"]
+console.log(getTimezones('US'));  // ["America/New_York", "America/Chicago", ...]
+
+// Reverse lookup: find countries using an IANA timezone
+const frCountries = getCountriesByTimezone('Europe/Paris');
+const maCountries = getCountriesByTimezone('Africa/Casablanca');
+```
+
+### 23. Accent-insensitive & diacritic-insensitive search
+
+All search methods (`searchCountries`, `searchCities`, `searchContinents`, `getCountryByName`, `getContinentByName`) automatically ignore accents and diacritics:
+
+```js
+import { searchCountries, searchCities, searchContinents } from 'i18n-countries-continents';
+
+searchCountries('peru');        // Finds "Perú"
+searchCountries('cote');        // Finds "Côte d'Ivoire"
+searchCountries('aland');       // Finds "Åland Islands"
+searchCountries('sao tome');    // Finds "São Tomé and Príncipe"
+
+searchCities('cordoba', 'es');  // Finds "Córdoba"
+searchCities('coruna', 'es');   // Finds "A Coruña"
+searchCities('juarez', 'es');   // Finds "Acapulco de Juárez"
+
+searchContinents('oceania');    // Finds "Oceanía"
+searchContinents('africa');     // Finds "África"
+```
+
+### 24. Asian Locales: Chinese (`zh`) & Japanese (`ja`)
+
+Full native translations across all 250 countries, 7 continents, and 4,010 cities:
+
+```js
+import { getCountry, getContinents } from 'i18n-countries-continents';
+
+// Chinese (Simplified)
+console.log(getCountry('US', 'zh').name); // "美国"
+console.log(getCountry('CN', 'zh').name); // "中国"
+console.log(getCountry('JP', 'zh').name); // "日本"
+
+// Japanese
+console.log(getCountry('US', 'ja').name); // "アメリカ"
+console.log(getCountry('FR', 'ja').name); // "フランス"
+console.log(getCountry('DE', 'ja').name); // "ドイツ"
+```
+
 ---
 
 ## Framework Usage
@@ -391,9 +496,19 @@ import getCountryName          from 'i18n-countries-continents/get-country-name'
 import getCountryFlag          from 'i18n-countries-continents/get-country-flag';
 import getCountry              from 'i18n-countries-continents/get-country';
 import getCountryByName        from 'i18n-countries-continents/get-country-by-name';
+import getCountryByAlpha3      from 'i18n-countries-continents/get-country-by-alpha3';
+import getCountryByNumeric     from 'i18n-countries-continents/get-country-by-numeric';
 import getCountries            from 'i18n-countries-continents/get-countries';
 import getCountriesByContinent from 'i18n-countries-continents/get-countries-by-continent';
 import searchCountries         from 'i18n-countries-continents/search-countries';
+import getCapital              from 'i18n-countries-continents/get-capital';
+import getCountryByCapital     from 'i18n-countries-continents/get-country-by-capital';
+import getTimezones            from 'i18n-countries-continents/get-timezones';
+import getCountriesByTimezone  from 'i18n-countries-continents/get-countries-by-timezone';
+import getCallingCode          from 'i18n-countries-continents/get-calling-code';
+import getCurrency             from 'i18n-countries-continents/get-currency';
+import getCountriesByCallingCode from 'i18n-countries-continents/get-countries-by-calling-code';
+import getCountriesByCurrency  from 'i18n-countries-continents/get-countries-by-currency';
 import getContinent            from 'i18n-countries-continents/get-continent';
 import getContinentByName      from 'i18n-countries-continents/get-continent-by-name';
 import getContinentByCountry   from 'i18n-countries-continents/get-continent-by-country';
@@ -409,7 +524,9 @@ import isValidCountryCode      from 'i18n-countries-continents/is-valid-country-
 import isValidContinentCode    from 'i18n-countries-continents/is-valid-continent-code';
 import isValidLanguage         from 'i18n-countries-continents/is-valid-language';
 import toSelectOptions         from 'i18n-countries-continents/to-select-options';
+import { normalizeText }       from 'i18n-countries-continents/normalize';
 import { sortCountries, sortContinents, sortCities } from 'i18n-countries-continents/sorting';
+import { alpha2ToAlpha3, alpha3ToAlpha2, alpha2ToNumeric, numericToAlpha2 } from 'i18n-countries-continents/iso-converters';
 import { SUPPORTED_LANGUAGES, LANGUAGES } from 'i18n-countries-continents/constants';
 ```
 
@@ -429,22 +546,24 @@ import { SUPPORTED_LANGUAGES, LANGUAGES } from 'i18n-countries-continents/consta
 | South America | 14 countries |
 
 ### Continents: 7
-All continents fully covered with translations in all 8 languages.
+All continents fully covered with translations in all 10 languages.
 
 ### Cities: 4,010
 Major cities from around the world — capital cities, major metropolitan areas, important economic centers, and cultural landmarks.
 
-### Languages: 8
-| Code | Language | Coverage |
-|------|----------|----------|
-| `en` | English  | 100% |
-| `es` | Spanish  | 100% |
-| `fr` | French   | 100% |
-| `ar` | Arabic   | 100% |
-| `nl` | Dutch    | 100% |
-| `de` | German   | 100% |
-| `pt` | Portuguese | 100% |
-| `it` | Italian  | 100% |
+### Languages: 10
+| Code | Language | Native Name | Coverage |
+|------|----------|-------------|----------|
+| `en` | English  | English     | 100% |
+| `es` | Spanish  | Español     | 100% |
+| `fr` | French   | Français    | 100% |
+| `ar` | Arabic   | العربية     | 100% |
+| `nl` | Dutch    | Nederlands  | 100% |
+| `de` | German   | Deutsch     | 100% |
+| `pt` | Portuguese | Português | 100% |
+| `it` | Italian  | Italiano    | 100% |
+| `zh` | Chinese  | 中文        | 100% |
+| `ja` | Japanese | 日本語      | 100% |
 
 ---
 
@@ -453,42 +572,67 @@ Major cities from around the world — capital cities, major metropolitan areas,
 ### Country Functions
 
 #### `getCountry(code, language?): Country | undefined`
-Get the complete country object (`code`, `name`, `continent`, `flag`) for a country code.
+Get the complete country object (`code`, `alpha3`, `numeric`, `name`, `continent`, `flag`, `capital`, `timezones`, `callingCode`, `currency`). Accepts both 2-letter alpha-2 (`'FR'`) and 3-letter alpha-3 (`'FRA'`) codes (case-insensitive).
+
+#### `getCountryByAlpha3(alpha3, language?): Country | undefined`
+Get a Country object by its 3-letter ISO 3166-1 alpha-3 code (e.g. `'USA'`, `'FRA'`, `'MAR'`).
+
+#### `getCountryByNumeric(numeric, language?): Country | undefined`
+Get a Country object by its 3-digit ISO 3166-1 numeric code (e.g. `'840'` or `840`).
 
 #### `getCountryName(code, language?): string | undefined`
 Get the name of a country by its ISO 3166-1 alpha-2 code.
 - `code` — country code, e.g. `'US'`, `'FR'` (case-insensitive)
-- `language` — one of `'en' | 'es' | 'fr' | 'ar' | 'nl' | 'de' | 'pt' | 'it'` (default: `'en'`)
+- `language` — one of `'en' | 'es' | 'fr' | 'ar' | 'nl' | 'de' | 'pt' | 'it' | 'zh' | 'ja'` (default: `'en'`)
 
 #### `getCountryByName(name, language?): Country | undefined`
-Reverse lookup: find a country object by its translated or English name.
+Reverse lookup: find a country object by its translated or English name (case- and accent-insensitive).
 
 #### `getCountryFlag(code): string | undefined`
 Get the flag emoji for a country by its ISO 3166-1 alpha-2 code.
 
 #### `getCountries(language?): Country[]`
-Get all 250 countries with their names, flags, and continent codes in the specified language.
+Get all 250 countries with their names, flags, continent codes, alpha-3, numeric codes, capitals, timezones, calling codes, and currencies in the specified language.
 
 #### `getCountriesByContinent(continentCode, language?): Country[]`
 Get all countries belonging to a specific continent (`'AF' | 'AN' | 'AS' | 'EU' | 'NA' | 'OC' | 'SA'`).
 
 #### `searchCountries(query, language?, limit?): Country[]`
-Search for countries by name or code. (default `limit`: 10)
+Search for countries by name, alpha-2 code, alpha-3 code, numeric code, capital city, timezone, calling code, or currency. Searches are accent- and diacritic-insensitive with exact and prefix match prioritization (default `limit`: 10).
+
+#### `getCapital(code): string | undefined`
+Get the official capital city for a country by alpha-2 or alpha-3 code (e.g. `'FR'` -> `'Paris'`, `'USA'` -> `'Washington D.C.'`). Convenience alias: `getCountryCapital`.
+
+#### `getCountryByCapital(capitalName, language?): Country | undefined`
+Reverse lookup: find a country object by its capital city name (case- and accent-insensitive).
+
+#### `getTimezones(code): string[]`
+Get the list of IANA timezone identifiers for a country (e.g. `'FR'` -> `['Europe/Paris']`). Convenience alias: `getCountryTimezones`.
+
+#### `getCountriesByTimezone(timezone, language?): Country[]`
+Find all countries using a specific IANA timezone identifier (e.g. `'Europe/Paris'`).
 
 #### `getContinentByCountry(code): string | undefined`
 Get the continent code for a country (e.g. `'EU'`, `'AS'`, `'NA'`).
 
 #### `getCallingCode(code): string | undefined`
-Get the international calling dial code for a country (e.g. `'+1'`, `'+33'`, `'+212'`).
+Get the international calling dial code for a country (e.g. `'+1'`, `'+33'`, `'+212'`). Convenience alias: `getCountryCallingCode`.
 
 #### `getCurrency(code): Currency | undefined`
-Get currency information (`{ code, symbol, name }`) for a country (e.g. `{ code: 'USD', symbol: '$', name: 'US Dollar' }`).
+Get currency information (`{ code, symbol, name }`) for a country (e.g. `{ code: 'USD', symbol: '$', name: 'US Dollar' }`). Convenience alias: `getCountryCurrency`.
 
 #### `getCountriesByCallingCode(callingCode, language?): Country[]`
 Find all countries that share an international calling code (e.g. `'+1'` returns US, Canada, etc.).
 
 #### `getCountriesByCurrency(currencyCode, language?): Country[]`
 Find all countries that use a specific currency code (e.g. `'EUR'` returns Eurozone countries).
+
+#### ISO Code Conversion Helpers
+Fast $O(1)$ conversion between ISO standards:
+- `alpha2ToAlpha3(alpha2): string | undefined` (e.g. `'US'` -> `'USA'`)
+- `alpha3ToAlpha2(alpha3): string | undefined` (e.g. `'USA'` -> `'US'`)
+- `alpha2ToNumeric(alpha2): string | undefined` (e.g. `'US'` -> `'840'`)
+- `numericToAlpha2(numeric): string | undefined` (e.g. `'840'` or `840` -> `'US'`)
 
 ---
 
@@ -501,13 +645,13 @@ Get the complete continent object (`code`, `name`) for a continent code.
 Get the name of a continent by its code (`'AF' | 'AN' | 'AS' | 'EU' | 'NA' | 'OC' | 'SA'`).
 
 #### `getContinentByName(name, language?): Continent | undefined`
-Reverse lookup: find a continent by its translated or English name.
+Reverse lookup: find a continent by its translated or English name (case- and accent-insensitive).
 
 #### `getContinents(language?): Continent[]`
 Get all 7 continents with their names in the specified language.
 
 #### `searchContinents(query, language?, limit?): Continent[]`
-Search for continents by name or 2-letter code (default `limit`: 7).
+Search for continents by name or 2-letter code (case- and accent-insensitive, default `limit`: 7).
 
 ---
 
@@ -530,8 +674,15 @@ Get the translated name of a city by its English name.
 Get all 4,010 cities with their translated names in the specified language.
 
 #### `searchCities(query, language?, limit?): City[]`
-Search for cities by name (searches both English and translated names).
+Search for cities by name (searches both English and translated names, case- and accent-insensitive).
 - `limit` — max results to return (default: `10`)
+
+---
+
+### Text & Normalization Helpers
+
+#### `normalizeText(str): string`
+Lowercases, trims, and strips Unicode accents/diacritics using standard Unicode NFD decomposition (e.g. `'Perú'` -> `'peru'`, `'Côte d\'Ivoire'` -> `'cote d\'ivoire'`).
 
 ---
 
@@ -557,7 +708,7 @@ Check if a string is a valid ISO 3166-1 alpha-2 country code.
 Check if a string is a valid 2-letter continent code.
 
 #### `isValidLanguage(language): boolean`
-TypeScript type-guard checking if a language string is supported (`'en'`, `'es'`, `'fr'`, `'ar'`, `'nl'`, `'de'`, `'pt'`, `'it'`).
+TypeScript type-guard checking if a language string is supported (`'en'`, `'es'`, `'fr'`, `'ar'`, `'nl'`, `'de'`, `'pt'`, `'it'`, `'zh'`, `'ja'`).
 
 ---
 
@@ -576,14 +727,16 @@ Transform countries, continents, or cities into `{ value, label }` options for H
 
 ```typescript
 import { SUPPORTED_LANGUAGES, LANGUAGES } from 'i18n-countries-continents';
-// ['en', 'es', 'fr', 'ar', 'nl', 'de', 'pt', 'it']
+// ['en', 'es', 'fr', 'ar', 'nl', 'de', 'pt', 'it', 'zh', 'ja']
 
-type SupportedLanguage = 'en' | 'es' | 'fr' | 'ar' | 'nl' | 'de' | 'pt' | 'it';
+type SupportedLanguage = 
+  | 'en' | 'es' | 'fr' | 'ar' | 'nl' 
+  | 'de' | 'pt' | 'it' | 'zh' | 'ja';
 
 interface Language {
   code: SupportedLanguage;
-  name: string;       // e.g. "Spanish"
-  nativeName: string; // e.g. "Español"
+  name: string;       // e.g. "Chinese", "Japanese"
+  nativeName: string; // e.g. "中文", "日本語"
 }
 
 interface Currency {
@@ -594,11 +747,15 @@ interface Currency {
 
 interface Country {
   code: string;        // ISO 3166-1 alpha-2, e.g. "US"
-  continent: string;   // e.g. "NA"
-  name: string;        // translated name
-  flag: string;        // emoji, e.g. "🇺🇸"
-  callingCode: string; // international dial code, e.g. "+1", "+33"
-  currency: Currency;  // currency info (code, symbol, name)
+  alpha3: string;      // ISO 3166-1 alpha-3, e.g. "USA"
+  numeric: string;     // ISO 3166-1 numeric, e.g. "840"
+  continent: string;   // Continent code, e.g. "NA"
+  name: string;        // Localized country name
+  flag: string;        // Emoji flag, e.g. "🇺🇸"
+  capital: string;     // Official capital city, e.g. "Washington D.C."
+  timezones: string[]; // Primary IANA timezones, e.g. ["America/New_York", ...]
+  callingCode: string; // International dial code, e.g. "+1", "+33"
+  currency: Currency;  // Currency info (code, symbol, name)
 }
 
 interface Continent {

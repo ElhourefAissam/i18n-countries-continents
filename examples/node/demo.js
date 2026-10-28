@@ -12,56 +12,80 @@ import {
   getCurrency,
   getCountriesByCallingCode,
   getCountriesByCurrency,
+  getCountryByAlpha3,
+  getCountryByNumeric,
+  alpha2ToAlpha3,
+  alpha3ToAlpha2,
+  alpha2ToNumeric,
+  numericToAlpha2,
+  getCapital,
+  getCountryByCapital,
+  getTimezones,
+  getCountriesByTimezone,
   getSupportedLanguages,
   toSelectOptions,
 } from '../../dist/index.js';
 
 console.log('🌍 i18n-countries-continents - Node.js Demo\n');
 
-// 1. Supported languages
-console.log('1️⃣ Supported Languages:');
+// 1. Supported languages (10 languages)
+console.log('1️⃣ Supported Languages (10 total):');
 const languages = getSupportedLanguages();
 console.table(languages);
 
-// 2. Multi-language translation of a country
+// 2. Multi-language translation of a country across all 10 languages
 console.log('\n2️⃣ Country Translations for Morocco (MA):');
-['en', 'fr', 'es', 'ar', 'de', 'pt', 'it', 'nl'].forEach((lang) => {
+['en', 'fr', 'es', 'ar', 'de', 'pt', 'it', 'nl', 'zh', 'ja'].forEach((lang) => {
   const name = getCountryName('MA', lang);
   console.log(`   [${lang.toUpperCase()}] ${name}`);
 });
 
-// 3. Flags and reverse lookup
-console.log('\n3️⃣ Flag & Continent Lookup:');
+// 3. Flags and full country metadata
+console.log('\n3️⃣ Full Country Object & ISO Identifiers:');
 const us = getCountry('US', 'en');
-console.log(`   ${us?.flag} Country: ${us?.name} (${us?.code})`);
-console.log(`   Continent code: ${us?.continent}`);
-console.log(`   Continent name (ES): ${getContinentName(us?.continent || '', 'es')}`);
+console.log(`   ${us?.flag} Country: ${us?.name}`);
+console.log(`   Alpha-2: ${us?.code} | Alpha-3: ${us?.alpha3} | Numeric: ${us?.numeric}`);
+console.log(`   Capital: ${us?.capital}`);
+console.log(`   Timezones: ${us?.timezones.slice(0, 3).join(', ')}... (${us?.timezones.length} total)`);
+console.log(`   Continent: ${us?.continent} (${getContinentName(us?.continent || '', 'es')})`);
 console.log(`   Calling code: ${us?.callingCode}`);
 console.log(`   Currency: ${us?.currency.code} (${us?.currency.symbol}) - ${us?.currency.name}`);
 
-// 4. Calling codes & Currencies (NEW in v1.1.0)
-console.log('\n4️⃣ Calling Codes & Currencies:');
+// 4. ISO 3166-1 Alpha-3 & Numeric Codes (NEW in v1.2.0)
+console.log('\n4️⃣ ISO 3166-1 Conversions & Lookups:');
+console.log(`   alpha2ToAlpha3('US') -> ${alpha2ToAlpha3('US')}`);
+console.log(`   alpha3ToAlpha2('USA') -> ${alpha3ToAlpha2('USA')}`);
+console.log(`   alpha2ToNumeric('US') -> ${alpha2ToNumeric('US')}`);
+console.log(`   numericToAlpha2('840') -> ${numericToAlpha2('840')}`);
+const japanByA3 = getCountryByAlpha3('JPN', 'fr');
+console.log(`   getCountryByAlpha3('JPN', 'fr') -> ${japanByA3?.flag} ${japanByA3?.name}`);
+const franceByNum = getCountryByNumeric(250, 'es');
+console.log(`   getCountryByNumeric(250, 'es') -> ${franceByNum?.flag} ${franceByNum?.name}`);
+
+// 5. Capitals & Timezones (NEW in v1.2.0)
+console.log('\n5️⃣ Capitals & Timezones:');
+console.log(`   France capital: ${getCapital('FR')}`);
+console.log(`   Japan capital: ${getCapital('JP')}`);
+console.log(`   Reverse capital lookup ('Paris'): ${getCountryByCapital('Paris')?.flag} ${getCountryByCapital('Paris')?.name}`);
+console.log(`   France timezones: ${getTimezones('FR').join(', ')}`);
+console.log(`   Morocco timezones: ${getTimezones('MA').join(', ')}`);
+
+// 6. Accent-Insensitive Search (NEW in v1.2.0)
+console.log('\n6️⃣ Accent-Insensitive Search:');
+const peruSearch = searchCountries('peru', 'es', 2);
+console.log(`   Search "peru" in Spanish -> ${peruSearch.map(c => `${c.flag} ${c.name}`).join(', ')}`);
+const coteSearch = searchCountries('cote', 'fr', 2);
+console.log(`   Search "cote" in French -> ${coteSearch.map(c => `${c.flag} ${c.name}`).join(', ')}`);
+
+// 7. Calling codes & Currencies
+console.log('\n7️⃣ Calling Codes & Currencies:');
 console.log(`   France (FR): Phone ${getCallingCode('FR')}, Currency ${getCurrency('FR')?.code} (${getCurrency('FR')?.symbol})`);
 console.log(`   Japan (JP):  Phone ${getCallingCode('JP')}, Currency ${getCurrency('JP')?.code} (${getCurrency('JP')?.symbol})`);
-console.log(`   Morocco (MA): Phone ${getCallingCode('MA')}, Currency ${getCurrency('MA')?.code} (${getCurrency('MA')?.symbol})`);
 
-const euroCountries = getCountriesByCurrency('EUR', 'fr').slice(0, 4);
-console.log(`   Sample Eurozone Countries (FR): ${euroCountries.map(c => `${c.flag} ${c.name}`).join(', ')}`);
-
-// 5. Filter by continent
-console.log('\n5️⃣ African Countries (first 5 in French):');
-const africanCountries = getCountriesByContinent('AF', 'fr').slice(0, 5);
-africanCountries.forEach((c) => console.log(`   ${c.flag} ${c.name} (${c.code}) - ${c.callingCode}`));
-
-// 6. Search countries (by name, code, phone code, or currency)
-console.log('\n6️⃣ Search countries for "+33" (phone code):');
-const searchByPhone = searchCountries('+33', 'en');
-searchByPhone.forEach((c) => console.log(`   ${c.flag} ${c.name} (Code: ${c.code}, Phone: ${c.callingCode})`));
-
-// 7. UI Select Options Formatter (with flags, dial codes & German alphabetical sorting)
-console.log('\n7️⃣ Format as UI Select Options (with phone code):');
+// 8. UI Select Options Formatter
+console.log('\n8️⃣ Format as UI Select Options (with flags, dial codes & localized sorting):');
 const selectOptions = toSelectOptions(getCountries('de').slice(0, 3), {
-  label: (c) => `${c.flag} ${c.name} (${c.callingCode})`,
+  label: (c) => `${c.flag} ${c.name} (${c.callingCode}) - ${c.capital}`,
   sort: true,
   language: 'de',
 });

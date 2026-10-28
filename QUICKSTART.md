@@ -19,17 +19,43 @@ import {
   // Country services
   getCountryName,
   getCountryFlag,
+  getCountry,
   getCountries,
+  getCountryByName,
+  getCountryByAlpha3,
+  getCountryByNumeric,
   getContinentByCountry,
+  searchCountries,
+  // Capital & Timezone services
+  getCapital,
+  getCountryByCapital,
+  getTimezones,
+  getCountriesByTimezone,
+  // Phone & Currency services
+  getCallingCode,
+  getCurrency,
+  getCountriesByCallingCode,
+  getCountriesByCurrency,
   // Continent services
   getContinentName,
   getContinents,
+  getContinent,
+  getContinentByName,
+  searchContinents,
   // City services
   getCityName,
   getCities,
+  getCity,
   searchCities,
-  // Constants
+  // Utilities & Constants
   SUPPORTED_LANGUAGES,
+  LANGUAGES,
+  getSupportedLanguages,
+  toSelectOptions,
+  alpha2ToAlpha3,
+  alpha3ToAlpha2,
+  alpha2ToNumeric,
+  numericToAlpha2,
 } from 'i18n-countries-continents';
 ```
 
@@ -327,11 +353,22 @@ const countries: Country[] = getCountries(lang);
 ## Available Languages
 
 ```typescript
-import { SUPPORTED_LANGUAGES } from 'i18n-countries-continents';
+import { SUPPORTED_LANGUAGES, LANGUAGES } from 'i18n-countries-continents';
 
 console.log(SUPPORTED_LANGUAGES);
-// ['en', 'es', 'fr', 'ar', 'nl']
+// ['en', 'es', 'fr', 'ar', 'nl', 'de', 'pt', 'it', 'zh', 'ja']
 ```
+
+- `en` — English
+- `es` — Spanish (Español)
+- `fr` — French (Français)
+- `ar` — Arabic (العربية)
+- `nl` — Dutch (Nederlands)
+- `de` — German (Deutsch)
+- `pt` — Portuguese (Português)
+- `it` — Italian (Italiano)
+- `zh` — Chinese (中文)
+- `ja` — Japanese (日本語)
 
 ## Continent Codes
 
@@ -343,15 +380,14 @@ console.log(SUPPORTED_LANGUAGES);
 - `OC` - Oceania
 - `SA` - South America
 
-## Country Codes
+## Country Codes & Identifiers
 
-All codes follow ISO 3166-1 alpha-2 standard:
-- `US` - United States
-- `FR` - France
-- `DE` - Germany
-- `CN` - China
-- `JP` - Japan
-- ... and 41 more!
+All 250 countries provide complete ISO 3166-1 identifiers:
+- **Alpha-2** (2-letter): `US`, `FR`, `DE`, `JP`, `MA`, ...
+- **Alpha-3** (3-letter): `USA`, `FRA`, `DEU`, `JPN`, `MAR`, ...
+- **Numeric** (3-digit): `840`, `250`, `276`, `392`, `504`, ...
+- **Capitals**: `Washington D.C.`, `Paris`, `Berlin`, `Tokyo`, `Rabat`, ...
+- **Timezones**: `['America/New_York', ...]`, `['Europe/Paris']`, `['Asia/Tokyo']`, ...
 
 ## Tips
 

@@ -27,10 +27,10 @@ python3 -m http.server 3000 --directory examples/interactive-demo
 ```
 
 ### Features demonstrated:
-- Multi-language switcher (`en`, `es`, `fr`, `ar`, `nl`, `de`, `pt`, `it`)
-- Real-time country search by name or ISO code
+- Multi-language switcher across 10 languages (`en`, `es`, `fr`, `ar`, `nl`, `de`, `pt`, `it`, `zh`, `ja`)
+- Real-time country search by name, ISO alpha-2, alpha-3, numeric code, capital, or dial code
 - Continent filtering buttons
-- Interactive card view with flag emoji and metadata
+- Interactive card view with flag emoji, ISO Alpha-3, calling code, currency, and capital city
 - Dynamic JavaScript code snippet generator
 
 ---

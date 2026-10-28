@@ -1,7 +1,7 @@
 {
   "name": "i18n-countries-continents",
-  "version": "1.1.0",
-  "description": "Get country, continent, and city names in different languages. 250 countries, 7 continents, 4,010 cities, phone calling codes, and currencies in 8 languages. Works in React, Angular, Vue, Node.js, and any JavaScript environment.",
+  "version": "1.2.0",
+  "description": "Get country, continent, and city names in different languages. 250 countries, 7 continents, 4,010 cities, ISO alpha-3/numeric codes, capitals, timezones, phone calling codes, and currencies in 10 languages. Works in React, Angular, Vue, Node.js, and any JavaScript environment.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -63,7 +63,15 @@
     "phone-codes",
     "dial-codes",
     "currencies",
-    "currency-codes"
+    "currency-codes",
+    "alpha-3",
+    "numeric-codes",
+    "capitals",
+    "capital-cities",
+    "timezones",
+    "iana-timezones",
+    "chinese",
+    "japanese"
   ],
   "author": "Aissam EL Houref",
   "repository": {

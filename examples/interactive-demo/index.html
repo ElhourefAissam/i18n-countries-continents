@@ -278,7 +278,7 @@
       </div>
       <h1>i18n-countries-continents</h1>
       <p class="subtitle">
-        Interactive browser demo showing 250 countries, 7 continents, and flags localized across 8 languages.
+        Interactive browser demo showing 250 countries, 7 continents, ISO alpha-3/numeric codes, capitals, timezones, and flags localized across 10 languages.
       </p>
     </header>
 
@@ -415,25 +415,38 @@
 
     function updateSnippet(countryCode) {
       selectedCountryCode = countryCode || selectedCountryCode;
-      const countryName = getCountryName(selectedCountryCode, currentLang);
-      const flag = getCountryFlag(selectedCountryCode);
-      const phone = getCallingCode ? getCallingCode(selectedCountryCode) : '';
-      const cur = getCurrency ? getCurrency(selectedCountryCode) : null;
+      const country = pkg.getCountry(selectedCountryCode, currentLang);
+      const countryName = country?.name || '';
+      const flag = country?.flag || '';
+      const phone = country?.callingCode || '';
+      const alpha3 = country?.alpha3 || '';
+      const numeric = country?.numeric || '';
+      const capital = country?.capital || '';
+      const timezones = country?.timezones || [];
+      const cur = country?.currency || null;
 
       codeSnippet.textContent =
 `import {
-  getCountryName,
-  getCountryFlag,
+  getCountry,
+  getCountryByAlpha3,
+  getCapital,
+  getTimezones,
   getCallingCode,
-  getCurrency,
-  getContinentByCountry
+  getCurrency
 } from 'i18n-countries-continents';
 
-const name = getCountryName('${selectedCountryCode}', '${currentLang}'); // "${countryName}"
-const flag = getCountryFlag('${selectedCountryCode}');                   // "${flag}"
-const phone = getCallingCode('${selectedCountryCode}');                  // "${phone}"
-const currency = getCurrency('${selectedCountryCode}');                  // ${JSON.stringify(cur)}
-const continent = getContinentByCountry('${selectedCountryCode}');        // "NA"`;
+const country = getCountry('${selectedCountryCode}', '${currentLang}');
+// {
+//   name: "${countryName}",
+//   flag: "${flag}",
+//   code: "${selectedCountryCode}",
+//   alpha3: "${alpha3}",
+//   numeric: "${numeric}",
+//   capital: "${capital}",
+//   timezones: ${JSON.stringify(timezones.slice(0, 2))},
+//   callingCode: "${phone}",
+//   currency: ${JSON.stringify(cur)}
+// }`;
     }
 
     function renderCountries() {
@@ -452,10 +465,12 @@ const continent = getContinentByCountry('${selectedCountryCode}');        // "NA
             <div class="country-name" title="${c.name}">${c.name}</div>
             <div class="country-meta">
               <span class="badge">${c.code}</span>
+              ${c.alpha3 ? `<span class="badge" title="Alpha-3">${c.alpha3}</span>` : ''}
               <span class="badge continent">${c.continent}</span>
               ${c.callingCode ? `<span class="badge phone">${c.callingCode}</span>` : ''}
               ${c.currency ? `<span class="badge currency">${c.currency.code} ${c.currency.symbol}</span>` : ''}
             </div>
+            ${c.capital ? `<div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.35rem;">🏛️ Capital: ${c.capital}</div>` : ''}
           </div>
         </div>
       `).join('');
