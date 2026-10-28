@@ -1,19 +1,21 @@
 import { getLangContinents } from "../../data/loader.js";
 import { SupportedLanguage } from "../../utils/types.js";
+import { normalizeText } from "../../utils/normalize.js";
 import { Continent } from "./get-continents.js";
 
 /**
  * Search for continents by localized name or 2-letter continent code.
+ * Searches are accent- and diacritic-insensitive (e.g. searching 'oceania' matches 'Oceanía', 'africa' matches 'África').
  *
- * @param query - Search string (code or name, case-insensitive)
+ * @param query - Search string (code or name, case- and accent-insensitive)
  * @param language - Target language (default: 'en')
  * @param limit - Maximum number of results to return (default: 7)
  * @returns Array of matching Continent objects
  *
  * @example
  * ```ts
- * searchContinents('eu', 'en');
- * // [{ code: 'EU', name: 'Europe' }]
+ * searchContinents('oceania', 'es');
+ * // [{ code: 'OC', name: 'Oceanía' }]
  * ```
  */
 export default function searchContinents(
@@ -23,7 +25,8 @@ export default function searchContinents(
 ): Continent[] {
   if (!query || typeof query !== "string") return [];
 
-  const normalized = query.toLowerCase().trim();
+  const rawTrimmed = query.trim().toLowerCase();
+  const normalized = normalizeText(query);
   if (!normalized || limit <= 0) return [];
 
   const entries = getLangContinents(language);
@@ -31,8 +34,9 @@ export default function searchContinents(
 
   for (const [code, name] of entries) {
     if (
-      code.toLowerCase() === normalized ||
-      name.toLowerCase().includes(normalized)
+      code.toLowerCase() === rawTrimmed ||
+      name.toLowerCase().includes(rawTrimmed) ||
+      normalizeText(name).includes(normalized)
     ) {
       results.push({ code, name });
       if (results.length >= limit) break;

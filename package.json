@@ -234,6 +234,11 @@
       "import": "./dist/utils/sorting.js",
       "require": "./dist/utils/sorting.js"
     },
+    "./normalize": {
+      "types": "./dist/utils/normalize.d.ts",
+      "import": "./dist/utils/normalize.js",
+      "require": "./dist/utils/normalize.js"
+    },
     "./constants": {
       "types": "./dist/utils/constants.d.ts",
       "import": "./dist/utils/constants.js",

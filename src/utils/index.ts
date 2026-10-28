@@ -1,6 +1,7 @@
 export * from "./types.js";
 export * from "./constants.js";
 export * from "./sorting.js";
+export * from "./normalize.js";
 export { default as toSelectOptions } from "./to-select-options.js";
 export type {
   SelectOption,
