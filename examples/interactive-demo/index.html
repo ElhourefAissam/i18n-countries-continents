@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>i18n-countries-continents — Interactive Explorer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22><text y=%2226%22 font-size=%2224%22>🌍</text></svg>" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-hover: #334155;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --primary-hover: #0ea5e9;
+      --accent: #a855f7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .badge-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 650px;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    .controls-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    .controls-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    select, input {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    select:focus, input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+    }
+
+    .continent-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .pill-btn {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.4rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pill-btn:hover {
+      background: var(--card-hover);
+      color: var(--text);
+    }
+
+    .pill-btn.active {
+      background: var(--primary);
+      color: #0f172a;
+      font-weight: 600;
+      border-color: var(--primary);
+    }
+
+    .stats-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .country-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .country-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+      background: var(--card-hover);
+      box-shadow: 0 8px 20px -4px rgba(56, 189, 248, 0.15);
+    }
+
+    .flag-icon {
+      font-size: 2.25rem;
+      line-height: 1;
+    }
+
+    .country-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .country-name {
+      font-weight: 600;
+      font-size: 1.05rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .country-meta {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-top: 0.25rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: #0f172a;
+      color: var(--primary);
+      border: 1px solid var(--border);
+    }
+
+    .badge.continent {
+      color: var(--accent);
+    }
+
+    .code-preview-box {
+      margin-top: 2rem;
+      background: #090d16;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+
+    .code-preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9rem;
+      color: #38bdf8;
+      overflow-x: auto;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge-bar">
+        <a href="https://www.npmjs.com/package/i18n-countries-continents" target="_blank" rel="noopener">
+          <img src="https://img.shields.io/npm/v/i18n-countries-continents.svg" alt="npm version" />
+        </a>
+        <a href="https://bundlephobia.com/package/i18n-countries-continents" target="_blank" rel="noopener">
+          <img src="https://img.shields.io/bundlephobia/minzip/i18n-countries-continents" alt="bundle size" />
+        </a>
+        <a href="https://github.com/ElhourefAissam/i18n-countries-continents" target="_blank" rel="noopener">
+          <img src="https://img.shields.io/badge/GitHub-Repo-181717.svg?logo=github" alt="github" />
+        </a>
+      </div>
+      <h1>i18n-countries-continents</h1>
+      <p class="subtitle">
+        Interactive browser demo showing 250 countries, 7 continents, and flags localized across 8 languages.
+      </p>
+    </header>
+
+    <div class="controls-panel">
+      <div class="controls-grid">
+        <div class="form-group">
+          <label for="lang-select">Language (Locale)</label>
+          <select id="lang-select">
+            <option value="en">English (English)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="fr">Français (French)</option>
+            <option value="ar">العربية (Arabic)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="pt">Português (Portuguese)</option>
+            <option value="it">Italiano (Italian)</option>
+            <option value="nl">Nederlands (Dutch)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="search-input">Instant Search</label>
+          <input type="text" id="search-input" placeholder="Type country name or ISO code (e.g. US, France)..." />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Filter by Continent</label>
+        <div class="continent-pills" id="continent-pills">
+          <button class="pill-btn active" data-code="">All Continents</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <span id="results-count">Loading package...</span>
+      <span id="current-locale-info"></span>
+    </div>
+
+    <div id="countries-grid" class="grid">
+      <div class="loading">Loading localized countries...</div>
+    </div>
+
+    <div class="code-preview-box">
+      <div class="code-preview-header">
+        <span>⚡ Quick Integration Snippet</span>
+        <span id="snippet-lang-tag">ESM</span>
+      </div>
+      <pre id="code-snippet">// Select a country card above to preview code snippet</pre>
+    </div>
+  </div>
+
+  <script type="module">
+    // Load package from ESM CDN
+    import {
+      getCountries,
+      getContinents,
+      getCountriesByContinent,
+      getContinentName,
+      getCountryName,
+      getCountryFlag,
+      searchCountries,
+      getSupportedLanguages
+    } from 'https://esm.sh/i18n-countries-continents@1.0.7';
+
+    // State
+    let currentLang = 'en';
+    let currentContinent = '';
+    let searchQuery = '';
+    let selectedCountryCode = 'US';
+
+    const langSelect = document.getElementById('lang-select');
+    const searchInput = document.getElementById('search-input');
+    const continentPillsContainer = document.getElementById('continent-pills');
+    const countriesGrid = document.getElementById('countries-grid');
+    const resultsCount = document.getElementById('results-count');
+    const codeSnippet = document.getElementById('code-snippet');
+
+    function initLanguages() {
+      const languages = getSupportedLanguages();
+      langSelect.innerHTML = languages
+        .map(l => `<option value="${l.code}">${l.nativeName} (${l.name})</option>`)
+        .join('');
+      langSelect.value = currentLang;
+    }
+
+    function renderContinentPills() {
+      const continents = getContinents(currentLang);
+      const allBtn = `<button class="pill-btn ${currentContinent === '' ? 'active' : ''}" data-code="">All Continents</button>`;
+      const pills = continents.map(c => {
+        const isActive = currentContinent === c.code ? 'active' : '';
+        return `<button class="pill-btn ${isActive}" data-code="${c.code}">${c.name}</button>`;
+      }).join('');
+
+      continentPillsContainer.innerHTML = allBtn + pills;
+
+      continentPillsContainer.querySelectorAll('.pill-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentContinent = btn.getAttribute('data-code');
+          renderContinentPills();
+          renderCountries();
+        });
+      });
+    }
+
+    function getFilteredCountries() {
+      let list = currentContinent
+        ? getCountriesByContinent(currentContinent, currentLang)
+        : getCountries(currentLang);
+
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase().trim();
+        list = list.filter(c =>
+          c.name.toLowerCase().includes(q) ||
+          c.code.toLowerCase().includes(q)
+        );
+      }
+
+      return list;
+    }
+
+    function updateSnippet(countryCode) {
+      selectedCountryCode = countryCode || selectedCountryCode;
+      const countryName = getCountryName(selectedCountryCode, currentLang);
+      const flag = getCountryFlag(selectedCountryCode);
+
+      codeSnippet.textContent =
+`import { getCountryName, getCountryFlag, getContinentByCountry } from 'i18n-countries-continents';
+
+const countryName = getCountryName('${selectedCountryCode}', '${currentLang}'); // "${countryName}"
+const flag = getCountryFlag('${selectedCountryCode}');                   // "${flag}"
+const continent = getContinentByCountry('${selectedCountryCode}');        // "NA"`;
+    }
+
+    function renderCountries() {
+      const countries = getFilteredCountries();
+      resultsCount.textContent = `Showing ${countries.length} countries (${currentLang.toUpperCase()})`;
+
+      if (countries.length === 0) {
+        countriesGrid.innerHTML = `<div class="loading" style="grid-column: 1/-1;">No countries found matching "${searchQuery}".</div>`;
+        return;
+      }
+
+      countriesGrid.innerHTML = countries.map(c => `
+        <div class="country-card" data-code="${c.code}">
+          <div class="flag-icon">${c.flag || '🏳️'}</div>
+          <div class="country-info">
+            <div class="country-name" title="${c.name}">${c.name}</div>
+            <div class="country-meta">
+              <span class="badge">${c.code}</span>
+              <span class="badge continent">${c.continent}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      countriesGrid.querySelectorAll('.country-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const code = card.getAttribute('data-code');
+          updateSnippet(code);
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      });
+    }
+
+    // Event listeners
+    langSelect.addEventListener('change', (e) => {
+      currentLang = e.target.value;
+      renderContinentPills();
+      renderCountries();
+      updateSnippet(selectedCountryCode);
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderCountries();
+    });
+
+    // Initial render
+    initLanguages();
+    renderContinentPills();
+    renderCountries();
+    updateSnippet(selectedCountryCode);
+  </script>
+</body>
+</html>

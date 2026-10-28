@@ -4,6 +4,9 @@ Get country, continent, and city names in different languages. **250 countries**
 
 [![npm version](https://img.shields.io/npm/v/i18n-countries-continents.svg)](https://www.npmjs.com/package/i18n-countries-continents)
 [![npm downloads](https://img.shields.io/npm/dm/i18n-countries-continents.svg)](https://www.npmjs.com/package/i18n-countries-continents)
+[![CI](https://github.com/ElhourefAissam/i18n-countries-continents/actions/workflows/ci.yml/badge.svg)](https://github.com/ElhourefAissam/i18n-countries-continents/actions/workflows/ci.yml)
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/i18n-countries-continents)](https://bundlephobia.com/package/i18n-countries-continents)
+[![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](https://www.npmjs.com/package/i18n-countries-continents)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 
@@ -35,6 +38,15 @@ pnpm add i18n-countries-continents
 - 💪 **TypeScript** — Full type definitions included
 - ⚡ **Tree-shakeable** — Import only what you need
 - 🎯 **Universal** — Works with ESM and CommonJS
+
+---
+
+## Live Demo & Examples
+
+- 🎮 **[Interactive Browser Demo](examples/interactive-demo/index.html)** — Explore all 250 countries, filter by continent, test instant search, and switch languages in real-time.
+- ⚛️ **[React Country Select Component](examples/react/CountrySelect.tsx)** — Complete, accessible, typed `<CountrySelect />` component with flags and localized sorting.
+- 💻 **[Node.js Demo Script](examples/node/demo.js)** — Ready-to-run CLI demonstration.
+- 📖 **[Examples Guide](examples/README.md)** — Additional snippets for Vue 3, Next.js (App Router), and UI select option formatters.
 
 ---
 
