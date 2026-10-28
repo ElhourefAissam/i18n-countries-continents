@@ -59,6 +59,7 @@ export default function getCountryByName(
     continent,
     flag,
     name: countryName,
+    capital: meta?.capital || "",
     callingCode: meta?.callingCode || "",
     currency: meta?.currency || { code: "", symbol: "", name: "" },
   };

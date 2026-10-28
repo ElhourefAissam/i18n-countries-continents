@@ -209,6 +209,16 @@
       "import": "./dist/services/countries/iso-converters.js",
       "require": "./dist/services/countries/iso-converters.js"
     },
+    "./get-capital": {
+      "types": "./dist/services/countries/get-capital.d.ts",
+      "import": "./dist/services/countries/get-capital.js",
+      "require": "./dist/services/countries/get-capital.js"
+    },
+    "./get-country-by-capital": {
+      "types": "./dist/services/countries/get-country-by-capital.d.ts",
+      "import": "./dist/services/countries/get-country-by-capital.js",
+      "require": "./dist/services/countries/get-country-by-capital.js"
+    },
     "./is-valid-country-code": {
       "types": "./dist/services/validation/is-valid-country-code.d.ts",
       "import": "./dist/services/validation/is-valid-country-code.js",

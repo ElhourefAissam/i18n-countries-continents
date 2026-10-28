@@ -15,6 +15,7 @@ const testSuites = [
   "test-calling-codes-and-currencies.js",
   "test-iso-codes.js",
   "test-accent-search.js",
+  "test-capitals.js",
 ];
 
 console.log("========================================");
