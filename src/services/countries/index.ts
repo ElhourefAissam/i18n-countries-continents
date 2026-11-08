@@ -82,6 +82,28 @@ export {
 // Locale helper
 export { default as getCountryFromLocale } from "./get-country-from-locale.js";
 
+// UN Geographic Subregions
+export {
+  default as getSubregion,
+  getCountrySubregion,
+  getCountriesBySubregion,
+  getSubregions,
+} from "./subregions.js";
+
+// Geodesic Distance & Nearest Countries
+export {
+  default as getDistance,
+  getNearestCountries,
+} from "./geo-distance.js";
+
+// Subdivisions / States / Provinces (ISO 3166-2)
+export {
+  default as getSubdivisions,
+  getSubdivision,
+  hasSubdivisions,
+  type Subdivision,
+} from "./subdivisions.js";
+
 // Aliases for developer convenience
 export { default as getCountryCallingCode } from "./get-calling-code.js";
 export { default as getCountryCurrency } from "./get-currency.js";

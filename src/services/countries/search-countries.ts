@@ -54,11 +54,13 @@ export default function searchCountries(
     const tld = meta?.tld || "";
     const nativeName = meta?.nativeName || "";
     const demonym = meta?.demonym || "";
+    const subregion = meta?.subregion || "";
 
     const normName = normalizeText(name);
     const normCapital = normalizeText(capital);
     const normNative = normalizeText(nativeName);
     const normDemonym = normalizeText(demonym);
+    const normSubregion = normalizeText(subregion);
 
     const matchesExactCode =
       code.toLowerCase() === rawTrimmed ||
@@ -112,6 +114,12 @@ export default function searchCountries(
       currency.code.toLowerCase() === rawTrimmed ||
       currency.symbol.toLowerCase() === rawTrimmed;
 
+    const matchesSubregion =
+      subregion.length > 0 &&
+      (subregion.toLowerCase() === rawTrimmed ||
+        normSubregion === normalized ||
+        normSubregion.includes(normalized));
+
     if (
       matchesExactCode ||
       matchesExactName ||
@@ -124,7 +132,8 @@ export default function searchCountries(
       matchesCapitalSub ||
       matchesTimezone ||
       matchesCallingCode ||
-      matchesCurrency
+      matchesCurrency ||
+      matchesSubregion
     ) {
       // Priority rank: 0 (highest) to 5
       let rank = 5;

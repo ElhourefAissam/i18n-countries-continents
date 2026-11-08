@@ -45,6 +45,9 @@ i18n-countries-continents/
 │   │   │   ├── spoken-languages.ts
 │   │   │   ├── get-demonym.ts
 │   │   │   ├── get-country-from-locale.ts
+│   │   │   ├── geo-distance.ts
+│   │   │   ├── subregions.ts
+│   │   │   ├── subdivisions.ts
 │   │   │   └── index.ts
 │   │   │
 │   │   ├── continents/           # Continent-related services

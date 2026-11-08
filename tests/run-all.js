@@ -29,6 +29,10 @@ const testSuites = [
   "test-demonyms.js",
   "test-postal-codes.js",
   "test-locale-helpers.js",
+  "test-subregions.js",
+  "test-geo-distance.js",
+  "test-subdivisions.js",
+  "test-dual-build.cjs",
 ];
 
 console.log("========================================");

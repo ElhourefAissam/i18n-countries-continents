@@ -52,6 +52,8 @@ export interface CountryMetadata {
   isSchengen: boolean;
   /** Whether the country is a member state of the European Economic Area (EEA) */
   isEEA: boolean;
+  /** UN geographic subregion (e.g. "Western Europe", "Northern Africa", "North America") */
+  subregion: string;
 }
 
 // Compact tuple format:
@@ -72,7 +74,8 @@ type RawMetadataEntry = [
   area?: number,
   landlocked?: boolean,
   borders?: string[],
-  languages?: string[]
+  languages?: string[],
+  subregion?: string
 ];
 
 const rawData = metadataJson as unknown as Record<string, RawMetadataEntry>;
@@ -107,9 +110,11 @@ const timezoneToAlpha2Map = new Map<string, string[]>();
 const tldToAlpha2Map = new Map<string, string>();
 const demonymToAlpha2Map = new Map<string, string>();
 const spokenLanguageToAlpha2Map = new Map<string, string[]>();
+const subregionToAlpha2Map = new Map<string, string[]>();
+const allSubregionsSet = new Set<string>();
 
 for (const [alpha2, entry] of Object.entries(rawData)) {
-  const [, , , , a3, num, cap, tzs, tld, , demonym, , , , , langs] = entry;
+  const [, , , , a3, num, cap, tzs, tld, , demonym, , , , , langs, subreg] = entry;
   if (a3) {
     alpha3ToAlpha2Map.set(a3.toUpperCase(), alpha2);
     alpha2ToAlpha3Map.set(alpha2, a3);
@@ -169,6 +174,14 @@ for (const [alpha2, entry] of Object.entries(rawData)) {
       }
       spokenLanguageToAlpha2Map.get(normLang)!.push(alpha2);
     }
+  }
+  if (subreg) {
+    allSubregionsSet.add(subreg);
+    const normSub = normalizeText(subreg);
+    if (!subregionToAlpha2Map.has(normSub)) {
+      subregionToAlpha2Map.set(normSub, []);
+    }
+    subregionToAlpha2Map.get(normSub)!.push(alpha2);
   }
 }
 
@@ -249,6 +262,21 @@ export function spokenLanguageToAlpha2List(lang?: string): string[] {
 }
 
 /**
+ * Find country codes belonging to a UN subregion (e.g. "Western Europe" -> ["FR", "DE", "NL", ...]).
+ */
+export function subregionToAlpha2List(subregion?: string): string[] {
+  if (!subregion || typeof subregion !== "string") return [];
+  return subregionToAlpha2Map.get(normalizeText(subregion)) || [];
+}
+
+/**
+ * Get the list of all unique UN subregions.
+ */
+export function getAllSubregions(): string[] {
+  return Array.from(allSubregionsSet).sort();
+}
+
+/**
  * Get country calling code, currency, alpha-3, numeric, capital, timezones, and geographic metadata.
  */
 export function getMetadata(
@@ -261,7 +289,8 @@ export function getMetadata(
   if (!entry) return undefined;
   const [
     callingCode, code, symbol, name, alpha3, numeric, capital, timezones,
-    tld, nativeName, demonym, latlng, area, landlocked, borders, languages
+    tld, nativeName, demonym, latlng, area, landlocked, borders, languages,
+    subregion
   ] = entry;
 
   return {
@@ -282,6 +311,7 @@ export function getMetadata(
     isEU: EU_COUNTRY_CODES.has(resolvedCode),
     isSchengen: SCHENGEN_COUNTRY_CODES.has(resolvedCode),
     isEEA: EEA_COUNTRY_CODES.has(resolvedCode),
+    subregion: subregion || "",
   };
 }
 

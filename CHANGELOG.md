@@ -5,6 +5,45 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-11-08
+
+### Added
+- **True Dual ESM & CommonJS Build**:
+  - Implemented high-performance `tsup` dual compiler emitting `.js` (ESM) and `.cjs` (CommonJS) across all 50+ entry points
+  - Generated dual TypeScript declaration files (`.d.ts` for ESM, `.d.cts` for CommonJS)
+  - Configured conditional exports in `package.json` with `"import"` and `"require"` conditions pointing to respective formats
+  - Guaranteed 100% interoperability with Node.js, Webpack, Vite, Jest, ts-node, and Electron
+- **UN Geographic Subregions**:
+  - Added `subregion` property across all 250 countries mapping to 24 standard UN subregions (e.g. `'Western Europe'`, `'Northern Africa'`, `'South America'`, `'Polynesia'`)
+  - `getSubregion(countryCode)` (and alias `getCountrySubregion`) — look up subregion by alpha-2 or alpha-3 code
+  - `getCountriesBySubregion(subregionName, language?)` — find all localized Country objects in a subregion
+  - `getSubregions()` — retrieve all 24 unique UN subregion names sorted alphabetically
+  - `searchCountries` now supports querying by subregion name
+- **Geodesic Distance (Haversine) & Nearest Countries**:
+  - `getDistance(countryCode1, countryCode2, unit?)` — calculate great-circle distance between country geographic centers in kilometers or miles
+  - `getNearestCountries(countryCode, limit?, language?)` — retrieve closest neighboring nations sorted nearest-first with computed distance
+- **Subdivisions, States & Provinces (ISO 3166-2)**:
+  - Curated subdivision datasets for major countries:
+    - United States (`US`): 50 states + DC
+    - Canada (`CA`): 10 provinces + 3 territories
+    - Australia (`AU`): 6 states + 2 territories
+    - United Kingdom (`GB`): England, Scotland, Wales, Northern Ireland
+    - Germany (`DE`): 16 Bundesländer
+    - France (`FR`): 18 administrative regions
+    - Spain (`ES`): 17 autonomous communities
+    - Italy (`IT`): 20 regions
+    - Mexico (`MX`): 32 states
+    - Brazil (`BR`): 27 states
+    - Japan (`JP`): prefectures
+  - `getSubdivisions(countryCode)` — retrieve all primary subdivisions for a country
+  - `getSubdivision(countryCode, subdivisionCode)` — look up a specific state/province/region
+  - `hasSubdivisions(countryCode)` — check if subdivision data is available
+- **Subpath Exports**:
+  - Added direct subpath exports in `package.json` for `./subregions`, `./geo-distance`, and `./subdivisions`
+- **Testing**:
+  - Added 4 dedicated test suites: `tests/test-subregions.js`, `tests/test-geo-distance.js`, `tests/test-subdivisions.js`, and `tests/test-dual-build.cjs`
+  - Total test suites expanded from 24 to 28 (all 100% passing)
+
 ## [1.3.0] - 2026-11-08
 
 ### Added

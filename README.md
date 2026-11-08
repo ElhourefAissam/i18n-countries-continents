@@ -582,6 +582,75 @@ getCountryFromLocale('pt_BR', 'es'); // Country { code: 'BR', name: 'Brasil' }
 getCountryFromLocale('ja');         // Country { code: 'JP', name: 'Japan' }
 ```
 
+### 35. UN Geographic Subregions
+
+Access all 24 official UN subregions:
+
+```js
+import { 
+  getSubregion, 
+  getCountriesBySubregion, 
+  getSubregions 
+} from 'i18n-countries-continents';
+
+// Get UN subregion for a country
+console.log(getSubregion('FR'));  // "Western Europe"
+console.log(getSubregion('USA')); // "North America"
+console.log(getSubregion('MA'));  // "Northern Africa"
+console.log(getSubregion('JP'));  // "Eastern Asia"
+
+// Find all countries in a subregion
+const southAmerica = getCountriesBySubregion('South America', 'es');
+// [ Argentina, Brazil, Chile, Colombia, ... ]
+
+// List all 24 unique UN subregion names
+console.log(getSubregions());
+// ['Australia and New Zealand', 'Caribbean', 'Central America', 'Western Europe', ...]
+```
+
+### 36. Geodesic Distance & Nearest Countries (Haversine)
+
+Calculate great-circle distances between countries and discover closest neighbors:
+
+```js
+import { getDistance, getNearestCountries } from 'i18n-countries-continents';
+
+// Calculate great-circle distance between country geographic centers
+console.log(getDistance('FR', 'GB')); // 867 (kilometers)
+console.log(getDistance('FR', 'GB', 'miles')); // 539 (miles)
+console.log(getDistance('US', 'CA')); // 2260 km
+
+// Find the closest neighboring countries sorted nearest-first
+const nearestToUS = getNearestCountries('US', 3);
+// [
+//   { country: { code: 'CA', name: 'Canada', ... }, distanceKm: 2260 },
+//   ...
+// ]
+```
+
+### 37. Subdivisions, States & Provinces (ISO 3166-2)
+
+Retrieve states, provinces, and regions for major world countries (US, Canada, Australia, UK, Germany, France, Spain, Italy, Mexico, Brazil, Japan):
+
+```js
+import { getSubdivisions, getSubdivision, hasSubdivisions } from 'i18n-countries-continents';
+
+// Check if subdivision data is available
+hasSubdivisions('US'); // true
+
+// Get all 50 US states + DC
+const usStates = getSubdivisions('US');
+// [ { code: 'CA', name: 'California', type: 'state' }, ... ]
+
+// Get Canadian provinces and territories
+const caProvinces = getSubdivisions('CA');
+// [ { code: 'ON', name: 'Ontario', type: 'province' }, ... ]
+
+// Look up a specific subdivision
+const cali = getSubdivision('US', 'CA');
+// { code: 'CA', name: 'California', type: 'state' }
+```
+
 ---
 
 ## Framework Usage

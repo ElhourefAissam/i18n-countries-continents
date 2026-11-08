@@ -54,6 +54,15 @@ import {
   // Form helpers & Validation
   isValidPostalCode,
   getCountryFromLocale,
+  // Geo Expansion: Subregions, Distance & Subdivisions
+  getSubregion,
+  getCountriesBySubregion,
+  getSubregions,
+  getDistance,
+  getNearestCountries,
+  getSubdivisions,
+  getSubdivision,
+  hasSubdivisions,
   // Phone & Currency services
   getCallingCode,
   getCurrency,

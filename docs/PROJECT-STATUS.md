@@ -1,25 +1,24 @@
 # Project Status Summary
 
-## ✅ Project Status: Healthy & Verified (v1.3.0)
+## ✅ Project Status: Healthy & Verified (v1.4.0)
 
 ### Package Statistics
 
-- **Total Countries**: 250 (100% with flags, continent codes, alpha-3, numeric codes, capitals, timezones, calling codes, currencies, ccTLD, native endonyms, demonyms, coordinates, area, landlocked status, borders, languages, and EU/Schengen/EEA status)
+- **Total Countries**: 250 (100% with flags, continent codes, alpha-3, numeric codes, capitals, timezones, calling codes, currencies, ccTLD, native endonyms, demonyms, coordinates, area, landlocked status, borders, languages, subregions, and EU/Schengen/EEA status)
 - **Total Continents**: 7 (complete world coverage)
 - **Total Cities**: 4,010
 - **Supported Languages**: 10 (`en`, `es`, `fr`, `ar`, `nl`, `de`, `pt`, `it`, `zh`, `ja`)
-- **Build Status**: ✅ Passing
+- **Build Output**: ✅ Dual ESM (`.js`) & CommonJS (`.cjs`) + `.d.ts` & `.d.cts` via `tsup`
 - **TypeScript**: ✅ 0 type errors
-- **Test Suite**: ✅ 24 suites passing, 100% success rate
+- **Test Suite**: ✅ 28 suites passing, 100% success rate
 
 ### Package Structure
 
 ```
 i18n-countries-continents/
-├── dist/                         # Compiled ESM output
-│   ├── *.js, *.d.ts, *.map       # JavaScript, types, and sourcemaps
-│   ├── data/lang/*.json          # Compiled per-language JSON bundles (10 languages)
-│   ├── data/metadata.json        # Compiled metadata (calling codes, currencies, alpha-3, numeric, capitals, timezones, tld, native names, demonyms, geo)
+├── dist/                         # Dual ESM & CJS output
+│   ├── *.js, *.cjs               # JavaScript (ESM & CommonJS)
+│   ├── *.d.ts, *.d.cts           # TypeScript declarations (ESM & CJS)
 │   └── services/                 # Compiled City, Country, Continent, Validation, Language services
 ├── src/                          # TypeScript source code
 │   ├── data/
@@ -31,7 +30,7 @@ i18n-countries-continents/
 │   ├── utils/                    # Constants, Types, Normalization, Sorting, Select formatters
 │   └── index.ts                  # Main entry point
 ├── tests/                        # Automated test suites
-│   ├── run-all.js                # Test runner (runs all 24 suites)
+│   ├── run-all.js                # Test runner (runs all 28 suites)
 │   ├── comprehensive-test.js     # Complete API verification
 │   ├── new-features-test.js      # Core feature verification
 │   ├── real-world-test.js        # 10 integration use cases
@@ -55,9 +54,13 @@ i18n-countries-continents/
 │   ├── test-country-languages.js # Spoken languages
 │   ├── test-demonyms.js          # Demonyms & nationalities
 │   ├── test-postal-codes.js      # Postal code validation
-│   └── test-locale-helpers.js    # BCP-47 locale inference
+│   ├── test-locale-helpers.js    # BCP-47 locale inference
+│   ├── test-subregions.js        # UN Geographic subregions
+│   ├── test-geo-distance.js      # Geodesic Haversine distance & nearest countries
+│   ├── test-subdivisions.js      # ISO 3166-2 subdivisions (states, provinces)
+│   └── test-dual-build.cjs       # CommonJS require() integration tests
 ├── .github/workflows/ci.yml      # CI workflow for Node 18, 20, 22
-├── package.json                  # Package configuration
+├── package.json                  # Package configuration with dual exports
 ├── tsconfig.json                 # TypeScript configuration
 └── README.md                     # Main documentation
 ```
@@ -65,8 +68,8 @@ i18n-countries-continents/
 ### Available Scripts
 
 ```bash
-npm run build      # Clean and compile TypeScript to dist/
+npm run build      # Clean and compile dual ESM/CJS bundles to dist/ via tsup
 npm run typecheck  # Type check without emitting files
-npm test           # Build and run all 24 test suites
+npm test           # Build and run all 28 test suites
 npm run clean      # Remove dist folder
 ```

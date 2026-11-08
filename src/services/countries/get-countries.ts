@@ -47,6 +47,8 @@ export interface Country {
   isSchengen: boolean;
   /** Whether country is a member of the European Economic Area (EEA) */
   isEEA: boolean;
+  /** UN geographic subregion, e.g. 'Western Europe', 'Northern Africa' */
+  subregion: string;
 }
 
 /**
@@ -88,6 +90,7 @@ export default function getCountries(
       isEU: meta?.isEU || false,
       isSchengen: meta?.isSchengen || false,
       isEEA: meta?.isEEA || false,
+      subregion: meta?.subregion || "",
     };
   });
 }

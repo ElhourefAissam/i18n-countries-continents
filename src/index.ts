@@ -9,6 +9,7 @@ export type {
   Currency,
   Coordinates,
 } from "./services/countries/get-countries.js";
+export type { Subdivision } from "./services/countries/subdivisions.js";
 export type {
   FlagUrlOptions,
   FlagFormat,

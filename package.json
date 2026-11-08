@@ -1,9 +1,9 @@
 {
   "name": "i18n-countries-continents",
-  "version": "1.3.0",
-  "description": "Get country, continent, and city names in different languages. 250 countries, 7 continents, 4,010 cities, ISO alpha-3/numeric codes, capitals, timezones, calling codes, currencies, ccTLD, native names, demonyms, coordinates, borders, EU/Schengen status, and postal codes in 10 languages. Works in React, Angular, Vue, Node.js, and any JavaScript environment.",
+  "version": "1.4.0",
+  "description": "Get country, continent, and city names in different languages. 250 countries, 7 continents, 4,010 cities, ISO alpha-3/numeric codes, capitals, timezones, calling codes, currencies, ccTLD, native names, demonyms, coordinates, borders, EU/Schengen status, subregions, subdivisions, and postal codes in 10 languages. Dual ESM & CommonJS build. Works in React, Angular, Vue, Node.js, and any JavaScript environment.",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "types": "dist/index.d.ts",
   "module": "dist/index.js",
   "sideEffects": false,
@@ -17,7 +17,7 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsup \"src/**/*.ts\" --format esm,cjs --dts --clean",
     "clean": "rm -rf dist",
     "prebuild": "npm run clean",
     "prepare": "npm run build",
@@ -99,253 +99,269 @@
   },
   "homepage": "https://github.com/ElhourefAissam/i18n-countries-continents#readme",
   "devDependencies": {
-    "typescript": "^5.8.3"
+    "tsup": "8.5.1",
+    "typescript": "5.8.3"
   },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "require": "./dist/index.cjs"
     },
     "./get-country-name": {
       "types": "./dist/services/countries/get-country-name.d.ts",
       "import": "./dist/services/countries/get-country-name.js",
-      "require": "./dist/services/countries/get-country-name.js"
+      "require": "./dist/services/countries/get-country-name.cjs"
     },
     "./get-country-flag": {
       "types": "./dist/services/countries/get-country-flag.d.ts",
       "import": "./dist/services/countries/get-country-flag.js",
-      "require": "./dist/services/countries/get-country-flag.js"
+      "require": "./dist/services/countries/get-country-flag.cjs"
     },
     "./get-countries": {
       "types": "./dist/services/countries/get-countries.d.ts",
       "import": "./dist/services/countries/get-countries.js",
-      "require": "./dist/services/countries/get-countries.js"
+      "require": "./dist/services/countries/get-countries.cjs"
     },
     "./get-continent-by-country": {
       "types": "./dist/services/countries/get-continent-by-country.d.ts",
       "import": "./dist/services/countries/get-continent-by-country.js",
-      "require": "./dist/services/countries/get-continent-by-country.js"
+      "require": "./dist/services/countries/get-continent-by-country.cjs"
     },
     "./get-continent-name": {
       "types": "./dist/services/continents/get-continent-name.d.ts",
       "import": "./dist/services/continents/get-continent-name.js",
-      "require": "./dist/services/continents/get-continent-name.js"
+      "require": "./dist/services/continents/get-continent-name.cjs"
     },
     "./get-continents": {
       "types": "./dist/services/continents/get-continents.d.ts",
       "import": "./dist/services/continents/get-continents.js",
-      "require": "./dist/services/continents/get-continents.js"
+      "require": "./dist/services/continents/get-continents.cjs"
     },
     "./get-city-name": {
       "types": "./dist/services/cities/get-city-name.d.ts",
       "import": "./dist/services/cities/get-city-name.js",
-      "require": "./dist/services/cities/get-city-name.js"
+      "require": "./dist/services/cities/get-city-name.cjs"
     },
     "./get-cities": {
       "types": "./dist/services/cities/get-cities.d.ts",
       "import": "./dist/services/cities/get-cities.js",
-      "require": "./dist/services/cities/get-cities.js"
+      "require": "./dist/services/cities/get-cities.cjs"
     },
     "./search-cities": {
       "types": "./dist/services/cities/search-cities.d.ts",
       "import": "./dist/services/cities/search-cities.js",
-      "require": "./dist/services/cities/search-cities.js"
+      "require": "./dist/services/cities/search-cities.cjs"
     },
     "./get-country": {
       "types": "./dist/services/countries/get-country.d.ts",
       "import": "./dist/services/countries/get-country.js",
-      "require": "./dist/services/countries/get-country.js"
+      "require": "./dist/services/countries/get-country.cjs"
     },
     "./get-country-by-name": {
       "types": "./dist/services/countries/get-country-by-name.d.ts",
       "import": "./dist/services/countries/get-country-by-name.js",
-      "require": "./dist/services/countries/get-country-by-name.js"
+      "require": "./dist/services/countries/get-country-by-name.cjs"
     },
     "./search-countries": {
       "types": "./dist/services/countries/search-countries.d.ts",
       "import": "./dist/services/countries/search-countries.js",
-      "require": "./dist/services/countries/search-countries.js"
+      "require": "./dist/services/countries/search-countries.cjs"
     },
     "./get-countries-by-continent": {
       "types": "./dist/services/countries/get-countries-by-continent.d.ts",
       "import": "./dist/services/countries/get-countries-by-continent.js",
-      "require": "./dist/services/countries/get-countries-by-continent.js"
+      "require": "./dist/services/countries/get-countries-by-continent.cjs"
     },
     "./get-continent": {
       "types": "./dist/services/continents/get-continent.d.ts",
       "import": "./dist/services/continents/get-continent.js",
-      "require": "./dist/services/continents/get-continent.js"
+      "require": "./dist/services/continents/get-continent.cjs"
     },
     "./get-continent-by-name": {
       "types": "./dist/services/continents/get-continent-by-name.d.ts",
       "import": "./dist/services/continents/get-continent-by-name.js",
-      "require": "./dist/services/continents/get-continent-by-name.js"
+      "require": "./dist/services/continents/get-continent-by-name.cjs"
     },
     "./search-continents": {
       "types": "./dist/services/continents/search-continents.d.ts",
       "import": "./dist/services/continents/search-continents.js",
-      "require": "./dist/services/continents/search-continents.js"
+      "require": "./dist/services/continents/search-continents.cjs"
     },
     "./get-city": {
       "types": "./dist/services/cities/get-city.d.ts",
       "import": "./dist/services/cities/get-city.js",
-      "require": "./dist/services/cities/get-city.js"
+      "require": "./dist/services/cities/get-city.cjs"
     },
     "./get-supported-languages": {
       "types": "./dist/services/languages/get-supported-languages.d.ts",
       "import": "./dist/services/languages/get-supported-languages.js",
-      "require": "./dist/services/languages/get-supported-languages.js"
+      "require": "./dist/services/languages/get-supported-languages.cjs"
     },
     "./get-calling-code": {
       "types": "./dist/services/countries/get-calling-code.d.ts",
       "import": "./dist/services/countries/get-calling-code.js",
-      "require": "./dist/services/countries/get-calling-code.js"
+      "require": "./dist/services/countries/get-calling-code.cjs"
     },
     "./get-currency": {
       "types": "./dist/services/countries/get-currency.d.ts",
       "import": "./dist/services/countries/get-currency.js",
-      "require": "./dist/services/countries/get-currency.js"
+      "require": "./dist/services/countries/get-currency.cjs"
     },
     "./get-countries-by-calling-code": {
       "types": "./dist/services/countries/get-countries-by-calling-code.d.ts",
       "import": "./dist/services/countries/get-countries-by-calling-code.js",
-      "require": "./dist/services/countries/get-countries-by-calling-code.js"
+      "require": "./dist/services/countries/get-countries-by-calling-code.cjs"
     },
     "./get-countries-by-currency": {
       "types": "./dist/services/countries/get-countries-by-currency.d.ts",
       "import": "./dist/services/countries/get-countries-by-currency.js",
-      "require": "./dist/services/countries/get-countries-by-currency.js"
+      "require": "./dist/services/countries/get-countries-by-currency.cjs"
     },
     "./get-country-by-alpha3": {
       "types": "./dist/services/countries/get-country-by-alpha3.d.ts",
       "import": "./dist/services/countries/get-country-by-alpha3.js",
-      "require": "./dist/services/countries/get-country-by-alpha3.js"
+      "require": "./dist/services/countries/get-country-by-alpha3.cjs"
     },
     "./get-country-by-numeric": {
       "types": "./dist/services/countries/get-country-by-numeric.d.ts",
       "import": "./dist/services/countries/get-country-by-numeric.js",
-      "require": "./dist/services/countries/get-country-by-numeric.js"
+      "require": "./dist/services/countries/get-country-by-numeric.cjs"
     },
     "./iso-converters": {
       "types": "./dist/services/countries/iso-converters.d.ts",
       "import": "./dist/services/countries/iso-converters.js",
-      "require": "./dist/services/countries/iso-converters.js"
+      "require": "./dist/services/countries/iso-converters.cjs"
     },
     "./get-capital": {
       "types": "./dist/services/countries/get-capital.d.ts",
       "import": "./dist/services/countries/get-capital.js",
-      "require": "./dist/services/countries/get-capital.js"
+      "require": "./dist/services/countries/get-capital.cjs"
     },
     "./get-country-by-capital": {
       "types": "./dist/services/countries/get-country-by-capital.d.ts",
       "import": "./dist/services/countries/get-country-by-capital.js",
-      "require": "./dist/services/countries/get-country-by-capital.js"
+      "require": "./dist/services/countries/get-country-by-capital.cjs"
     },
     "./get-timezones": {
       "types": "./dist/services/countries/get-timezones.d.ts",
       "import": "./dist/services/countries/get-timezones.js",
-      "require": "./dist/services/countries/get-timezones.js"
+      "require": "./dist/services/countries/get-timezones.cjs"
     },
     "./get-countries-by-timezone": {
       "types": "./dist/services/countries/get-countries-by-timezone.d.ts",
       "import": "./dist/services/countries/get-countries-by-timezone.js",
-      "require": "./dist/services/countries/get-countries-by-timezone.js"
+      "require": "./dist/services/countries/get-countries-by-timezone.cjs"
     },
     "./get-tld": {
       "types": "./dist/services/countries/get-tld.d.ts",
       "import": "./dist/services/countries/get-tld.js",
-      "require": "./dist/services/countries/get-tld.js"
+      "require": "./dist/services/countries/get-tld.cjs"
     },
     "./get-country-by-tld": {
       "types": "./dist/services/countries/get-country-by-tld.d.ts",
       "import": "./dist/services/countries/get-country-by-tld.js",
-      "require": "./dist/services/countries/get-country-by-tld.js"
+      "require": "./dist/services/countries/get-country-by-tld.cjs"
     },
     "./regional-unions": {
       "types": "./dist/services/countries/regional-unions.d.ts",
       "import": "./dist/services/countries/regional-unions.js",
-      "require": "./dist/services/countries/regional-unions.js"
+      "require": "./dist/services/countries/regional-unions.cjs"
     },
     "./get-native-name": {
       "types": "./dist/services/countries/get-native-name.d.ts",
       "import": "./dist/services/countries/get-native-name.js",
-      "require": "./dist/services/countries/get-native-name.js"
+      "require": "./dist/services/countries/get-native-name.cjs"
     },
     "./get-country-flag-url": {
       "types": "./dist/services/countries/get-country-flag-url.d.ts",
       "import": "./dist/services/countries/get-country-flag-url.js",
-      "require": "./dist/services/countries/get-country-flag-url.js"
+      "require": "./dist/services/countries/get-country-flag-url.cjs"
     },
     "./get-coordinates": {
       "types": "./dist/services/countries/get-coordinates.d.ts",
       "import": "./dist/services/countries/get-coordinates.js",
-      "require": "./dist/services/countries/get-coordinates.js"
+      "require": "./dist/services/countries/get-coordinates.cjs"
     },
     "./get-borders": {
       "types": "./dist/services/countries/get-borders.d.ts",
       "import": "./dist/services/countries/get-borders.js",
-      "require": "./dist/services/countries/get-borders.js"
+      "require": "./dist/services/countries/get-borders.cjs"
     },
     "./spoken-languages": {
       "types": "./dist/services/countries/spoken-languages.d.ts",
       "import": "./dist/services/countries/spoken-languages.js",
-      "require": "./dist/services/countries/spoken-languages.js"
+      "require": "./dist/services/countries/spoken-languages.cjs"
     },
     "./get-demonym": {
       "types": "./dist/services/countries/get-demonym.d.ts",
       "import": "./dist/services/countries/get-demonym.js",
-      "require": "./dist/services/countries/get-demonym.js"
+      "require": "./dist/services/countries/get-demonym.cjs"
     },
     "./get-country-from-locale": {
       "types": "./dist/services/countries/get-country-from-locale.d.ts",
       "import": "./dist/services/countries/get-country-from-locale.js",
-      "require": "./dist/services/countries/get-country-from-locale.js"
+      "require": "./dist/services/countries/get-country-from-locale.cjs"
     },
     "./is-valid-postal-code": {
       "types": "./dist/services/validation/is-valid-postal-code.d.ts",
       "import": "./dist/services/validation/is-valid-postal-code.js",
-      "require": "./dist/services/validation/is-valid-postal-code.js"
+      "require": "./dist/services/validation/is-valid-postal-code.cjs"
     },
     "./is-valid-country-code": {
       "types": "./dist/services/validation/is-valid-country-code.d.ts",
       "import": "./dist/services/validation/is-valid-country-code.js",
-      "require": "./dist/services/validation/is-valid-country-code.js"
+      "require": "./dist/services/validation/is-valid-country-code.cjs"
     },
     "./is-valid-continent-code": {
       "types": "./dist/services/validation/is-valid-continent-code.d.ts",
       "import": "./dist/services/validation/is-valid-continent-code.js",
-      "require": "./dist/services/validation/is-valid-continent-code.js"
+      "require": "./dist/services/validation/is-valid-continent-code.cjs"
     },
     "./is-valid-language": {
       "types": "./dist/services/validation/is-valid-language.d.ts",
       "import": "./dist/services/validation/is-valid-language.js",
-      "require": "./dist/services/validation/is-valid-language.js"
+      "require": "./dist/services/validation/is-valid-language.cjs"
     },
     "./to-select-options": {
       "types": "./dist/utils/to-select-options.d.ts",
       "import": "./dist/utils/to-select-options.js",
-      "require": "./dist/utils/to-select-options.js"
+      "require": "./dist/utils/to-select-options.cjs"
     },
     "./sorting": {
       "types": "./dist/utils/sorting.d.ts",
       "import": "./dist/utils/sorting.js",
-      "require": "./dist/utils/sorting.js"
+      "require": "./dist/utils/sorting.cjs"
     },
     "./normalize": {
       "types": "./dist/utils/normalize.d.ts",
       "import": "./dist/utils/normalize.js",
-      "require": "./dist/utils/normalize.js"
+      "require": "./dist/utils/normalize.cjs"
     },
     "./constants": {
       "types": "./dist/utils/constants.d.ts",
       "import": "./dist/utils/constants.js",
-      "require": "./dist/utils/constants.js"
+      "require": "./dist/utils/constants.cjs"
     },
     "./types": {
       "types": "./dist/utils/types.d.ts",
       "import": "./dist/utils/types.js",
-      "require": "./dist/utils/types.js"
+      "require": "./dist/utils/types.cjs"
+    },
+    "./subregions": {
+      "types": "./dist/services/countries/subregions.d.ts",
+      "import": "./dist/services/countries/subregions.js",
+      "require": "./dist/services/countries/subregions.cjs"
+    },
+    "./geo-distance": {
+      "types": "./dist/services/countries/geo-distance.d.ts",
+      "import": "./dist/services/countries/geo-distance.js",
+      "require": "./dist/services/countries/geo-distance.cjs"
+    },
+    "./subdivisions": {
+      "types": "./dist/services/countries/subdivisions.d.ts",
+      "import": "./dist/services/countries/subdivisions.js",
+      "require": "./dist/services/countries/subdivisions.cjs"
     }
   }
 }

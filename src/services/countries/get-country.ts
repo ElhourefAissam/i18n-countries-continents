@@ -53,5 +53,6 @@ export default function getCountry(
     isEU: meta?.isEU || false,
     isSchengen: meta?.isSchengen || false,
     isEEA: meta?.isEEA || false,
+    subregion: meta?.subregion || "",
   };
 }
