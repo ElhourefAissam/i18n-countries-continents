@@ -1,6 +1,6 @@
 # i18n-countries-continents
 
-Get country, continent, and city names in different languages. **250 countries**, **7 continents**, and **4,010 cities** with full translations in **10 languages** (including Chinese & Japanese), ISO 3166-1 Alpha-3 & Numeric codes, official capitals, primary IANA timezones, phone calling codes, currencies, ccTLD, native endonyms, demonyms, coordinates, borders, EU/Schengen status, and postal codes. Works in React, Angular, Vue, Svelte, Node.js, and any JavaScript environment.
+Get country, continent, and city names in different languages. **250 countries**, **7 continents**, and **4,010 cities** with full translations in **14 languages** (English, Spanish, French, Arabic, Dutch, German, Portuguese, Italian, Chinese, Japanese, Russian, Hindi, Korean, Turkish), ISO 3166-1 Alpha-3 & Numeric codes, official capitals, primary IANA timezones, phone calling codes, currencies, ccTLD, native endonyms, demonyms, coordinates, borders, EU/Schengen status, UN subregions, ISO 3166-2 subdivisions, and postal codes. Modular `/cities` subpath cuts country bundle size by **~90%**. Dual ESM & CommonJS build. Works in React, Angular, Vue, Svelte, Node.js, and any JavaScript environment.
 
 [![npm version](https://img.shields.io/npm/v/i18n-countries-continents.svg)](https://www.npmjs.com/package/i18n-countries-continents)
 [![npm downloads](https://img.shields.io/npm/dm/i18n-countries-continents.svg)](https://www.npmjs.com/package/i18n-countries-continents)
@@ -46,12 +46,15 @@ pnpm add i18n-countries-continents
 - 📞 **Calling codes** — International dial codes for all 250 countries (e.g. `+1`, `+33`, `+212`)
 - 💰 **Currency info** — ISO 4217 code, symbol, and name for all 250 countries (e.g. `USD`, `$`, `EUR`, `€`)
 - 🗺️ **7 continents** — All continents included
-- 🏙️ **4,010 cities** — Major cities from around the world
-- 🌐 **10 languages** — English, Spanish, French, Arabic, Dutch, German, Portuguese, Italian, Chinese, Japanese (100% coverage)
+- 🏙️ **4,010 cities** — Modular `/cities` subpath cuts country bundle size by **~90%**
+- 🏛️ **ISO 3166-2 Subdivisions** — States, provinces, and regions for 17 major world countries (US, Canada, India, China, UK, Germany, France, Russia, etc.)
+- 📐 **Geodesic Distance & Nearest Countries** — Great-circle Haversine distance and nearest neighbors calculation
+- 🧭 **UN Geographic Subregions** — 24 standard UN subregions with reverse lookup and grouping
+- 🌐 **14 world languages** — English, Spanish, French, Arabic, Dutch, German, Portuguese, Italian, Chinese, Japanese, Russian, Hindi, Korean, Turkish (100% coverage)
 - 📦 **Zero dependencies** — Lightweight and fast
 - 💪 **TypeScript** — Strict literal union types with IDE autocomplete for all codes
 - ⚡ **Tree-shakeable** — Direct subpath exports for every utility
-- 🎯 **Universal** — Works seamlessly with ESM and CommonJS
+- 🎯 **Universal** — Works seamlessly with ESM and CommonJS via dual build (`tsup`)
 
 ---
 
@@ -630,25 +633,78 @@ const nearestToUS = getNearestCountries('US', 3);
 
 ### 37. Subdivisions, States & Provinces (ISO 3166-2)
 
-Retrieve states, provinces, and regions for major world countries (US, Canada, Australia, UK, Germany, France, Spain, Italy, Mexico, Brazil, Japan):
+Retrieve states, provinces, and regions for 17 major world countries (US, Canada, India, China, Australia, UK, Germany, France, Spain, Italy, Mexico, Brazil, Japan, Russia, Turkey, Netherlands, Switzerland):
 
 ```js
-import { getSubdivisions, getSubdivision, hasSubdivisions } from 'i18n-countries-continents';
+import {
+  getSubdivisions,
+  getSubdivision,
+  hasSubdivisions,
+  searchSubdivisions,
+  getAllSubdivisionsCountries,
+} from 'i18n-countries-continents';
 
 // Check if subdivision data is available
 hasSubdivisions('US'); // true
+hasSubdivisions('IN'); // true
 
 // Get all 50 US states + DC
 const usStates = getSubdivisions('US');
-// [ { code: 'CA', name: 'California', type: 'state' }, ... ]
+// [ { code: 'CA', name: 'California', type: 'state', countryCode: 'US' }, ... ]
 
-// Get Canadian provinces and territories
-const caProvinces = getSubdivisions('CA');
-// [ { code: 'ON', name: 'Ontario', type: 'province' }, ... ]
+// Get Indian states and Union Territories (36 total)
+const inStates = getSubdivisions('IN');
+// [ { code: 'MH', name: 'Maharashtra', type: 'state', countryCode: 'IN' }, ... ]
 
 // Look up a specific subdivision
 const cali = getSubdivision('US', 'CA');
-// { code: 'CA', name: 'California', type: 'state' }
+// { code: 'CA', name: 'California', type: 'state', countryCode: 'US' }
+
+// Search subdivisions by name or code across countries
+const ny = searchSubdivisions('New York');
+// [ { code: 'NY', name: 'New York', type: 'state', countryCode: 'US' } ]
+
+// Get all countries having subdivision data
+const supported = getAllSubdivisionsCountries();
+// ['US', 'CA', 'AU', 'GB', 'DE', 'FR', 'ES', 'IT', 'MX', 'BR', 'JP', 'IN', 'CN', 'RU', 'TR', 'NL', 'CH']
+```
+
+### 38. Modular City Subpath (`/cities`) & 90% Bundle Reduction
+
+Cities are split out from the default country loader into a modular subpath. Importing only country functions now bundles **0 city bytes** (saving ~1 MB uncompressed across all languages!).
+
+```js
+// Import full city suite from dedicated subpath
+import { getCities, getCity, getCityName, searchCities } from 'i18n-countries-continents/cities';
+
+const citiesInSpanish = getCities('es'); // 4,010 cities
+const tokyo = getCityName('Tokyo', 'ru'); // "Токио"
+const moscow = getCity('Москва', 'ru');   // { name: "Moscow", translatedName: "Москва" }
+const matches = searchCities('paris', 'fr', 5);
+```
+
+### 39. Expanded World Languages (`ru`, `hi`, `ko`, `tr`)
+
+Full UN/CLDR translations across all 250 countries and 7 continents:
+
+```js
+import { getCountry, getContinents } from 'i18n-countries-continents';
+
+// Russian (Русский)
+getCountry('RU', 'ru').name; // "Россия"
+getCountry('US', 'ru').name; // "Соединенные Штаты"
+
+// Hindi (हिन्दी)
+getCountry('IN', 'hi').name; // "भारत"
+getCountry('US', 'hi').name; // "संयुक्त राज्य"
+
+// Korean (한국어)
+getCountry('KR', 'ko').name; // "대한민국"
+getCountry('US', 'ko').name; // "미국"
+
+// Turkish (Türkçe)
+getCountry('TR', 'tr').name; // "Türkiye"
+getCountry('US', 'tr').name; // "Amerika Birleşik Devletleri"
 ```
 
 ---
@@ -788,12 +844,12 @@ import { SUPPORTED_LANGUAGES, LANGUAGES } from 'i18n-countries-continents/consta
 | South America | 14 countries |
 
 ### Continents: 7
-All continents fully covered with translations in all 10 languages.
+All continents fully covered with translations in all 14 languages.
 
 ### Cities: 4,010
-Major cities from around the world — capital cities, major metropolitan areas, important economic centers, and cultural landmarks.
+Major cities from around the world — capital cities, major metropolitan areas, important economic centers, and cultural landmarks. Modular subpath `i18n-countries-continents/cities`.
 
-### Languages: 10
+### Languages: 14
 | Code | Language | Native Name | Coverage |
 |------|----------|-------------|----------|
 | `en` | English  | English     | 100% |
@@ -806,6 +862,10 @@ Major cities from around the world — capital cities, major metropolitan areas,
 | `it` | Italian  | Italiano    | 100% |
 | `zh` | Chinese  | 中文        | 100% |
 | `ja` | Japanese | 日本語      | 100% |
+| `ru` | Russian  | Русский     | 100% |
+| `hi` | Hindi    | हिन्दी      | 100% |
+| `ko` | Korean   | 한국어      | 100% |
+| `tr` | Turkish  | Türkçe      | 100% |
 
 ---
 
@@ -969,16 +1029,17 @@ Transform countries, continents, or cities into `{ value, label }` options for H
 
 ```typescript
 import { SUPPORTED_LANGUAGES, LANGUAGES } from 'i18n-countries-continents';
-// ['en', 'es', 'fr', 'ar', 'nl', 'de', 'pt', 'it', 'zh', 'ja']
+// ['en', 'es', 'fr', 'ar', 'nl', 'de', 'pt', 'it', 'zh', 'ja', 'ru', 'hi', 'ko', 'tr']
 
 type SupportedLanguage = 
   | 'en' | 'es' | 'fr' | 'ar' | 'nl' 
-  | 'de' | 'pt' | 'it' | 'zh' | 'ja';
+  | 'de' | 'pt' | 'it' | 'zh' | 'ja'
+  | 'ru' | 'hi' | 'ko' | 'tr';
 
 interface Language {
   code: SupportedLanguage;
-  name: string;       // e.g. "Chinese", "Japanese"
-  nativeName: string; // e.g. "中文", "日本語"
+  name: string;       // e.g. "Russian", "Hindi", "Korean", "Turkish"
+  nativeName: string; // e.g. "Русский", "हिन्दी", "한국어", "Türkçe"
 }
 
 interface Currency {

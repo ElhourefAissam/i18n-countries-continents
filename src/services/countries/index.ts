@@ -101,6 +101,8 @@ export {
   default as getSubdivisions,
   getSubdivision,
   hasSubdivisions,
+  searchSubdivisions,
+  getAllSubdivisionsCountries,
   type Subdivision,
 } from "./subdivisions.js";
 

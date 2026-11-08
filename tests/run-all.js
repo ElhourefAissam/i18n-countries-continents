@@ -33,6 +33,9 @@ const testSuites = [
   "test-geo-distance.js",
   "test-subdivisions.js",
   "test-dual-build.cjs",
+  "test-expanded-languages.js",
+  "test-modular-cities.js",
+  "test-subdivisions-expanded.js",
 ];
 
 console.log("========================================");

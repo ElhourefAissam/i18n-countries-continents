@@ -5,6 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-11-08
+
+### Added
+- **Modular City Splitting & 90% Country Bundle Size Reduction**:
+  - Extracted 4,010 cities out of default language bundles into standalone files (`src/data/cities/*.json`)
+  - Created dedicated `src/data/cities-loader.ts` to keep city payload isolated from core country services
+  - Reduced per-language country/continent bundle size from ~110 KB down to ~9 KB (~92% reduction)
+  - Country-only subpaths (e.g. `i18n-countries-continents/get-countries`, `i18n-countries-continents/get-country`) now bundle 0 city bytes
+  - Added dedicated `./cities` subpath export in `package.json` for importing all city services together
+- **Major World Languages Expansion (`ru`, `hi`, `ko`, `tr`)**:
+  - Expanded supported languages from 10 to 14 languages:
+    - Russian (`ru`, `Русский`)
+    - Hindi (`hi`, `हिन्दी`)
+    - Korean (`ko`, `한국어`)
+    - Turkish (`tr`, `Türkçe`)
+  - Added official UN/CLDR translations for all 250 countries and 7 continents across all 4 new languages
+  - Added localized city names for major world metropolitan hubs in all 4 new languages
+  - Updated `SUPPORTED_LANGUAGES`, `LANGUAGES`, and `isValidLanguage`
+- **Subdivision Expansion & Search**:
+  - Expanded ISO 3166-2 subdivisions dataset to 17 countries:
+    - India (`IN`): All 28 states + 8 Union Territories (36 total)
+    - China (`CN`): 23 provinces, 5 autonomous regions, 4 municipalities, 2 SARs (34 total)
+    - Russia (`RU`): Major federal subjects / cities / oblasts
+    - Turkey (`TR`): Major provinces (Istanbul, Ankara, Izmir, etc.)
+    - Netherlands (`NL`): 12 provinces
+    - Switzerland (`CH`): 26 cantons
+  - `searchSubdivisions(query, countryCode?)` — search subdivisions by name or code with case- and accent-insensitivity
+  - `getAllSubdivisionsCountries()` — retrieve array of all 17 country codes with subdivision data available
+- **Testing**:
+  - Added 3 new test suites: `tests/test-expanded-languages.js`, `tests/test-modular-cities.js`, and `tests/test-subdivisions-expanded.js`
+  - Total test suites expanded from 28 to 31 (all 100% passing)
+
 ## [1.4.0] - 2026-11-08
 
 ### Added

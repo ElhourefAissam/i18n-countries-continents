@@ -103,3 +103,45 @@ Each item has been implemented, tested, and verified across all test suites.
 - [x] **Task 16: Complete Test Suite & Documentation**
   - [x] Added all 4 new suites to `tests/run-all.js` (total 28 suites, 100% passing).
   - [x] Updated `README.md`, `QUICKSTART.md`, `CHANGELOG.md`, `PROJECT-STRUCTURE.md`, and `docs/PROJECT-STATUS.md`.
+
+---
+
+### Phase 3: Performance, Modularity & World Languages Expansion (v1.5.0)
+- [x] **Task 17: Modular City Splitting & 90% Bundle Size Reduction**
+  - [x] Extracted 4,010 cities from `src/data/lang/*.json` into standalone `src/data/cities/*.json`.
+  - [x] Reduced per-language country/continent bundle size from ~110 KB down to ~9 KB (~92% reduction).
+  - [x] Created `src/data/cities-loader.ts` to isolate city payload from country services.
+  - [x] Updated `src/services/cities/*` to use `cities-loader.ts`.
+  - [x] Exported modular entry point `./cities` (`i18n-countries-continents/cities`) in `package.json`.
+  - [x] Verified full backward compatibility and 0-city byte overhead on country subpaths.
+
+- [x] **Task 18: Major World Languages Expansion (ru, hi, ko, tr)**
+  - [x] Added official UN/CLDR translations for all 250 countries and 7 continents:
+    - Russian (`ru`, `Русский`)
+    - Hindi (`hi`, `हिन्दी`)
+    - Korean (`ko`, `한국어`)
+    - Turkish (`tr`, `Türkçe`)
+  - [x] Added localized city names for major world metropolitan hubs in all 4 new languages.
+  - [x] Expanded `SUPPORTED_LANGUAGES` from 10 to 14 languages.
+  - [x] Verified with unit test suite `tests/test-expanded-languages.js`.
+
+- [x] **Task 19: Subdivision Expansion (IN, CN, RU, TR, NL, CH) & Search**
+  - [x] Expanded `src/services/countries/subdivisions.ts` with:
+    - India (`IN`): All 28 states + 8 Union Territories (36 total)
+    - China (`CN`): 23 provinces, 5 autonomous regions, 4 municipalities, 2 SARs (34 total)
+    - Russia (`RU`): Major federal subjects / cities / oblasts
+    - Turkey (`TR`): Major provinces
+    - Netherlands (`NL`): 12 provinces
+    - Switzerland (`CH`): 26 cantons
+  - [x] Implemented `searchSubdivisions(query, countryCode?)` for case- and accent-insensitive search.
+  - [x] Implemented `getAllSubdivisionsCountries()` returning all 17 supported country codes.
+  - [x] Verified with unit test suite `tests/test-subdivisions-expanded.js`.
+
+- [x] **Task 20: 31 Test Suites & Dual Build Verification**
+  - [x] Added `test-expanded-languages.js`, `test-modular-cities.js`, `test-subdivisions-expanded.js`.
+  - [x] Updated `test-dual-build.cjs` to test `/cities` and new subdivision helpers in CommonJS.
+  - [x] All 31 test suites passing 100% (195 tests total).
+  - [x] Zero TypeScript errors with `npm run typecheck`.
+
+- [x] **Task 21: Release v1.5.0 Documentation**
+  - [x] Updated `README.md`, `QUICKSTART.md`, `CHANGELOG.md`, `PROJECT-STRUCTURE.md`, and `docs/PROJECT-STATUS.md`.

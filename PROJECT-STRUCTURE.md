@@ -7,17 +7,13 @@ This document describes the organized structure of the `i18n-countries-continent
 ```
 i18n-countries-continents/
 ├── src/                          # Source code
-│   ├── data/                     # Data loading & language bundles
-│   │   ├── lang/                 # Per-language compact data bundles
-│   │   │   ├── en.json           # English bundle (~119 KB)
-│   │   │   ├── es.json           # Spanish bundle (~120 KB)
-│   │   │   ├── fr.json           # French bundle (~121 KB)
-│   │   │   ├── ar.json           # Arabic bundle (~141 KB)
-│   │   │   ├── nl.json           # Dutch bundle (~120 KB)
-│   │   │   ├── de.json           # German bundle (~120 KB)
-│   │   │   ├── pt.json           # Portuguese bundle (~120 KB)
-│   │   │   └── it.json           # Italian bundle (~120 KB)
-│   │   └── loader.ts             # Language bundle loader
+│   ├── data/                     # Core datasets and loader
+│   │   ├── lang/                 # Lean country & continent datasets (14 languages, ~9 KB each)
+│   │   ├── cities/               # Modular city datasets (4,010 cities across 14 languages)
+│   │   ├── metadata.json         # ISO 3166-1 metadata (codes, calling codes, currencies, capitals, timezones)
+│   │   ├── metadata.ts           # Metadata index & fast O(1) maps
+│   │   ├── loader.ts             # Lean language bundle loader (countries & continents)
+│   │   └── cities-loader.ts      # Dedicated modular loader for cities
 │   │
 │   ├── services/                 # Service modules
 │   │   ├── countries/            # Country-related services

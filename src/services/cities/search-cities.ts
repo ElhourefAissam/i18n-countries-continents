@@ -1,4 +1,4 @@
-import { getLangCities } from "../../data/loader.js";
+import { getLangCities } from "../../data/cities-loader.js";
 import { SupportedLanguage } from "../../utils/types.js";
 import { normalizeText } from "../../utils/normalize.js";
 import { City } from "./get-cities.js";

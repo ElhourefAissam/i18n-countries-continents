@@ -1,7 +1,7 @@
 {
   "name": "i18n-countries-continents",
-  "version": "1.4.0",
-  "description": "Get country, continent, and city names in different languages. 250 countries, 7 continents, 4,010 cities, ISO alpha-3/numeric codes, capitals, timezones, calling codes, currencies, ccTLD, native names, demonyms, coordinates, borders, EU/Schengen status, subregions, subdivisions, and postal codes in 10 languages. Dual ESM & CommonJS build. Works in React, Angular, Vue, Node.js, and any JavaScript environment.",
+  "version": "1.5.0",
+  "description": "Get country, continent, and city names in 14 languages. 250 countries, 7 continents, 4,010 cities, ISO alpha-3/numeric codes, capitals, timezones, calling codes, currencies, ccTLD, native names, demonyms, coordinates, borders, EU/Schengen status, subregions, ISO 3166-2 subdivisions, and postal codes in en, es, fr, ar, nl, de, pt, it, zh, ja, ru, hi, ko, tr. Modular city subpath (/cities) reduces core country bundle size by ~90%. Dual ESM & CommonJS build.",
   "type": "module",
   "main": "dist/index.cjs",
   "types": "dist/index.d.ts",
@@ -137,6 +137,11 @@
       "types": "./dist/services/continents/get-continents.d.ts",
       "import": "./dist/services/continents/get-continents.js",
       "require": "./dist/services/continents/get-continents.cjs"
+    },
+    "./cities": {
+      "types": "./dist/services/cities/index.d.ts",
+      "import": "./dist/services/cities/index.js",
+      "require": "./dist/services/cities/index.cjs"
     },
     "./get-city-name": {
       "types": "./dist/services/cities/get-city-name.d.ts",

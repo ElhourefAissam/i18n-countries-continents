@@ -1,11 +1,10 @@
 /**
- * Per-language data loader.
- * Each lang file contains ONLY the data for that language.
+ * Per-language data loader for countries and continents.
+ * Each lang file contains ONLY lean country and continent data (~9 KB per language).
  *
  * Data format per lang file:
  *   countries:  [code, continent, flag, name][]
  *   continents: [code, name][]
- *   cities:     [englishName, translatedName][]
  */
 
 import { SupportedLanguage } from "../utils/types.js";
@@ -21,21 +20,23 @@ import ptData from "./lang/pt.json" with { type: "json" };
 import itData from "./lang/it.json" with { type: "json" };
 import zhData from "./lang/zh.json" with { type: "json" };
 import jaData from "./lang/ja.json" with { type: "json" };
+import ruData from "./lang/ru.json" with { type: "json" };
+import hiData from "./lang/hi.json" with { type: "json" };
+import koData from "./lang/ko.json" with { type: "json" };
+import trData from "./lang/tr.json" with { type: "json" };
 
 // ── Types for the compact array format ───────────────────────────────────────
-type LangCountry = [
+export type LangCountry = [
   code: string,
   continent: string,
   flag: string,
   name: string
 ];
-type LangContinent = [code: string, name: string];
-type LangCity = [englishName: string, translatedName: string];
+export type LangContinent = [code: string, name: string];
 
-interface LangBundle {
+export interface LangBundle {
   countries: LangCountry[];
   continents: LangContinent[];
-  cities: LangCity[];
 }
 
 // ── Language selector ─────────────────────────────────────────────────────────
@@ -65,6 +66,14 @@ function getBundle(language?: string): LangBundle {
       return zhData as LangBundle;
     case "ja":
       return jaData as LangBundle;
+    case "ru":
+      return ruData as LangBundle;
+    case "hi":
+      return hiData as LangBundle;
+    case "ko":
+      return koData as LangBundle;
+    case "tr":
+      return trData as LangBundle;
     default:
       return enData as LangBundle;
   }
@@ -80,10 +89,4 @@ export function getLangContinents(
   language: SupportedLanguage = "en"
 ): LangContinent[] {
   return getBundle(language).continents;
-}
-
-export function getLangCities(
-  language: SupportedLanguage = "en"
-): LangCity[] {
-  return getBundle(language).cities;
 }

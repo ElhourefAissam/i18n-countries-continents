@@ -1,16 +1,17 @@
 # Project Status Summary
 
-## ✅ Project Status: Healthy & Verified (v1.4.0)
+## ✅ Project Status: Healthy & Verified (v1.5.0)
 
 ### Package Statistics
 
 - **Total Countries**: 250 (100% with flags, continent codes, alpha-3, numeric codes, capitals, timezones, calling codes, currencies, ccTLD, native endonyms, demonyms, coordinates, area, landlocked status, borders, languages, subregions, and EU/Schengen/EEA status)
 - **Total Continents**: 7 (complete world coverage)
-- **Total Cities**: 4,010
-- **Supported Languages**: 10 (`en`, `es`, `fr`, `ar`, `nl`, `de`, `pt`, `it`, `zh`, `ja`)
+- **Total Cities**: 4,010 (modular entry point `/cities`, reducing country bundle size by ~90%)
+- **Supported Languages**: 14 (`en`, `es`, `fr`, `ar`, `nl`, `de`, `pt`, `it`, `zh`, `ja`, `ru`, `hi`, `ko`, `tr`)
+- **Subdivisions / States**: 17 countries supported (US, CA, AU, GB, DE, FR, ES, IT, MX, BR, JP, IN, CN, RU, TR, NL, CH)
 - **Build Output**: ✅ Dual ESM (`.js`) & CommonJS (`.cjs`) + `.d.ts` & `.d.cts` via `tsup`
 - **TypeScript**: ✅ 0 type errors
-- **Test Suite**: ✅ 28 suites passing, 100% success rate
+- **Test Suite**: ✅ 31 suites passing, 100% success rate (195 tests)
 
 ### Package Structure
 

@@ -1,12 +1,15 @@
 import { alpha3ToAlpha2 } from "../../data/metadata.js";
+import { normalizeText } from "../../utils/normalize.js";
 
 export interface Subdivision {
   /** ISO 3166-2 subdivision code (e.g. 'CA', 'NY', 'ON', 'ENG', 'BY') */
   code: string;
   /** Name of the state, province, region, or prefecture */
   name: string;
-  /** Category type (e.g. 'state', 'province', 'region', 'prefecture', 'nation') */
+  /** Category type (e.g. 'state', 'province', 'region', 'prefecture', 'nation', 'canton') */
   type: string;
+  /** ISO 3166-1 alpha-2 country code this subdivision belongs to (optional when scoped) */
+  countryCode?: string;
 }
 
 const SUBDIVISIONS_MAP: Record<string, Subdivision[]> = {
@@ -247,6 +250,149 @@ const SUBDIVISIONS_MAP: Record<string, Subdivision[]> = {
     { code: "40", name: "Fukuoka", type: "prefecture" },
     { code: "47", name: "Okinawa", type: "prefecture" },
   ],
+  IN: [
+    { code: "AP", name: "Andhra Pradesh", type: "state" },
+    { code: "AR", name: "Arunachal Pradesh", type: "state" },
+    { code: "AS", name: "Assam", type: "state" },
+    { code: "BR", name: "Bihar", type: "state" },
+    { code: "CT", name: "Chhattisgarh", type: "state" },
+    { code: "GA", name: "Goa", type: "state" },
+    { code: "GJ", name: "Gujarat", type: "state" },
+    { code: "HR", name: "Haryana", type: "state" },
+    { code: "HP", name: "Himachal Pradesh", type: "state" },
+    { code: "JH", name: "Jharkhand", type: "state" },
+    { code: "KA", name: "Karnataka", type: "state" },
+    { code: "KL", name: "Kerala", type: "state" },
+    { code: "MP", name: "Madhya Pradesh", type: "state" },
+    { code: "MH", name: "Maharashtra", type: "state" },
+    { code: "MN", name: "Manipur", type: "state" },
+    { code: "ML", name: "Meghalaya", type: "state" },
+    { code: "MZ", name: "Mizoram", type: "state" },
+    { code: "NL", name: "Nagaland", type: "state" },
+    { code: "OR", name: "Odisha", type: "state" },
+    { code: "PB", name: "Punjab", type: "state" },
+    { code: "RJ", name: "Rajasthan", type: "state" },
+    { code: "SK", name: "Sikkim", type: "state" },
+    { code: "TN", name: "Tamil Nadu", type: "state" },
+    { code: "TG", name: "Telangana", type: "state" },
+    { code: "TR", name: "Tripura", type: "state" },
+    { code: "UP", name: "Uttar Pradesh", type: "state" },
+    { code: "UT", name: "Uttarakhand", type: "state" },
+    { code: "WB", name: "West Bengal", type: "state" },
+    { code: "AN", name: "Andaman and Nicobar Islands", type: "union territory" },
+    { code: "CH", name: "Chandigarh", type: "union territory" },
+    { code: "DH", name: "Dadra and Nagar Haveli and Daman and Diu", type: "union territory" },
+    { code: "DL", name: "Delhi", type: "national capital territory" },
+    { code: "JK", name: "Jammu and Kashmir", type: "union territory" },
+    { code: "LA", name: "Ladakh", type: "union territory" },
+    { code: "LD", name: "Lakshadweep", type: "union territory" },
+    { code: "PY", name: "Puducherry", type: "union territory" },
+  ],
+  CN: [
+    { code: "BJ", name: "Beijing", type: "municipality" },
+    { code: "TJ", name: "Tianjin", type: "municipality" },
+    { code: "SH", name: "Shanghai", type: "municipality" },
+    { code: "CQ", name: "Chongqing", type: "municipality" },
+    { code: "HE", name: "Hebei", type: "province" },
+    { code: "SX", name: "Shanxi", type: "province" },
+    { code: "LN", name: "Liaoning", type: "province" },
+    { code: "JL", name: "Jilin", type: "province" },
+    { code: "HL", name: "Heilongjiang", type: "province" },
+    { code: "JS", name: "Jiangsu", type: "province" },
+    { code: "ZJ", name: "Zhejiang", type: "province" },
+    { code: "AH", name: "Anhui", type: "province" },
+    { code: "FJ", name: "Fujian", type: "province" },
+    { code: "JX", name: "Jiangxi", type: "province" },
+    { code: "SD", name: "Shandong", type: "province" },
+    { code: "HA", name: "Henan", type: "province" },
+    { code: "HB", name: "Hubei", type: "province" },
+    { code: "HN", name: "Hunan", type: "province" },
+    { code: "GD", name: "Guangdong", type: "province" },
+    { code: "HI", name: "Hainan", type: "province" },
+    { code: "SC", name: "Sichuan", type: "province" },
+    { code: "GZ", name: "Guizhou", type: "province" },
+    { code: "YN", name: "Yunnan", type: "province" },
+    { code: "SN", name: "Shaanxi", type: "province" },
+    { code: "GS", name: "Gansu", type: "province" },
+    { code: "QH", name: "Qinghai", type: "province" },
+    { code: "TW", name: "Taiwan", type: "province" },
+    { code: "NM", name: "Inner Mongolia", type: "autonomous region" },
+    { code: "GX", name: "Guangxi", type: "autonomous region" },
+    { code: "XZ", name: "Tibet", type: "autonomous region" },
+    { code: "NX", name: "Ningxia", type: "autonomous region" },
+    { code: "XJ", name: "Xinjiang", type: "autonomous region" },
+    { code: "HK", name: "Hong Kong", type: "special administrative region" },
+    { code: "MO", name: "Macao", type: "special administrative region" },
+  ],
+  RU: [
+    { code: "MOW", name: "Moscow", type: "federal city" },
+    { code: "SPE", name: "Saint Petersburg", type: "federal city" },
+    { code: "MOS", name: "Moscow Oblast", type: "oblast" },
+    { code: "TAT", name: "Republic of Tatarstan", type: "republic" },
+    { code: "BAS", name: "Republic of Bashkortostan", type: "republic" },
+    { code: "SVE", name: "Sverdlovsk Oblast", type: "oblast" },
+    { code: "KDA", name: "Krasnodar Krai", type: "krai" },
+    { code: "NIZ", name: "Nizhny Novgorod Oblast", type: "oblast" },
+    { code: "SAM", name: "Samara Oblast", type: "oblast" },
+    { code: "ROS", name: "Rostov Oblast", type: "oblast" },
+    { code: "CHE", name: "Chelyabinsk Oblast", type: "oblast" },
+    { code: "NOV", name: "Novosibirsk Oblast", type: "oblast" },
+  ],
+  TR: [
+    { code: "34", name: "Istanbul", type: "province" },
+    { code: "06", name: "Ankara", type: "province" },
+    { code: "35", name: "Izmir", type: "province" },
+    { code: "16", name: "Bursa", type: "province" },
+    { code: "07", name: "Antalya", type: "province" },
+    { code: "01", name: "Adana", type: "province" },
+    { code: "42", name: "Konya", type: "province" },
+    { code: "27", name: "Gaziantep", type: "province" },
+    { code: "41", name: "Kocaeli", type: "province" },
+    { code: "61", name: "Trabzon", type: "province" },
+    { code: "26", name: "Eskişehir", type: "province" },
+  ],
+  NL: [
+    { code: "DR", name: "Drenthe", type: "province" },
+    { code: "FL", name: "Flevoland", type: "province" },
+    { code: "FR", name: "Friesland", type: "province" },
+    { code: "GE", name: "Gelderland", type: "province" },
+    { code: "GR", name: "Groningen", type: "province" },
+    { code: "LI", name: "Limburg", type: "province" },
+    { code: "NB", name: "Noord-Brabant", type: "province" },
+    { code: "NH", name: "Noord-Holland", type: "province" },
+    { code: "OV", name: "Overijssel", type: "province" },
+    { code: "UT", name: "Utrecht", type: "province" },
+    { code: "ZE", name: "Zeeland", type: "province" },
+    { code: "ZH", name: "Zuid-Holland", type: "province" },
+  ],
+  CH: [
+    { code: "ZH", name: "Zürich", type: "canton" },
+    { code: "BE", name: "Bern", type: "canton" },
+    { code: "LU", name: "Luzern", type: "canton" },
+    { code: "UR", name: "Uri", type: "canton" },
+    { code: "SZ", name: "Schwyz", type: "canton" },
+    { code: "OW", name: "Obwalden", type: "canton" },
+    { code: "NW", name: "Nidwalden", type: "canton" },
+    { code: "GL", name: "Glarus", type: "canton" },
+    { code: "ZG", name: "Zug", type: "canton" },
+    { code: "FR", name: "Fribourg", type: "canton" },
+    { code: "SO", name: "Solothurn", type: "canton" },
+    { code: "BS", name: "Basel-Stadt", type: "canton" },
+    { code: "BL", name: "Basel-Landschaft", type: "canton" },
+    { code: "SH", name: "Schaffhausen", type: "canton" },
+    { code: "AR", name: "Appenzell Ausserrhoden", type: "canton" },
+    { code: "AI", name: "Appenzell Innerrhoden", type: "canton" },
+    { code: "SG", name: "St. Gallen", type: "canton" },
+    { code: "GR", name: "Graubünden", type: "canton" },
+    { code: "AG", name: "Aargau", type: "canton" },
+    { code: "TG", name: "Thurgau", type: "canton" },
+    { code: "TI", name: "Ticino", type: "canton" },
+    { code: "VD", name: "Vaud", type: "canton" },
+    { code: "VS", name: "Valais", type: "canton" },
+    { code: "NE", name: "Neuchâtel", type: "canton" },
+    { code: "GE", name: "Genève", type: "canton" },
+    { code: "JU", name: "Jura", type: "canton" },
+  ],
 };
 
 function resolveCode(countryCode?: string): string {
@@ -260,9 +406,9 @@ function resolveCode(countryCode?: string): string {
 }
 
 /**
- * Get all primary subdivisions (states, provinces, regions, prefectures) for a country.
+ * Get all primary subdivisions (states, provinces, regions, prefectures, cantons) for a country.
  *
- * @param countryCode - ISO 3166-1 alpha-2 or alpha-3 code (e.g. 'US', 'CA', 'AU', 'DE', 'FR')
+ * @param countryCode - ISO 3166-1 alpha-2 or alpha-3 code (e.g. 'US', 'CA', 'AU', 'IN', 'CN', 'DE', 'FR')
  * @returns Array of Subdivision objects, or empty array if none available
  *
  * @example
@@ -270,26 +416,28 @@ function resolveCode(countryCode?: string): string {
  * const usStates = getSubdivisions('US');
  * // [{ code: 'CA', name: 'California', type: 'state' }, ...]
  *
- * const canadianProvinces = getSubdivisions('CA');
- * // [{ code: 'ON', name: 'Ontario', type: 'province' }, ...]
+ * const indianStates = getSubdivisions('IN');
+ * // [{ code: 'MH', name: 'Maharashtra', type: 'state' }, ...]
  * ```
  */
 export function getSubdivisions(countryCode?: string): Subdivision[] {
   const code = resolveCode(countryCode);
-  return SUBDIVISIONS_MAP[code] ? [...SUBDIVISIONS_MAP[code]] : [];
+  return SUBDIVISIONS_MAP[code]
+    ? SUBDIVISIONS_MAP[code].map((s) => ({ ...s, countryCode: code }))
+    : [];
 }
 
 /**
  * Look up a specific subdivision by its code within a country.
  *
- * @param countryCode - ISO 3166-1 alpha-2 or alpha-3 code (e.g. 'US')
- * @param subdivisionCode - Subdivision code (case-insensitive, e.g. 'CA', 'ON', 'ENG')
+ * @param countryCode - ISO 3166-1 alpha-2 or alpha-3 code (e.g. 'US', 'IN')
+ * @param subdivisionCode - Subdivision code (case-insensitive, e.g. 'CA', 'ON', 'MH', 'ENG')
  * @returns Subdivision object, or undefined if not found
  *
  * @example
  * ```ts
- * getSubdivision('US', 'CA'); // { code: 'CA', name: 'California', type: 'state' }
- * getSubdivision('CA', 'QC'); // { code: 'QC', name: 'Quebec', type: 'province' }
+ * getSubdivision('US', 'CA'); // { code: 'CA', name: 'California', type: 'state', countryCode: 'US' }
+ * getSubdivision('IN', 'MH'); // { code: 'MH', name: 'Maharashtra', type: 'state', countryCode: 'IN' }
  * ```
  */
 export function getSubdivision(
@@ -311,6 +459,55 @@ export function getSubdivision(
 export function hasSubdivisions(countryCode?: string): boolean {
   const code = resolveCode(countryCode);
   return code in SUBDIVISIONS_MAP;
+}
+
+/**
+ * Search subdivisions across one country or across all supported countries.
+ * Case- and accent-insensitive matching on subdivision name or code.
+ *
+ * @param query - Search term (e.g. 'California', 'Bavaria', 'Tokyo', 'Maharashtra', 'Ontario')
+ * @param countryCode - Optional ISO country code to restrict the search
+ * @returns Array of matching Subdivision objects
+ *
+ * @example
+ * ```ts
+ * searchSubdivisions('york'); // matches New York (US)
+ * searchSubdivisions('mumbai'); // matches Maharashtra (IN) if searched or searched by state name
+ * searchSubdivisions('bavaria', 'DE'); // matches Bayern
+ * ```
+ */
+export function searchSubdivisions(
+  query: string,
+  countryCode?: string
+): Subdivision[] {
+  if (!query || typeof query !== "string") return [];
+  const normalizedQuery = normalizeText(query);
+  if (!normalizedQuery) return [];
+
+  const candidates: Subdivision[] = countryCode
+    ? getSubdivisions(countryCode)
+    : Object.keys(SUBDIVISIONS_MAP).flatMap((code) => getSubdivisions(code));
+
+  return candidates.filter((s) => {
+    const codeMatch = s.code.toLowerCase() === normalizedQuery;
+    const nameNorm = normalizeText(s.name);
+    return codeMatch || nameNorm.includes(normalizedQuery);
+  });
+}
+
+/**
+ * Get all country codes that have subdivision data available.
+ *
+ * @returns Array of ISO alpha-2 country codes
+ *
+ * @example
+ * ```ts
+ * getAllSubdivisionsCountries();
+ * // ['US', 'CA', 'AU', 'GB', 'DE', 'FR', 'ES', 'IT', 'MX', 'BR', 'JP', 'IN', 'CN', 'RU', 'TR', 'NL', 'CH']
+ * ```
+ */
+export function getAllSubdivisionsCountries(): string[] {
+  return Object.keys(SUBDIVISIONS_MAP);
 }
 
 export default getSubdivisions;

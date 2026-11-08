@@ -38,6 +38,12 @@ assert.strictEqual(getSubregion("JP"), "Eastern Asia");
 const subdivMod = require("../dist/services/countries/subdivisions.cjs");
 const getSubdivisions = subdivMod.getSubdivisions || subdivMod.default;
 assert.strictEqual(getSubdivisions("US").length, 51);
+assert.strictEqual(subdivMod.searchSubdivisions("Maharashtra")[0].code, "MH");
+
+const citiesMod = require("../dist/services/cities/index.cjs");
+const getCities = citiesMod.getCities || citiesMod.default;
+assert.strictEqual(getCities("ru").length, 4010);
+assert.strictEqual(citiesMod.getCityName("Moscow", "ru"), "Москва");
 
 console.log("  ✅ Individual subpaths (.cjs) work cleanly in CommonJS");
 

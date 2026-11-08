@@ -63,6 +63,8 @@ import {
   getSubdivisions,
   getSubdivision,
   hasSubdivisions,
+  searchSubdivisions,
+  getAllSubdivisionsCountries,
   // Phone & Currency services
   getCallingCode,
   getCurrency,
@@ -89,6 +91,9 @@ import {
   alpha2ToNumeric,
   numericToAlpha2,
 } from 'i18n-countries-continents';
+
+// Or import city services directly from the modular subpath:
+import { getCities, getCity, getCityName, searchCities } from 'i18n-countries-continents/cities';
 ```
 
 ### Get Country Name

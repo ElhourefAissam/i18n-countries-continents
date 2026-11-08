@@ -223,7 +223,7 @@ console.log("\n🌐 9. getSupportedLanguages() & LANGUAGES");
 console.log("═".repeat(60));
 
 const allLangs = getSupportedLanguages();
-assert("getSupportedLanguages returns 10 languages", allLangs.length === 10);
+assert("getSupportedLanguages returns 14 languages", allLangs.length === 14);
 assert("Every language has code, name, and nativeName", allLangs.every(l => l.code && l.name && l.nativeName));
 
 const germanMeta = LANGUAGES["de"];
@@ -235,8 +235,11 @@ assert("LANGUAGES record contains Chinese metadata", chineseMeta && chineseMeta.
 const japaneseMeta = LANGUAGES["ja"];
 assert("LANGUAGES record contains Japanese metadata", japaneseMeta && japaneseMeta.code === "ja" && japaneseMeta.name === "Japanese" && japaneseMeta.nativeName === "日本語");
 
+const russianMeta = LANGUAGES["ru"];
+assert("LANGUAGES record contains Russian metadata", russianMeta && russianMeta.code === "ru" && russianMeta.name === "Russian" && russianMeta.nativeName === "Русский");
+
 const langSelectOptions = toSelectOptions(allLangs, { value: "code", label: "nativeName" });
-assert("toSelectOptions works with getSupportedLanguages", langSelectOptions.length === 10 && langSelectOptions.some(o => o.value === "ar" && o.label === "العربية"));
+assert("toSelectOptions works with getSupportedLanguages", langSelectOptions.length === 14 && langSelectOptions.some(o => o.value === "ar" && o.label === "العربية"));
 
 // ========================================
 // 10. Language Code Normalization
