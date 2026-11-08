@@ -1,6 +1,6 @@
 # i18n-countries-continents
 
-Get country, continent, and city names in different languages. **250 countries**, **7 continents**, and **4,010 cities** with full translations in **10 languages** (including Chinese & Japanese), ISO 3166-1 Alpha-3 & Numeric codes, official capitals, primary IANA timezones, phone calling codes, and currencies. Works in React, Angular, Vue, Svelte, Node.js, and any JavaScript environment.
+Get country, continent, and city names in different languages. **250 countries**, **7 continents**, and **4,010 cities** with full translations in **10 languages** (including Chinese & Japanese), ISO 3166-1 Alpha-3 & Numeric codes, official capitals, primary IANA timezones, phone calling codes, currencies, ccTLD, native endonyms, demonyms, coordinates, borders, EU/Schengen status, and postal codes. Works in React, Angular, Vue, Svelte, Node.js, and any JavaScript environment.
 
 [![npm version](https://img.shields.io/npm/v/i18n-countries-continents.svg)](https://www.npmjs.com/package/i18n-countries-continents)
 [![npm downloads](https://img.shields.io/npm/dm/i18n-countries-continents.svg)](https://www.npmjs.com/package/i18n-countries-continents)
@@ -30,20 +30,28 @@ pnpm add i18n-countries-continents
 ## Features
 
 - 🌍 **250 countries** — Complete coverage of all world countries
-- 🏳️ **Country flags** — Flag emoji for every country
+- 🏳️ **Country flags** — Flag emoji and CDN vector SVG / raster PNG URLs for every country (Windows-safe!)
 - 🔤 **ISO 3166-1 codes** — Alpha-2 (`US`), Alpha-3 (`USA`), and Numeric (`840`) codes with fast conversion helpers
 - 🏛️ **Official capitals** — Capital cities for all countries with reverse lookup (`getCapital`, `getCountryByCapital`)
+- 🌐 **ccTLD domains** — Country-code Top-Level Domains (`.us`, `.fr`, `.de`, `.ma`, `.jp`) with reverse lookup
+- 🇪🇺 **Regional unions** — European Union (EU), Schengen Area, and EEA membership detection (`isEU`, `isSchengen`, `isEEA`)
+- 🗣️ **Native endonyms** — Local native country names (`Deutschland`, `日本`, `المغرب`, `Ελλάδα`)
+- 📍 **Geographic coordinates & area** — Lat/lng center coordinates, area in $km^2$, and landlocked status
+- 🗺️ **Borders & neighbors** — Land border country lists and localized neighboring Country objects
+- 💬 **Spoken languages** — Official and widely spoken language codes per country
+- 👤 **Demonyms & nationalities** — Demonyms in English with reverse lookup (`"American"`, `"French"`, `"Moroccan"`)
+- 📮 **Postal code validation** — Regex format patterns and validators for national postal / ZIP codes
 - 🕒 **Primary IANA timezones** — IANA timezone mapping with reverse lookup (`getTimezones`, `getCountriesByTimezone`)
-- 🔍 **Accent-insensitive search** — Diacritic-free search and smart ranking (`"peru"` matches `"Perú"`, `"paris"` matches France)
+- 🔍 **Accent-insensitive search** — Diacritic-free search and smart ranking (`"peru"` matches `"Perú"`, `"paris"` matches France, `".fr"` matches France)
 - 📞 **Calling codes** — International dial codes for all 250 countries (e.g. `+1`, `+33`, `+212`)
 - 💰 **Currency info** — ISO 4217 code, symbol, and name for all 250 countries (e.g. `USD`, `$`, `EUR`, `€`)
 - 🗺️ **7 continents** — All continents included
 - 🏙️ **4,010 cities** — Major cities from around the world
 - 🌐 **10 languages** — English, Spanish, French, Arabic, Dutch, German, Portuguese, Italian, Chinese, Japanese (100% coverage)
 - 📦 **Zero dependencies** — Lightweight and fast
-- 💪 **TypeScript** — Full type definitions included
-- ⚡ **Tree-shakeable** — Import only what you need
-- 🎯 **Universal** — Works with ESM and CommonJS
+- 💪 **TypeScript** — Strict literal union types with IDE autocomplete for all codes
+- ⚡ **Tree-shakeable** — Direct subpath exports for every utility
+- 🎯 **Universal** — Works seamlessly with ESM and CommonJS
 
 ---
 
@@ -409,6 +417,171 @@ console.log(getCountry('FR', 'ja').name); // "フランス"
 console.log(getCountry('DE', 'ja').name); // "ドイツ"
 ```
 
+### 25. Country-Code Top-Level Domains (ccTLD)
+
+```js
+import { getTld, getCountryByTld } from 'i18n-countries-continents';
+
+// Get ccTLD for country
+console.log(getTld('US'));  // ".us"
+console.log(getTld('FRA')); // ".fr" (supports alpha-3)
+console.log(getTld('MA'));  // ".ma"
+console.log(getTld('JP'));  // ".jp"
+
+// Reverse lookup country by ccTLD (with or without dot)
+const france = getCountryByTld('.fr');
+const germany = getCountryByTld('de', 'es'); // Localized to 'Alemania'
+```
+
+### 26. Regional & Geopolitical Unions (EU, Schengen, EEA)
+
+Ideal for e-commerce checkout VAT calculation, GDPR cookie consent, and travel restrictions:
+
+```js
+import { 
+  isEU, 
+  isSchengen, 
+  isEEA, 
+  getEUCountries, 
+  getSchengenCountries 
+} from 'i18n-countries-continents';
+
+// Membership verification
+isEU('FR');        // true (France is in EU)
+isEU('GB');        // false (post-Brexit)
+isSchengen('CH');  // true (Switzerland is in Schengen)
+isEEA('NO');       // true (Norway is in EEA)
+
+// Retrieve all member state objects
+const euMembers = getEUCountries('es');           // 27 EU countries
+const schengenMembers = getSchengenCountries();   // 29 Schengen countries
+```
+
+### 27. Native Endonyms (Local Country Names)
+
+Display countries in their own official languages for international dropdowns:
+
+```js
+import { getNativeName, getCountries, toSelectOptions } from 'i18n-countries-continents';
+
+console.log(getNativeName('DE')); // "Deutschland"
+console.log(getNativeName('JP')); // "日本"
+console.log(getNativeName('MA')); // "المغرب"
+console.log(getNativeName('GR')); // "Ελλάδα"
+
+// Build universal dropdown options: "Germany (Deutschland)"
+const options = toSelectOptions(getCountries('en'), {
+  label: (c) => `${c.flag} ${c.name} (${c.nativeName})`,
+  sort: true
+});
+```
+
+### 28. Vector & Raster Flag CDN URLs (Windows Emoji Fix)
+
+Emoji flags render as letters on Windows PCs. Use `getCountryFlagUrl` for clean, high-resolution SVG or PNG flags:
+
+```js
+import { getCountryFlagUrl } from 'i18n-countries-continents';
+
+// High-resolution SVG vector flag
+const svgUrl = getCountryFlagUrl('US'); 
+// "https://flagcdn.com/us.svg"
+
+// Crisp PNG raster flag with custom size ('w20' | 'w40' | 'w80' | 'w160' | 'w320')
+const pngUrl = getCountryFlagUrl('FRA', { format: 'png', size: 'w80' });
+// "https://flagcdn.com/w80/fr.png"
+```
+
+### 29. Geographic Coordinates, Area & Landlocked Status
+
+```js
+import { getCoordinates, isLandlocked, getArea } from 'i18n-countries-continents';
+
+// Center latitude and longitude for maps (Leaflet, Mapbox, Google Maps)
+console.log(getCoordinates('US')); // { lat: 38, lng: -97 }
+console.log(getCoordinates('FR')); // { lat: 46, lng: 2 }
+
+// Check if landlocked
+console.log(isLandlocked('CH')); // true (Switzerland)
+console.log(isLandlocked('FR')); // false (has coastline)
+
+// Surface area in sq km
+console.log(getArea('FR')); // 551695
+```
+
+### 30. Neighboring Borders
+
+```js
+import { getBorders, getCountryBorders } from 'i18n-countries-continents';
+
+// Border country codes
+console.log(getBorders('US')); // ["CA", "MX"]
+console.log(getBorders('JP')); // [] (island nation)
+
+// Full localized Country objects of neighbors
+const neighbors = getCountryBorders('US', 'es');
+// [ Country { code: 'CA', name: 'Canadá' }, Country { code: 'MX', name: 'México' } ]
+```
+
+### 31. Spoken Languages per Country
+
+```js
+import { getCountryLanguages, getCountriesBySpokenLanguage } from 'i18n-countries-continents';
+
+// Spoken languages in Switzerland
+console.log(getCountryLanguages('CH')); 
+// ["fr", "gsw", "it", "roh"]
+
+// Find all countries where French is spoken
+const francophone = getCountriesBySpokenLanguage('fr');
+// [ France, Belgium, Switzerland, Canada, ... ]
+```
+
+### 32. Demonyms & Nationalities
+
+```js
+import { getDemonym, getCountryByDemonym } from 'i18n-countries-continents';
+
+// Nationality names
+console.log(getDemonym('US'));  // "American"
+console.log(getDemonym('FRA')); // "French"
+console.log(getDemonym('MA'));  // "Moroccan"
+console.log(getDemonym('JP'));  // "Japanese"
+
+// Reverse lookup country by nationality
+const usa = getCountryByDemonym('American');
+const france = getCountryByDemonym('French', 'es'); // Localized to 'Francia'
+```
+
+### 33. Postal Code Validation
+
+```js
+import { isValidPostalCode, getPostalCodePattern } from 'i18n-countries-continents';
+
+isValidPostalCode('US', '90210');       // true
+isValidPostalCode('US', '90210-1234');  // true
+isValidPostalCode('FR', '75008');       // true
+isValidPostalCode('GB', 'SW1A 1AA');    // true
+isValidPostalCode('CA', 'K1A 0B1');     // true
+isValidPostalCode('US', '1234');        // false (invalid format)
+
+// Get raw regex pattern string
+const pattern = getPostalCodePattern('FR'); // "^\\d{5}$"
+```
+
+### 34. Locale Inference
+
+Infer country from user browser locales (`navigator.language`) or BCP-47 tags:
+
+```js
+import { getCountryFromLocale } from 'i18n-countries-continents';
+
+getCountryFromLocale('en-US');      // Country { code: 'US', name: 'United States' }
+getCountryFromLocale('fr-FR');      // Country { code: 'FR', name: 'France' }
+getCountryFromLocale('pt_BR', 'es'); // Country { code: 'BR', name: 'Brasil' }
+getCountryFromLocale('ja');         // Country { code: 'JP', name: 'Japan' }
+```
+
 ---
 
 ## Framework Usage
@@ -745,17 +918,33 @@ interface Currency {
   name: string;   // e.g. "US Dollar", "Euro"
 }
 
+interface Coordinates {
+  lat: number;
+  lng: number;
+}
+
 interface Country {
-  code: string;        // ISO 3166-1 alpha-2, e.g. "US"
-  alpha3: string;      // ISO 3166-1 alpha-3, e.g. "USA"
-  numeric: string;     // ISO 3166-1 numeric, e.g. "840"
-  continent: string;   // Continent code, e.g. "NA"
-  name: string;        // Localized country name
-  flag: string;        // Emoji flag, e.g. "🇺🇸"
-  capital: string;     // Official capital city, e.g. "Washington D.C."
-  timezones: string[]; // Primary IANA timezones, e.g. ["America/New_York", ...]
-  callingCode: string; // International dial code, e.g. "+1", "+33"
-  currency: Currency;  // Currency info (code, symbol, name)
+  code: string;           // ISO 3166-1 alpha-2, e.g. "US"
+  alpha3: string;         // ISO 3166-1 alpha-3, e.g. "USA"
+  numeric: string;        // ISO 3166-1 numeric, e.g. "840"
+  continent: string;      // Continent code, e.g. "NA"
+  name: string;           // Localized country name
+  flag: string;           // Emoji flag, e.g. "🇺🇸"
+  capital: string;        // Official capital city, e.g. "Washington D.C."
+  timezones: string[];    // Primary IANA timezones, e.g. ["America/New_York", ...]
+  callingCode: string;    // International dial code, e.g. "+1", "+33"
+  currency: Currency;     // Currency info (code, symbol, name)
+  tld: string;            // ccTLD, e.g. ".us", ".fr"
+  nativeName: string;     // Local native name, e.g. "United States", "Deutschland"
+  demonym: string;        // English demonym, e.g. "American", "French"
+  coordinates: Coordinates; // Geographic center { lat, lng }
+  area: number;           // Land/water area in sq km
+  landlocked: boolean;    // Whether country is landlocked
+  borders: string[];      // Bordering country alpha-2 codes
+  languages: string[];    // Spoken language codes
+  isEU: boolean;          // Member of European Union
+  isSchengen: boolean;    // Member of Schengen Area
+  isEEA: boolean;         // Member of European Economic Area
 }
 
 interface Continent {

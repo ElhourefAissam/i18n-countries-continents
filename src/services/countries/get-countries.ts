@@ -1,8 +1,8 @@
 import { getLangCountries } from "../../data/loader.js";
 import { SupportedLanguage } from "../../utils/types.js";
-import { getMetadata, Currency } from "../../data/metadata.js";
+import { getMetadata, Currency, Coordinates } from "../../data/metadata.js";
 
-export type { Currency };
+export type { Currency, Coordinates };
 
 export interface Country {
   /** ISO 3166-1 alpha-2 country code, e.g. 'US', 'FR' */
@@ -25,10 +25,32 @@ export interface Country {
   callingCode: string;
   /** Currency info (code, symbol, name) */
   currency: Currency;
+  /** Country-code Top-Level Domain, e.g. '.us', '.fr', '.de' */
+  tld: string;
+  /** Native country name (endonym), e.g. 'United States', 'France', 'Deutschland' */
+  nativeName: string;
+  /** Demonym / nationality in English, e.g. 'American', 'French', 'German' */
+  demonym: string;
+  /** Geographic center coordinates (latitude, longitude) */
+  coordinates: Coordinates;
+  /** Surface area in square kilometers */
+  area: number;
+  /** Whether the country is landlocked */
+  landlocked: boolean;
+  /** Array of bordering country ISO 3166-1 alpha-2 codes */
+  borders: string[];
+  /** Array of official / spoken language codes */
+  languages: string[];
+  /** Whether country is a member of the European Union (EU) */
+  isEU: boolean;
+  /** Whether country is a member of the Schengen Area */
+  isSchengen: boolean;
+  /** Whether country is a member of the European Economic Area (EEA) */
+  isEEA: boolean;
 }
 
 /**
- * Get all 250 countries with their names, continent codes, flag emojis, ISO alpha-3/numeric codes, capitals, timezones, calling codes, and currencies in the specified language.
+ * Get all 250 countries with their names, continent codes, flag emojis, ISO alpha-3/numeric codes, capitals, timezones, calling codes, currencies, ccTLD, native names, demonyms, coordinates, borders, and EU/Schengen status in the specified language.
  *
  * @param language - Target language (default: 'en')
  * @returns Array of 250 Country objects
@@ -36,7 +58,7 @@ export interface Country {
  * @example
  * ```ts
  * const countries = getCountries('es');
- * countries.forEach(c => console.log(c.flag, c.code, c.name, c.capital, c.timezones));
+ * countries.forEach(c => console.log(c.flag, c.code, c.name, c.capital, c.tld, c.nativeName, c.isEU));
  * ```
  */
 export default function getCountries(
@@ -55,6 +77,17 @@ export default function getCountries(
       timezones: meta?.timezones || [],
       callingCode: meta?.callingCode || "",
       currency: meta?.currency || { code: "", symbol: "", name: "" },
+      tld: meta?.tld || "",
+      nativeName: meta?.nativeName || "",
+      demonym: meta?.demonym || "",
+      coordinates: meta?.coordinates || { lat: 0, lng: 0 },
+      area: meta?.area || 0,
+      landlocked: meta?.landlocked || false,
+      borders: meta?.borders || [],
+      languages: meta?.languages || [],
+      isEU: meta?.isEU || false,
+      isSchengen: meta?.isSchengen || false,
+      isEEA: meta?.isEEA || false,
     };
   });
 }

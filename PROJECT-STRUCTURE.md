@@ -29,6 +29,22 @@ i18n-countries-continents/
 │   │   │   ├── get-countries-by-continent.ts
 │   │   │   ├── get-continent-by-country.ts
 │   │   │   ├── search-countries.ts
+│   │   │   ├── get-calling-code.ts
+│   │   │   ├── get-currency.ts
+│   │   │   ├── get-country-by-alpha3.ts
+│   │   │   ├── get-country-by-numeric.ts
+│   │   │   ├── get-capital.ts
+│   │   │   ├── get-timezones.ts
+│   │   │   ├── get-tld.ts
+│   │   │   ├── get-country-by-tld.ts
+│   │   │   ├── regional-unions.ts
+│   │   │   ├── get-native-name.ts
+│   │   │   ├── get-country-flag-url.ts
+│   │   │   ├── get-coordinates.ts
+│   │   │   ├── get-borders.ts
+│   │   │   ├── spoken-languages.ts
+│   │   │   ├── get-demonym.ts
+│   │   │   ├── get-country-from-locale.ts
 │   │   │   └── index.ts
 │   │   │
 │   │   ├── continents/           # Continent-related services
@@ -48,6 +64,7 @@ i18n-countries-continents/
 │   │   │   ├── is-valid-country-code.ts
 │   │   │   ├── is-valid-continent-code.ts
 │   │   │   ├── is-valid-language.ts
+│   │   │   ├── is-valid-postal-code.ts
 │   │   │   └── index.ts
 │   │   │
 │   │   └── index.ts              # Service re-exports

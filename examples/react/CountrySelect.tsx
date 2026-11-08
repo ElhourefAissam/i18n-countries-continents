@@ -176,16 +176,31 @@ export const CountrySelectorApp: React.FC = () => {
             <strong>ISO Code:</strong> {activeCountry.code} (Alpha-3: {activeCountry.alpha3}, Numeric: {activeCountry.numeric})
           </p>
           <p style={{ margin: 4 }}>
+            <strong>Native Name:</strong> {activeCountry.nativeName}
+          </p>
+          <p style={{ margin: 4 }}>
+            <strong>ccTLD:</strong> {activeCountry.tld}
+          </p>
+          <p style={{ margin: 4 }}>
             <strong>Capital:</strong> {activeCountry.capital || 'N/A'}
           </p>
           <p style={{ margin: 4 }}>
             <strong>Continent:</strong> {activeCountry.continent}
           </p>
           <p style={{ margin: 4 }}>
+            <strong>EU Member:</strong> {activeCountry.isEU ? 'Yes (EU)' : 'No'} {activeCountry.isSchengen ? '· Schengen' : ''}
+          </p>
+          <p style={{ margin: 4 }}>
             <strong>Calling Code:</strong> {activeCountry.callingCode}
           </p>
           <p style={{ margin: 4 }}>
             <strong>Currency:</strong> {activeCountry.currency.code} ({activeCountry.currency.symbol}) — {activeCountry.currency.name}
+          </p>
+          <p style={{ margin: 4 }}>
+            <strong>Demonym:</strong> {activeCountry.demonym}
+          </p>
+          <p style={{ margin: 4 }}>
+            <strong>Borders:</strong> {activeCountry.borders.join(', ') || 'None (Island/Isolated)'}
           </p>
           <p style={{ margin: 4 }}>
             <strong>Primary Timezones:</strong> {activeCountry.timezones.slice(0, 2).join(', ')}

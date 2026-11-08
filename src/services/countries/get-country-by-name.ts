@@ -1,7 +1,7 @@
 import { getLangCountries } from "../../data/loader.js";
 import { SupportedLanguage } from "../../utils/types.js";
-import { getMetadata } from "../../data/metadata.js";
 import { normalizeText } from "../../utils/normalize.js";
+import getCountry from "./get-country.js";
 import { Country } from "./get-countries.js";
 
 /**
@@ -50,18 +50,6 @@ export default function getCountryByName(
   }
 
   if (!entry) return undefined;
-  const [code, continent, flag, countryName] = entry;
-  const meta = getMetadata(code);
-  return {
-    code,
-    alpha3: meta?.alpha3 || "",
-    numeric: meta?.numeric || "",
-    continent,
-    flag,
-    name: countryName,
-    capital: meta?.capital || "",
-    timezones: meta?.timezones || [],
-    callingCode: meta?.callingCode || "",
-    currency: meta?.currency || { code: "", symbol: "", name: "" },
-  };
+  const [code] = entry;
+  return getCountry(code, language);
 }

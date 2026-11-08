@@ -1,7 +1,5 @@
-import { getLangCountries } from "../../data/loader.js";
 import { SupportedLanguage } from "../../utils/types.js";
-import { getMetadata } from "../../data/metadata.js";
-import { Country } from "./get-countries.js";
+import getCountries, { Country } from "./get-countries.js";
 
 /**
  * Get all countries belonging to a specific continent.
@@ -24,21 +22,5 @@ export default function getCountriesByContinent(
   const upper = continentCode.toUpperCase().trim();
   if (!upper) return [];
 
-  return getLangCountries(language)
-    .filter(([, continent]) => continent === upper)
-    .map(([code, continent, flag, name]) => {
-      const meta = getMetadata(code);
-      return {
-        code,
-        alpha3: meta?.alpha3 || "",
-        numeric: meta?.numeric || "",
-        continent,
-        flag,
-        name,
-        capital: meta?.capital || "",
-        timezones: meta?.timezones || [],
-        callingCode: meta?.callingCode || "",
-        currency: meta?.currency || { code: "", symbol: "", name: "" },
-      };
-    });
+  return getCountries(language).filter((c) => c.continent === upper);
 }

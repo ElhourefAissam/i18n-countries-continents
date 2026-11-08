@@ -18,6 +18,17 @@ const testSuites = [
   "test-capitals.js",
   "test-timezones.js",
   "test-asian-locales.js",
+  "test-types.js",
+  "test-tld.js",
+  "test-unions.js",
+  "test-native-names.js",
+  "test-flag-urls.js",
+  "test-geo-data.js",
+  "test-borders.js",
+  "test-country-languages.js",
+  "test-demonyms.js",
+  "test-postal-codes.js",
+  "test-locale-helpers.js",
 ];
 
 console.log("========================================");

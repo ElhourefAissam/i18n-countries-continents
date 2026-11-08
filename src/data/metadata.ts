@@ -10,6 +10,13 @@ export interface Currency {
   name: string;
 }
 
+export interface Coordinates {
+  /** Latitude in decimal degrees */
+  lat: number;
+  /** Longitude in decimal degrees */
+  lng: number;
+}
+
 export interface CountryMetadata {
   /** International phone calling dial code with prefix, e.g. "+1", "+33", "+212" */
   callingCode: string;
@@ -23,9 +30,32 @@ export interface CountryMetadata {
   capital: string;
   /** Array of IANA timezone identifiers, e.g. ["Europe/Paris"] */
   timezones: string[];
+  /** Country-code Top-Level Domain, e.g. ".us", ".fr", ".de" */
+  tld: string;
+  /** Native country name (endonym), e.g. "Deutschland", "日本", "المغرب" */
+  nativeName: string;
+  /** Demonym / nationality in English, e.g. "American", "French", "German" */
+  demonym: string;
+  /** Geographic coordinates (latitude, longitude) */
+  coordinates: Coordinates;
+  /** Surface land/water area in square kilometers */
+  area: number;
+  /** Whether the country is landlocked */
+  landlocked: boolean;
+  /** Array of neighboring country ISO 3166-1 alpha-2 codes */
+  borders: string[];
+  /** Array of official / spoken language codes (ISO 639-1 / 639-2) */
+  languages: string[];
+  /** Whether the country is a member state of the European Union (EU) */
+  isEU: boolean;
+  /** Whether the country is a member state of the Schengen Area */
+  isSchengen: boolean;
+  /** Whether the country is a member state of the European Economic Area (EEA) */
+  isEEA: boolean;
 }
 
-// Compact tuple format: [callingCode, currencyCode, symbol, name, alpha3?, numeric?, capital?, timezones?]
+// Compact tuple format:
+// [callingCode, currencyCode, symbol, name, alpha3, numeric, capital, timezones, tld, nativeName, demonym, latlng, area, landlocked, borders, languages]
 type RawMetadataEntry = [
   callingCode: string,
   currencyCode: string,
@@ -34,10 +64,38 @@ type RawMetadataEntry = [
   alpha3?: string,
   numeric?: string,
   capital?: string,
-  timezones?: string[]
+  timezones?: string[],
+  tld?: string,
+  nativeName?: string,
+  demonym?: string,
+  latlng?: [number, number],
+  area?: number,
+  landlocked?: boolean,
+  borders?: string[],
+  languages?: string[]
 ];
 
 const rawData = metadataJson as unknown as Record<string, RawMetadataEntry>;
+
+/** 27 Official European Union member states */
+export const EU_COUNTRY_CODES = new Set<string>([
+  "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR",
+  "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL",
+  "PL", "PT", "RO", "SK", "SI", "ES", "SE"
+]);
+
+/** 29 Official Schengen Area member states */
+export const SCHENGEN_COUNTRY_CODES = new Set<string>([
+  "AT", "BE", "BG", "CH", "CZ", "DE", "DK", "EE", "ES", "FI",
+  "FR", "GR", "HR", "HU", "IS", "IT", "LI", "LT", "LU", "LV",
+  "MT", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK"
+]);
+
+/** 30 Official European Economic Area (EEA) states (27 EU + IS, LI, NO) */
+export const EEA_COUNTRY_CODES = new Set<string>([
+  ...EU_COUNTRY_CODES,
+  "IS", "LI", "NO"
+]);
 
 // Precompute reverse lookup indexes for O(1) performance
 const alpha3ToAlpha2Map = new Map<string, string>();
@@ -46,9 +104,12 @@ const alpha2ToAlpha3Map = new Map<string, string>();
 const alpha2ToNumericMap = new Map<string, string>();
 const capitalToAlpha2Map = new Map<string, string>();
 const timezoneToAlpha2Map = new Map<string, string[]>();
+const tldToAlpha2Map = new Map<string, string>();
+const demonymToAlpha2Map = new Map<string, string>();
+const spokenLanguageToAlpha2Map = new Map<string, string[]>();
 
 for (const [alpha2, entry] of Object.entries(rawData)) {
-  const [, , , , a3, num, cap, tzs] = entry;
+  const [, , , , a3, num, cap, tzs, tld, , demonym, , , , , langs] = entry;
   if (a3) {
     alpha3ToAlpha2Map.set(a3.toUpperCase(), alpha2);
     alpha2ToAlpha3Map.set(alpha2, a3);
@@ -71,6 +132,42 @@ for (const [alpha2, entry] of Object.entries(rawData)) {
         timezoneToAlpha2Map.set(normTz, []);
       }
       timezoneToAlpha2Map.get(normTz)!.push(alpha2);
+    }
+  }
+  if (tld) {
+    const cleanTld = tld.toLowerCase().trim();
+    const withoutDot = cleanTld.startsWith(".") ? cleanTld.slice(1) : cleanTld;
+    const isDirectMatch = withoutDot.toUpperCase() === alpha2;
+
+    if (isDirectMatch || !tldToAlpha2Map.has(cleanTld)) {
+      tldToAlpha2Map.set(cleanTld, alpha2);
+      tldToAlpha2Map.set(withoutDot, alpha2);
+    }
+  }
+  if (demonym) {
+    const normDem = normalizeText(demonym);
+    const primaryOverrides: Record<string, string> = {
+      american: "US",
+      dutch: "NL",
+      french: "FR",
+      indian: "IN",
+      norwegian: "NO",
+      congolese: "CD",
+      dominican: "DO",
+    };
+    if (primaryOverrides[normDem]) {
+      demonymToAlpha2Map.set(normDem, primaryOverrides[normDem]);
+    } else if (!demonymToAlpha2Map.has(normDem)) {
+      demonymToAlpha2Map.set(normDem, alpha2);
+    }
+  }
+  if (Array.isArray(langs)) {
+    for (const lang of langs) {
+      const normLang = lang.toLowerCase().trim();
+      if (!spokenLanguageToAlpha2Map.has(normLang)) {
+        spokenLanguageToAlpha2Map.set(normLang, []);
+      }
+      spokenLanguageToAlpha2Map.get(normLang)!.push(alpha2);
     }
   }
 }
@@ -127,15 +224,46 @@ export function timezoneToAlpha2List(timezone?: string): string[] {
 }
 
 /**
- * Get country calling code, currency, alpha-3, numeric, capital, and timezones metadata.
+ * Find country code by ccTLD (e.g. ".fr" or "fr" -> "FR").
+ */
+export function tldToAlpha2(tld?: string): string | undefined {
+  if (!tld || typeof tld !== "string") return undefined;
+  const clean = tld.toLowerCase().trim();
+  return tldToAlpha2Map.get(clean) || (clean.startsWith(".") ? tldToAlpha2Map.get(clean.slice(1)) : undefined);
+}
+
+/**
+ * Find country code by demonym / nationality in English (e.g. "American" -> "US", "French" -> "FR").
+ */
+export function demonymToAlpha2(demonym?: string): string | undefined {
+  if (!demonym || typeof demonym !== "string") return undefined;
+  return demonymToAlpha2Map.get(normalizeText(demonym));
+}
+
+/**
+ * Find country codes where a language is spoken (e.g. "fr" -> ["FR", "BE", "CH", "CA", ...]).
+ */
+export function spokenLanguageToAlpha2List(lang?: string): string[] {
+  if (!lang || typeof lang !== "string") return [];
+  return spokenLanguageToAlpha2Map.get(lang.toLowerCase().trim()) || [];
+}
+
+/**
+ * Get country calling code, currency, alpha-3, numeric, capital, timezones, and geographic metadata.
  */
 export function getMetadata(
   countryCode?: string
 ): CountryMetadata | undefined {
   if (!countryCode || typeof countryCode !== "string") return undefined;
-  const entry = rawData[countryCode.toUpperCase().trim()];
+  const upper = countryCode.toUpperCase().trim();
+  const resolvedCode = alpha3ToAlpha2Map.get(upper) || upper;
+  const entry = rawData[resolvedCode];
   if (!entry) return undefined;
-  const [callingCode, code, symbol, name, alpha3, numeric, capital, timezones] = entry;
+  const [
+    callingCode, code, symbol, name, alpha3, numeric, capital, timezones,
+    tld, nativeName, demonym, latlng, area, landlocked, borders, languages
+  ] = entry;
+
   return {
     callingCode,
     currency: { code, symbol, name },
@@ -143,6 +271,17 @@ export function getMetadata(
     numeric: numeric || "",
     capital: capital || "",
     timezones: Array.isArray(timezones) ? timezones : [],
+    tld: tld || "",
+    nativeName: nativeName || "",
+    demonym: demonym || "",
+    coordinates: latlng && latlng.length === 2 ? { lat: latlng[0], lng: latlng[1] } : { lat: 0, lng: 0 },
+    area: typeof area === "number" ? area : 0,
+    landlocked: Boolean(landlocked),
+    borders: Array.isArray(borders) ? borders : [],
+    languages: Array.isArray(languages) ? languages : [],
+    isEU: EU_COUNTRY_CODES.has(resolvedCode),
+    isSchengen: SCHENGEN_COUNTRY_CODES.has(resolvedCode),
+    isEEA: EEA_COUNTRY_CODES.has(resolvedCode),
   };
 }
 

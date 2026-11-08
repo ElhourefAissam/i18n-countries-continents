@@ -5,6 +5,57 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-11-08
+
+### Added
+- **Country-Code Top-Level Domains (ccTLD)**:
+  - Added `tld` property (e.g. `.us`, `.fr`, `.de`, `.ma`, `.jp`) across all 250 countries
+  - `getTld(countryCode)` (and alias `getCountryTld`) — look up ccTLD for alpha-2 or alpha-3 code
+  - `getCountryByTld(tld, language?)` — reverse lookup country by domain suffix (with or without dot)
+  - `searchCountries` now matches by ccTLD (e.g. `searchCountries('.fr')`)
+- **Regional & Geopolitical Unions (EU, Schengen, EEA)**:
+  - Added complete membership sets for 27 EU member states, 29 Schengen member states, and 30 EEA states
+  - `isEU(countryCode)`, `isSchengen(countryCode)`, `isEEA(countryCode)` — boolean checks supporting alpha-2 and alpha-3 codes
+  - `getEUCountries(language?)`, `getSchengenCountries(language?)`, `getEEACountries(language?)` — retrieve complete Country lists
+  - Added `isEU`, `isSchengen`, and `isEEA` boolean flags to all 250 `Country` objects
+- **Native Country Names (Endonyms)**:
+  - Added `nativeName` property for all 250 countries (e.g. `DE` -> `"Deutschland"`, `JP` -> `"日本"`, `MA` -> `"المغرب"`, `GR` -> `"Ελλάδα"`, `ES` -> `"España"`)
+  - `getNativeName(countryCode)` (and alias `getCountryNativeName`) — look up native endonym
+  - `searchCountries` now matches country by native endonym with diacritic tolerance
+- **Vector & Raster Flag CDN URLs (Windows Emoji Fix)**:
+  - `getCountryFlagUrl(countryCode, options?)` — generate direct FlagCDN URLs in SVG or PNG formats
+  - Supports sizes: `'w20'`, `'w40'`, `'w80'`, `'w160'`, `'w320'`
+  - Solves the native emoji flag rendering limitations on Windows operating systems
+- **Geographic Coordinates, Area & Landlocked Status**:
+  - Added `coordinates` (`{ lat, lng }`), `area` ($km^2$), and `landlocked` (boolean) to all 250 countries
+  - `getCoordinates(countryCode)` (alias `getCountryCoordinates`), `getArea(countryCode)` (alias `getCountryArea`), and `isLandlocked(countryCode)`
+- **Neighboring Borders**:
+  - Added `borders` array (alpha-2 country codes) to all 250 countries
+  - `getBorders(countryCode)` — returns alpha-2 codes of bordering countries (empty for island nations)
+  - `getCountryBorders(countryCode, language?)` — returns full localized `Country[]` objects of bordering countries
+- **Spoken & Official Languages**:
+  - Added `languages` array (ISO codes) to all 250 countries
+  - `getCountryLanguages(countryCode)` — returns spoken language codes (e.g. `CH` -> `['fr', 'gsw', 'it', 'roh']`)
+  - `getCountriesBySpokenLanguage(languageCode, language?)` — reverse lookup countries where a language is spoken
+- **Demonyms & Nationalities**:
+  - Added `demonym` property in English across all 250 countries (e.g. `"American"`, `"French"`, `"German"`, `"Moroccan"`)
+  - `getDemonym(countryCode)` (and alias `getCountryDemonym`) — look up demonym
+  - `getCountryByDemonym(demonym, language?)` — reverse lookup country by nationality
+  - `searchCountries` now matches by demonym query
+- **Postal Code Validation**:
+  - `isValidPostalCode(countryCode, postalCode)` — validates postal codes against national patterns across major countries
+  - `getPostalCodePattern(countryCode)` — retrieves postal code regex pattern source
+- **Locale Inference**:
+  - `getCountryFromLocale(locale, language?)` — infers country from BCP-47 / POSIX locale tags (e.g. `'en-US'` -> `US`, `'fr-FR'` -> `FR`, `'pt_BR'` -> `BR`)
+- **Strict TypeScript Literal Types**:
+  - `CountryCode` typed with strict union of all 250 ISO 3166-1 alpha-2 codes and autocomplete
+  - `ContinentCode` typed as `'AF' | 'AN' | 'AS' | 'EU' | 'NA' | 'OC' | 'SA'`
+  - `Alpha3Code` typed with strict union of all 250 ISO 3166-1 alpha-3 codes and autocomplete
+- **Subpath Exports & Packaging**:
+  - Added 11 new direct subpath exports in `package.json`: `./get-tld`, `./get-country-by-tld`, `./regional-unions`, `./get-native-name`, `./get-country-flag-url`, `./get-coordinates`, `./get-borders`, `./spoken-languages`, `./get-demonym`, `./get-country-from-locale`, `./is-valid-postal-code`
+- **Testing**:
+  - Added 11 dedicated test suites; expanded total test suites from 13 to 24 (all 100% passing)
+
 ## [1.2.0] - 2026-10-28
 
 ### Added

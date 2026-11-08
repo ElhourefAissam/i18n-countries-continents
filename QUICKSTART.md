@@ -31,6 +31,29 @@ import {
   getCountryByCapital,
   getTimezones,
   getCountriesByTimezone,
+  // ccTLD & Native Name services
+  getTld,
+  getCountryByTld,
+  getNativeName,
+  // Regional Unions & Flags
+  isEU,
+  isSchengen,
+  isEEA,
+  getEUCountries,
+  getCountryFlagUrl,
+  // Geo, Borders & Demonyms
+  getCoordinates,
+  isLandlocked,
+  getArea,
+  getBorders,
+  getCountryBorders,
+  getCountryLanguages,
+  getCountriesBySpokenLanguage,
+  getDemonym,
+  getCountryByDemonym,
+  // Form helpers & Validation
+  isValidPostalCode,
+  getCountryFromLocale,
   // Phone & Currency services
   getCallingCode,
   getCurrency,

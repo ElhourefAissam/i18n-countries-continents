@@ -1,7 +1,7 @@
 {
   "name": "i18n-countries-continents",
-  "version": "1.2.0",
-  "description": "Get country, continent, and city names in different languages. 250 countries, 7 continents, 4,010 cities, ISO alpha-3/numeric codes, capitals, timezones, phone calling codes, and currencies in 10 languages. Works in React, Angular, Vue, Node.js, and any JavaScript environment.",
+  "version": "1.3.0",
+  "description": "Get country, continent, and city names in different languages. 250 countries, 7 continents, 4,010 cities, ISO alpha-3/numeric codes, capitals, timezones, calling codes, currencies, ccTLD, native names, demonyms, coordinates, borders, EU/Schengen status, and postal codes in 10 languages. Works in React, Angular, Vue, Node.js, and any JavaScript environment.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -71,7 +71,22 @@
     "timezones",
     "iana-timezones",
     "chinese",
-    "japanese"
+    "japanese",
+    "tld",
+    "cctld",
+    "native-names",
+    "endonyms",
+    "demonyms",
+    "nationalities",
+    "coordinates",
+    "borders",
+    "eu",
+    "schengen",
+    "eea",
+    "european-union",
+    "postal-codes",
+    "zip-codes",
+    "flag-urls"
   ],
   "author": "Aissam EL Houref",
   "repository": {
@@ -236,6 +251,61 @@
       "types": "./dist/services/countries/get-countries-by-timezone.d.ts",
       "import": "./dist/services/countries/get-countries-by-timezone.js",
       "require": "./dist/services/countries/get-countries-by-timezone.js"
+    },
+    "./get-tld": {
+      "types": "./dist/services/countries/get-tld.d.ts",
+      "import": "./dist/services/countries/get-tld.js",
+      "require": "./dist/services/countries/get-tld.js"
+    },
+    "./get-country-by-tld": {
+      "types": "./dist/services/countries/get-country-by-tld.d.ts",
+      "import": "./dist/services/countries/get-country-by-tld.js",
+      "require": "./dist/services/countries/get-country-by-tld.js"
+    },
+    "./regional-unions": {
+      "types": "./dist/services/countries/regional-unions.d.ts",
+      "import": "./dist/services/countries/regional-unions.js",
+      "require": "./dist/services/countries/regional-unions.js"
+    },
+    "./get-native-name": {
+      "types": "./dist/services/countries/get-native-name.d.ts",
+      "import": "./dist/services/countries/get-native-name.js",
+      "require": "./dist/services/countries/get-native-name.js"
+    },
+    "./get-country-flag-url": {
+      "types": "./dist/services/countries/get-country-flag-url.d.ts",
+      "import": "./dist/services/countries/get-country-flag-url.js",
+      "require": "./dist/services/countries/get-country-flag-url.js"
+    },
+    "./get-coordinates": {
+      "types": "./dist/services/countries/get-coordinates.d.ts",
+      "import": "./dist/services/countries/get-coordinates.js",
+      "require": "./dist/services/countries/get-coordinates.js"
+    },
+    "./get-borders": {
+      "types": "./dist/services/countries/get-borders.d.ts",
+      "import": "./dist/services/countries/get-borders.js",
+      "require": "./dist/services/countries/get-borders.js"
+    },
+    "./spoken-languages": {
+      "types": "./dist/services/countries/spoken-languages.d.ts",
+      "import": "./dist/services/countries/spoken-languages.js",
+      "require": "./dist/services/countries/spoken-languages.js"
+    },
+    "./get-demonym": {
+      "types": "./dist/services/countries/get-demonym.d.ts",
+      "import": "./dist/services/countries/get-demonym.js",
+      "require": "./dist/services/countries/get-demonym.js"
+    },
+    "./get-country-from-locale": {
+      "types": "./dist/services/countries/get-country-from-locale.d.ts",
+      "import": "./dist/services/countries/get-country-from-locale.js",
+      "require": "./dist/services/countries/get-country-from-locale.js"
+    },
+    "./is-valid-postal-code": {
+      "types": "./dist/services/validation/is-valid-postal-code.d.ts",
+      "import": "./dist/services/validation/is-valid-postal-code.js",
+      "require": "./dist/services/validation/is-valid-postal-code.js"
     },
     "./is-valid-country-code": {
       "types": "./dist/services/validation/is-valid-country-code.d.ts",
