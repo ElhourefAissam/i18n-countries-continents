@@ -101,7 +101,7 @@
   },
   "homepage": "https://github.com/ElhourefAissam/i18n-countries-continents#readme",
   "devDependencies": {
-    "tsup": "8.5.1",
+    "tsup": "9.0.0",
     "typescript": "5.8.3"
   },
   "exports": {
